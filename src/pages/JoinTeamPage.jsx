@@ -130,9 +130,9 @@ const JoinTeamPage = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-b from-navy-950 via-navy-900 to-navy-950 pt-20">
+        <div className="min-h-screen bg-navy-950 pt-20">
             {/* Hero Section */}
-            <section className="relative py-24 px-4 overflow-hidden bg-navy-950/50">
+            <section className="relative py-14 md:py-16 lg:py-24 px-4 overflow-hidden bg-navy-950/50">
                 <div className="max-w-5xl mx-auto px-4 relative z-10 text-center">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
@@ -203,7 +203,7 @@ const JoinTeamPage = () => {
             </section>
 
             {/* Why Work With Us Section */}
-            <section className="max-w-7xl mx-auto px-4 py-20">
+            <section className="max-w-7xl mx-auto px-4 py-14 md:py-16 lg:py-24">
                 <div className="text-center mb-16">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -250,7 +250,7 @@ const JoinTeamPage = () => {
             </section>
 
             {/* Open Roles Section */}
-            <section className="max-w-5xl mx-auto px-4 py-20 bg-navy-900/30">
+            <section className="max-w-5xl mx-auto px-4 py-14 md:py-16 lg:py-24 bg-navy-900/30">
                 <div className="text-center mb-16">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -369,7 +369,7 @@ const JoinTeamPage = () => {
             </section>
 
             {/* How to Apply Section */}
-            <section className="max-w-5xl mx-auto px-4 py-20">
+            <section className="max-w-5xl mx-auto px-4 py-14 md:py-16 lg:py-24">
                 <div className="text-center mb-16">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -434,7 +434,7 @@ const JoinTeamPage = () => {
             </section>
 
             {/* Final CTA Section */}
-            <section className="max-w-4xl mx-auto px-4 py-20 text-center">
+            <section className="max-w-4xl mx-auto px-4 py-14 md:py-16 lg:py-24 text-center">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}

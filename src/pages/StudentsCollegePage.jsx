@@ -172,7 +172,7 @@ const StudentsCollegePage = () => {
     ];
 
     return (
-        <div className="bg-gradient-to-b from-navy-950 via-navy-900 to-navy-950 pt-20">
+        <div className="bg-navy-950 pt-20">
 
             {/* Hero Section */}
             <section className="relative py-12 md:py-16 px-4">

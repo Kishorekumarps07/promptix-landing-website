@@ -137,10 +137,10 @@ const ContactPage = () => {
     ];
 
     return (
-        <div className="min-h-screen bg-gradient-to-b from-navy-950 via-navy-900 to-navy-950 pt-20">
+        <div className="min-h-screen bg-navy-950 pt-20">
 
             {/* Hero Section */}
-            <section className="relative py-20 px-4">
+            <section className="section-container">
                 <div className="max-w-4xl mx-auto text-center relative z-10">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
@@ -177,7 +177,7 @@ const ContactPage = () => {
             </section>
 
             {/* Contact Options */}
-            <section className="max-w-7xl mx-auto px-4 py-16">
+            <section className="max-w-7xl mx-auto px-4 py-14 md:py-16 lg:py-24">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {contactOptions.map((option, index) => {
                         const Icon = option.icon;
@@ -204,7 +204,7 @@ const ContactPage = () => {
             </section>
 
             {/* Contact Form */}
-            <section className="max-w-4xl mx-auto px-4 py-16">
+            <section className="max-w-4xl mx-auto px-4 py-14 md:py-16 lg:py-24">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -385,7 +385,7 @@ const ContactPage = () => {
             </section>
 
             {/* Trust Note */}
-            <section className="max-w-4xl mx-auto px-4 pb-20">
+            <section className="max-w-4xl mx-auto px-4 pb-14 md:pb-16 lg:pb-24">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="p-6 rounded-2xl bg-white/5 border border-white/10 flex items-start gap-4">
                         <Clock className="w-6 h-6 text-orange-500 shrink-0 mt-1" />

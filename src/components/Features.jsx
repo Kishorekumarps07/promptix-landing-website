@@ -77,7 +77,7 @@ const Features = () => {
                         <motion.div
                             key={index}
                             variants={itemVariants}
-                            className="group relative bg-gradient-to-br from-gray-50 to-white p-8 rounded-2xl border border-gray-200 hover:border-orange-300 transition-all duration-300 hover:shadow-xl hover:shadow-orange-500/10 flex flex-col"
+                            className="group relative bg-white p-8 rounded-2xl border border-gray-200 hover:border-orange-300 transition-all duration-300 hover:shadow-xl hover:shadow-orange-500/10 flex flex-col"
                         >
                             {/* Icon container */}
                             <div className="mb-6 inline-flex items-center justify-center w-16 h-16 rounded-xl bg-navy-950 text-white group-hover:bg-orange-500 transition-colors duration-300">

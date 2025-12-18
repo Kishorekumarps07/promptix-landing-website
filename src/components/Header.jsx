@@ -203,7 +203,7 @@ const Header = () => {
                         {/* Small Get in Touch Pill */}
                         <a
                             href="/contact"
-                            className="px-4 py-2 rounded-full bg-orange-500 hover:bg-orange-600 text-white text-sm font-semibold transition-colors"
+                            className="px-4 py-3 rounded-full bg-orange-500 hover:bg-orange-600 text-white text-sm font-semibold transition-colors"
                         >
                             Contact
                         </a>
@@ -211,7 +211,7 @@ const Header = () => {
                         {/* Hamburger Menu Button */}
                         <button
                             onClick={() => setIsMenuOpen(!isMenuOpen)}
-                            className="text-white p-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 rounded"
+                            className="text-white p-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 rounded"
                             aria-label="Toggle menu"
                             aria-expanded={isMenuOpen}
                         >

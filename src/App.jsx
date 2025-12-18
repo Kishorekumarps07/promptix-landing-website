@@ -9,6 +9,8 @@ import StudentsCollegePage from './pages/StudentsCollegePage';
 import ContactPage from './pages/ContactPage';
 import TeamPage from './pages/TeamPage';
 import JoinTeamPage from './pages/JoinTeamPage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import TermsOfServicePage from './pages/TermsOfServicePage';
 
 function App() {
     return (
@@ -23,6 +25,8 @@ function App() {
                     <Route path="/contact" element={<ContactPage />} />
                     <Route path="/company/team" element={<TeamPage />} />
                     <Route path="/company/join-team" element={<JoinTeamPage />} />
+                    <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+                    <Route path="/terms-of-service" element={<TermsOfServicePage />} />
                 </Routes>
             </main>
             <Footer />

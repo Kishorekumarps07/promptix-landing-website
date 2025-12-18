@@ -12,9 +12,8 @@ const Footer = () => {
             { name: 'Join Team', href: '/company/join-team' },
         ],
         Legal: [
-            { name: 'Privacy Policy', href: '#' },
-            { name: 'Terms of Service', href: '#' },
-            { name: 'Cookie Settings', href: '#' },
+            { name: 'Privacy Policy', href: '/privacy-policy' },
+            { name: 'Terms of Service', href: '/terms-of-service' },
         ],
     };
 
@@ -31,7 +30,7 @@ const Footer = () => {
 
     return (
         <footer className="bg-navy-950 text-white">
-            <div className="max-w-7xl mx-auto px-6 py-8 lg:py-16">
+            <div className="max-w-7xl mx-auto px-6 py-14 md:py-16 lg:py-24">
                 {/* Top section */}
                 <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 lg:gap-12 mb-8 lg:mb-12">
                     {/* Logo and description */}
@@ -52,9 +51,9 @@ const Footer = () => {
                                         key={index}
                                         href={social.href}
                                         aria-label={social.label}
-                                        className="w-10 h-10 rounded-lg bg-white/10 hover:bg-orange-500 flex items-center justify-center transition-colors duration-300"
+                                        className="w-12 h-12 rounded-lg bg-white/10 hover:bg-orange-500 flex items-center justify-center transition-colors duration-300"
                                     >
-                                        <Icon className="w-5 h-5" />
+                                        <Icon className="w-6 h-6" />
                                     </a>
                                 );
                             })}
@@ -141,14 +140,11 @@ const Footer = () => {
                             © {new Date().getFullYear()} PromptiX. All rights reserved.
                         </p>
                         <div className="hidden md:flex items-center gap-6 text-sm text-gray-400">
-                            <a href="#" className="hover:text-orange-500 transition-colors duration-300">
+                            <a href="/privacy-policy" className="hover:text-orange-500 transition-colors duration-300">
                                 Privacy Policy
                             </a>
-                            <a href="#" className="hover:text-orange-500 transition-colors duration-300">
+                            <a href="/terms-of-service" className="hover:text-orange-500 transition-colors duration-300">
                                 Terms of Service
-                            </a>
-                            <a href="#" className="hover:text-orange-500 transition-colors duration-300">
-                                Cookie Settings
                             </a>
                         </div>
                     </div>

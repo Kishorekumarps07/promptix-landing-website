@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 import { Sparkles, Rocket } from 'lucide-react';
 
 const Hero = () => {
@@ -22,8 +22,61 @@ const Hero = () => {
         </motion.div>
     );
 
+    // Count-up animation hook
+    const useCountUp = (end, duration = 1500) => {
+        const [count, setCount] = useState(0);
+        const [hasAnimated, setHasAnimated] = useState(false);
+
+        useEffect(() => {
+            if (hasAnimated) return;
+            setHasAnimated(true);
+
+            let startTime;
+            const startValue = 0;
+
+            const animate = (currentTime) => {
+                if (!startTime) startTime = currentTime;
+                const progress = Math.min((currentTime - startTime) / duration, 1);
+
+                // Ease-out cubic easing
+                const easeOut = 1 - Math.pow(1 - progress, 3);
+                const currentCount = startValue + (end - startValue) * easeOut;
+
+                setCount(currentCount);
+
+                if (progress < 1) {
+                    requestAnimationFrame(animate);
+                }
+            };
+
+            requestAnimationFrame(animate);
+        }, [end, duration, hasAnimated]);
+
+        return Math.floor(count);
+    };
+
+    // Stat item component with animation
+    const StatItem = ({ value, label, targetNumber, displayValue, suffix = '' }) => {
+        const count = targetNumber ? useCountUp(targetNumber) : null;
+        const formattedValue = displayValue || (count !== null ? `${count}${suffix}${value.includes('+') ? '+' : ''}` : value);
+
+        return (
+            <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.9, ease: 'easeOut' }}
+                className="text-center px-4"
+            >
+                <div className="text-5xl md:text-6xl font-bold text-white mb-2">
+                    {formattedValue}
+                </div>
+                <div className="text-sm md:text-base text-gray-300 font-medium">{label}</div>
+            </motion.div>
+        );
+    };
+
     return (
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-gray-50 to-white pt-20">
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-navy-950 pt-20 pb-14 md:pb-16 lg:pb-24">
             {/* Background Video */}
             <div className="absolute inset-0 w-full h-full z-0">
                 <video
@@ -127,26 +180,17 @@ const Hero = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.8 }}
-                        className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto"
+                        className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8 lg:gap-12 max-w-4xl mx-auto mt-8"
                     >
-                        {[
-                            { value: '500+', label: 'Enterprise Clients' },
-                            { value: '<100ms', label: 'Avg Response Time' },
-                            { value: '99.9%', label: 'Platform Uptime' },
-                        ].map((stat, index) => (
-                            <div key={index} className="text-center">
-                                <div className="text-4xl font-bold text-white mb-2">
-                                    {stat.value}
-                                </div>
-                                <div className="text-gray-200 font-medium">{stat.label}</div>
-                            </div>
-                        ))}
+                        <StatItem value="500+" label="Enterprise Clients" targetNumber={500} />
+                        <StatItem value="<100ms" label="Avg Response Time" displayValue="<100ms" />
+                        <StatItem value="99.9%" label="Platform Uptime" targetNumber={99.9} suffix="%" />
                     </motion.div>
                 </div>
             </div>
 
-            {/* Bottom gradient fade */}
-            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent" />
+            {/* Bottom gradient fade to white */}
+            <div className="absolute bottom-0 left-0 right-0 h-20 md:h-32 lg:h-40 bg-gradient-to-t from-slate-50 to-transparent pointer-events-none z-[2]" />
         </section>
     );
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { CheckCircle2, Code, Cloud, Database, TrendingUp, Target, BarChart, GraduationCap, Lightbulb, BookOpen } from 'lucide-react';
+import { CheckCircle2, Code, Cloud, Database, TrendingUp, Target, BarChart, GraduationCap, Lightbulb } from 'lucide-react';
 
 const About = () => {
     const values = [
@@ -20,11 +20,17 @@ const About = () => {
         { Icon: BarChart },
         { Icon: GraduationCap },
         { Icon: Lightbulb },
-        { Icon: BookOpen },
     ];
 
     return (
-        <section id="about" className="bg-slate-50">
+        <motion.section
+            id="about"
+            className="bg-slate-50"
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+        >
             <div className="section-container">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     {/* Left: Content */}
@@ -120,7 +126,7 @@ const About = () => {
                     </motion.div>
                 </div>
             </div>
-        </section>
+        </motion.section>
     );
 };
 
