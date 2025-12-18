@@ -116,15 +116,15 @@ const ContactPage = () => {
         {
             icon: Phone,
             title: 'Call Us',
-            value: '+91 9342460105',
-            link: 'tel:+919342460105',
+            value: '+91-86677 26771',
+            link: 'tel:+918667726771',
             color: 'text-blue-400'
         },
         {
             icon: MessageCircle,
             title: 'WhatsApp',
             value: 'Chat with us instantly',
-            link: 'https://wa.me/919342460105',
+            link: 'https://wa.me/918667726771',
             color: 'text-green-400'
         },
         {
@@ -156,7 +156,7 @@ const ContactPage = () => {
                         </p>
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                             <a
-                                href="https://wa.me/919342460105"
+                                href="https://wa.me/918667726771"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="btn-primary w-full sm:w-auto flex items-center justify-center gap-2"
@@ -165,7 +165,7 @@ const ContactPage = () => {
                                 WhatsApp Us
                             </a>
                             <a
-                                href="tel:+919342460105"
+                                href="tel:+918667726771"
                                 className="px-8 py-3 rounded-xl bg-white/10 hover:bg-white/15 text-white font-semibold transition-all border border-white/10 w-full sm:w-auto flex items-center justify-center gap-2"
                             >
                                 <Phone className="w-5 h-5" />

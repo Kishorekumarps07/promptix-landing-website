@@ -11,6 +11,8 @@ import TeamPage from './pages/TeamPage';
 import JoinTeamPage from './pages/JoinTeamPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import TermsOfServicePage from './pages/TermsOfServicePage';
+import ApplyPage from './pages/ApplyPage';
+import ApplySuccessPage from './pages/ApplySuccessPage';
 
 function App() {
     return (
@@ -27,6 +29,8 @@ function App() {
                     <Route path="/company/join-team" element={<JoinTeamPage />} />
                     <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
                     <Route path="/terms-of-service" element={<TermsOfServicePage />} />
+                    <Route path="/apply" element={<ApplyPage />} />
+                    <Route path="/apply-success" element={<ApplySuccessPage />} />
                 </Routes>
             </main>
             <Footer />

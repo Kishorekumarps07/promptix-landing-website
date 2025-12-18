@@ -11,10 +11,6 @@ const Footer = () => {
             { name: 'Blog', href: '/#blog' },
             { name: 'Join Team', href: '/company/join-team' },
         ],
-        Legal: [
-            { name: 'Privacy Policy', href: '/privacy-policy' },
-            { name: 'Terms of Service', href: '/terms-of-service' },
-        ],
     };
 
     const socialLinks = [
@@ -32,7 +28,7 @@ const Footer = () => {
         <footer className="bg-navy-950 text-white">
             <div className="max-w-7xl mx-auto px-6 py-14 md:py-16 lg:py-24">
                 {/* Top section */}
-                <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 lg:gap-12 mb-8 lg:mb-12">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 mb-8 lg:mb-12">
                     {/* Logo and description */}
                     <div className="lg:col-span-2">
                         <div className="mb-4 lg:mb-6">
@@ -131,6 +127,19 @@ const Footer = () => {
                     >
                         Get in Touch
                     </a>
+                </div>
+
+                {/* Office Address Section */}
+                <div className="py-8 border-t border-white/10 text-center">
+                    <h3 className="text-white font-semibold text-lg mb-3">Our Office Address</h3>
+                    <p className="text-gray-300 text-base leading-relaxed max-w-2xl mx-auto">
+                        No: PC1C, 2nd Block First Floor,<br />
+                        Mogappair West, Ambattur Industrial Estate,<br />
+                        Chennai, Tamil Nadu – 600037
+                    </p>
+                    <p className="text-gray-400 text-sm mt-3">
+                        Serving clients and students across India
+                    </p>
                 </div>
 
                 {/* Bottom section */}

@@ -104,6 +104,41 @@ const Header = () => {
         return () => document.removeEventListener('keydown', handleEscape);
     }, []);
 
+    // Lock body scroll when mobile menu is open with position fixed
+    useEffect(() => {
+        if (isMenuOpen) {
+            // Save current scroll position
+            const scrollY = window.scrollY;
+
+            // Lock scroll with position fixed
+            document.body.style.position = 'fixed';
+            document.body.style.top = `-${scrollY}px`;
+            document.body.style.width = '100%';
+            document.body.style.overflow = 'hidden';
+        } else {
+            // Get the scroll position from body top
+            const scrollY = document.body.style.top;
+
+            // Restore scroll
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.width = '';
+            document.body.style.overflow = '';
+
+            // Restore scroll position
+            if (scrollY) {
+                window.scrollTo(0, parseInt(scrollY || '0') * -1);
+            }
+        }
+
+        return () => {
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.width = '';
+            document.body.style.overflow = '';
+        };
+    }, [isMenuOpen]);
+
     return (
         <motion.header
             initial={{ y: -100 }}
@@ -187,11 +222,11 @@ const Header = () => {
 
                         {/* Contact Number */}
                         <a
-                            href="tel:+919342460105"
+                            href="tel:+918667726771"
                             className="flex items-center gap-2 text-white hover:text-orange-400 font-medium transition-colors duration-300 drop-shadow-md"
                         >
                             <Phone className="w-4 h-4" />
-                            <span>+91 9342460105</span>
+                            <span>+91-86677 26771</span>
                         </a>
 
                         {/* CTA Button */}
@@ -251,7 +286,7 @@ const Header = () => {
                                 animate={{ opacity: 1 }}
                                 exit={{ opacity: 0 }}
                                 transition={{ duration: 0.2 }}
-                                className="lg:hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-40"
+                                className="lg:hidden fixed inset-0 bg-black/70 backdrop-blur-sm z-40"
                                 onClick={() => setIsMenuOpen(false)}
                             />
 
@@ -261,7 +296,7 @@ const Header = () => {
                                 animate={{ x: 0 }}
                                 exit={{ x: '100%' }}
                                 transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-                                className="lg:hidden fixed top-0 right-0 bottom-0 w-[85%] max-w-sm bg-navy-900/95 backdrop-blur-xl border-l border-white/10 shadow-2xl z-50 overflow-y-auto"
+                                className="lg:hidden fixed top-0 right-0 bottom-0 w-[85%] max-w-sm bg-navy-950 border-l border-white/10 shadow-2xl z-50 overflow-y-auto"
                             >
                                 <div className="flex flex-col h-full">
                                     {/* Drawer Header */}
@@ -348,11 +383,11 @@ const Header = () => {
 
                                         {/* Phone Number */}
                                         <a
-                                            href="tel:+919342460105"
+                                            href="tel:+918667726771"
                                             className="flex items-center justify-center gap-2 text-gray-300 hover:text-orange-400 font-medium py-3 transition-colors"
                                         >
                                             <Phone className="w-4 h-4" />
-                                            <span>+91 9342460105</span>
+                                            <span>+91-86677 26771</span>
                                         </a>
                                     </div>
                                 </div>

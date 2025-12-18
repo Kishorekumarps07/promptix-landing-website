@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, BookOpen, Award, Clock, MapPin, Briefcase, TrendingUp } from 'lucide-react';
+import { X, BookOpen, Award, Clock, MapPin, Briefcase, TrendingUp, IndianRupee, Users, CheckCircle } from 'lucide-react';
 
 const DomainModal = ({ isOpen, onClose, domain }) => {
     const modalRef = useRef(null);
@@ -86,6 +86,57 @@ const DomainModal = ({ isOpen, onClose, domain }) => {
                                 </p>
                             </div>
 
+                            {/* Pricing Section */}
+                            <div className="p-6 rounded-2xl bg-gradient-to-br from-orange-500/10 to-purple-500/10 border border-orange-500/20">
+                                <h3 className="flex items-center gap-2 text-lg font-semibold text-white mb-4">
+                                    <IndianRupee className="w-5 h-5 text-orange-500" />
+                                    Internship Pricing
+                                </h3>
+                                <div className="space-y-4">
+                                    {/* Price Display */}
+                                    <div className="flex items-baseline gap-2">
+                                        <span className="text-4xl font-bold text-white">₹9,999</span>
+                                        <span className="text-gray-400 text-sm">per student</span>
+                                    </div>
+
+                                    {/* Duration & Mode */}
+                                    <div className="flex flex-wrap gap-3">
+                                        <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/10 border border-white/10">
+                                            <Clock className="w-4 h-4 text-orange-500" />
+                                            <span className="text-sm text-gray-300">8 Weeks Duration</span>
+                                        </div>
+                                        <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/10 border border-white/10">
+                                            <MapPin className="w-4 h-4 text-orange-500" />
+                                            <span className="text-sm text-gray-300">Online / Offline</span>
+                                        </div>
+                                    </div>
+
+                                    {/* Includes */}
+                                    <div className="mt-4">
+                                        <p className="text-sm font-semibold text-white mb-3">Includes:</p>
+                                        <div className="space-y-2">
+                                            {[
+                                                'Industry-focused training',
+                                                'Real-world project',
+                                                'Internship certificate',
+                                                'Mentor guidance',
+                                                'Career support'
+                                            ].map((item, i) => (
+                                                <div key={i} className="flex items-center gap-2">
+                                                    <CheckCircle className="w-4 h-4 text-green-500 shrink-0" />
+                                                    <span className="text-sm text-gray-300">{item}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+
+                                    {/* Optional Note */}
+                                    <p className="text-xs text-gray-400 mt-3 pt-3 border-t border-white/10">
+                                        EMI options and student discounts available
+                                    </p>
+                                </div>
+                            </div>
+
                             {/* What You'll Learn */}
                             <div>
                                 <h3 className="flex items-center gap-2 text-lg font-semibold text-white mb-4">
@@ -167,7 +218,10 @@ const DomainModal = ({ isOpen, onClose, domain }) => {
 
                         {/* Footer CTA */}
                         <div className="p-6 border-t border-white/10 bg-navy-800/50 backdrop-blur-md">
-                            <a href="/contact" className="w-full px-6 py-3 rounded-lg bg-orange-500 hover:bg-orange-600 text-white font-medium flex items-center justify-center gap-2 transition-all transform hover:scale-105 shadow-lg shadow-orange-500/20">
+                            <a
+                                href={`/apply?domain=${encodeURIComponent(domain.category)}`}
+                                className="w-full px-6 py-3 rounded-lg bg-orange-500 hover:bg-orange-600 text-white font-medium flex items-center justify-center gap-2 transition-all transform hover:scale-105 shadow-lg shadow-orange-500/20"
+                            >
                                 Apply Now
                             </a>
                         </div>
