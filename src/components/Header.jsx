@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, Phone } from 'lucide-react';
 import Logo from './Logo';
+import { CONTACT } from '../constants/contact';
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -51,7 +52,7 @@ const Header = () => {
             items: [
                 { name: 'Our Team', href: '/company/team' },
                 { name: 'Join Team', href: '/company/join-team' },
-                { name: 'Blog', href: '/#blog' },
+                { name: 'Blog', href: '/blog' },
             ],
         },
     ];
@@ -222,11 +223,11 @@ const Header = () => {
 
                         {/* Contact Number */}
                         <a
-                            href="tel:+918667726771"
+                            href={`tel:${CONTACT.phone.raw}`}
                             className="flex items-center gap-2 text-white hover:text-orange-400 font-medium transition-colors duration-300 drop-shadow-md"
                         >
                             <Phone className="w-4 h-4" />
-                            <span>+91-86677 26771</span>
+                            <span>{CONTACT.phone.display}</span>
                         </a>
 
                         {/* CTA Button */}
@@ -383,11 +384,11 @@ const Header = () => {
 
                                         {/* Phone Number */}
                                         <a
-                                            href="tel:+918667726771"
+                                            href={`tel:${CONTACT.phone.raw}`}
                                             className="flex items-center justify-center gap-2 text-gray-300 hover:text-orange-400 font-medium py-3 transition-colors"
                                         >
                                             <Phone className="w-4 h-4" />
-                                            <span>+91-86677 26771</span>
+                                            <span>{CONTACT.phone.display}</span>
                                         </a>
                                     </div>
                                 </div>

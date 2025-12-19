@@ -352,7 +352,7 @@ const JoinTeamPage = () => {
                                             {/* Apply Button */}
                                             <div className="pt-4">
                                                 <a
-                                                    href="/contact"
+                                                    href={`/careers/apply?role=${encodeURIComponent(role.title)}`}
                                                     className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-medium transition-all transform hover:scale-105 shadow-lg shadow-orange-500/20"
                                                 >
                                                     <span>Apply for this Role</span>

@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { CheckCircle, Home, Sparkles } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { CONTACT } from '../constants/contact';
 
 const ApplySuccessPage = () => {
     const [searchParams] = useSearchParams();
@@ -91,8 +92,8 @@ const ApplySuccessPage = () => {
                         <div className="mt-12 pt-8 border-t border-white/10">
                             <p className="text-sm text-gray-400">
                                 Need help? Contact us at{' '}
-                                <a href="mailto:infopromptix@gmail.com" className="text-orange-500 hover:text-orange-400 transition-colors">
-                                    infopromptix@gmail.com
+                                <a href={CONTACT.email.link} className="text-orange-500 hover:text-orange-400 transition-colors">
+                                    {CONTACT.email.address}
                                 </a>
                             </p>
                         </div>

@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { GraduationCap, User, Mail, Phone, Calendar, MapPin, FileText, Send } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { CONTACT } from '../constants/contact';
 
 const ApplyPage = () => {
     const [searchParams] = useSearchParams();
@@ -216,7 +217,7 @@ const ApplyPage = () => {
                                                                 onChange={handleChange}
                                                                 required
                                                                 className="w-full pl-11 pr-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:border-orange-500 focus:outline-none transition-colors"
-                                                                placeholder="+91-86677 26771"
+                                                                placeholder={CONTACT.phone.display}
                                                             />
                                                         </div>
                                                     </div>

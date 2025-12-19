@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Logo from './Logo';
 import { Twitter, Linkedin, Github, Mail, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { CONTACT } from '../constants/contact';
 
 const Footer = () => {
     const [openSection, setOpenSection] = useState(null);
@@ -133,9 +134,9 @@ const Footer = () => {
                 <div className="py-8 border-t border-white/10 text-center">
                     <h3 className="text-white font-semibold text-lg mb-3">Our Office Address</h3>
                     <p className="text-gray-300 text-base leading-relaxed max-w-2xl mx-auto">
-                        No: PC1C, 2nd Block First Floor,<br />
-                        Mogappair West, Ambattur Industrial Estate,<br />
-                        Chennai, Tamil Nadu – 600037
+                        {CONTACT.address.lines[0]}<br />
+                        {CONTACT.address.lines[1]}<br />
+                        {CONTACT.address.lines[2]}
                     </p>
                     <p className="text-gray-400 text-sm mt-3">
                         Serving clients and students across India

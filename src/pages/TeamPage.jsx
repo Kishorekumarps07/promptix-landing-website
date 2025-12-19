@@ -9,7 +9,8 @@ const TeamPage = () => {
     // Team members data - easily updatable
     const teamMembers = [
         {
-            role: 'Founder & CEO',
+            name: 'PRANITHA R',
+            role: 'Managing Director & CEO',
             focus: 'AI strategy, business vision, and driving innovation across all solutions',
             highlights: ['AI Strategy', 'Product Vision', 'Business Growth'],
             bio: 'Leading PromptiX with a vision to democratize AI and cutting-edge technology for businesses of all sizes. With over a decade of experience in artificial intelligence and digital transformation, focused on building scalable systems that empower teams and drive sustainable growth.',
@@ -18,6 +19,7 @@ const TeamPage = () => {
             linkedin: null // Placeholder for LinkedIn URL
         },
         {
+            name: 'Kishore Kumar P S',
             role: 'Full Stack Developer',
             focus: 'Building scalable web applications with modern frameworks and cloud infrastructure',
             highlights: ['React', 'Node.js', 'Cloud Architecture'],
@@ -27,7 +29,8 @@ const TeamPage = () => {
             linkedin: null
         },
         {
-            role: 'Senior Graphic Designer',
+            name: 'Janarthanan V',
+            role: 'Senior UI/UX Developer',
             focus: 'Creating stunning visual identities and user interfaces that captivate audiences',
             highlights: ['Brand Design', 'UI/UX', 'Visual Identity'],
             bio: 'Crafting visual experiences that are both beautiful and functional. Specializing in brand identity, user interface design, and creative direction. Every design tells a story and creates an emotional connection with the audience.',
@@ -36,7 +39,8 @@ const TeamPage = () => {
             linkedin: null
         },
         {
-            role: 'Graphic Designer',
+            name: 'Kaviarasan S',
+            role: 'Graphics Designer & Digital Marketer',
             focus: 'Designing engaging marketing materials and social media content that converts',
             highlights: ['Marketing Design', 'Social Media', 'Content Creation'],
             bio: 'Bringing ideas to life through compelling visual content. Focused on creating marketing materials, social media graphics, and digital assets that drive engagement and conversions. Passionate about staying ahead of design trends and delivering work that stands out.',
@@ -141,6 +145,9 @@ const TeamPage = () => {
                                 <h3 className="text-xl font-bold text-white mb-2 group-hover:text-orange-400 transition-colors duration-300">
                                     {member.role}
                                 </h3>
+                                <p className="text-base font-medium text-gray-300">
+                                    {member.name}
+                                </p>
                             </div>
 
                             {/* Focus Description */}

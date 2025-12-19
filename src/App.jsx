@@ -13,6 +13,11 @@ import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import TermsOfServicePage from './pages/TermsOfServicePage';
 import ApplyPage from './pages/ApplyPage';
 import ApplySuccessPage from './pages/ApplySuccessPage';
+import CareersApplyPage from './pages/CareersApplyPage';
+import BlogPage from './pages/BlogPage';
+import BlogPostAIEra from './pages/BlogPostAIEra';
+import BlogPostDigitalBranding from './pages/BlogPostDigitalBranding';
+import BlogPostFutureDomains from './pages/BlogPostFutureDomains';
 
 function App() {
     return (
@@ -31,6 +36,11 @@ function App() {
                     <Route path="/terms-of-service" element={<TermsOfServicePage />} />
                     <Route path="/apply" element={<ApplyPage />} />
                     <Route path="/apply-success" element={<ApplySuccessPage />} />
+                    <Route path="/careers/apply" element={<CareersApplyPage />} />
+                    <Route path="/blog" element={<BlogPage />} />
+                    <Route path="/blog/fast-growth-ai-era" element={<BlogPostAIEra />} />
+                    <Route path="/blog/brand-your-business-digital-world" element={<BlogPostDigitalBranding />} />
+                    <Route path="/blog/best-domains-for-future" element={<BlogPostFutureDomains />} />
                 </Routes>
             </main>
             <Footer />
