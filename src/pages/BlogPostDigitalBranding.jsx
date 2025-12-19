@@ -10,6 +10,17 @@ const BlogPostDigitalBranding = () => {
         <>
             <Header />
             <div className="min-h-screen bg-navy-950 pt-20">
+                {/* Sticky Back Button */}
+                <div className="fixed top-24 left-4 z-50 hidden lg:block">
+                    <Link
+                        to="/blog"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-500/10 backdrop-blur-xl border border-orange-500/20 text-orange-500 hover:bg-orange-500/20 hover:border-orange-500/30 transition-all duration-300 shadow-lg hover:shadow-orange-500/20 group"
+                    >
+                        <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+                        <span className="text-sm font-medium">Back to Blog</span>
+                    </Link>
+                </div>
+
                 {/* Hero Section */}
                 <section className="relative py-16 md:py-24 px-4 overflow-hidden">
                     <div className="max-w-4xl mx-auto">
@@ -29,7 +40,7 @@ const BlogPostDigitalBranding = () => {
 
                             {/* Category Badge */}
                             <div className="mb-6">
-                                <span className="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-orange-500 to-pink-500 text-white text-sm font-semibold shadow-lg">
+                                <span className="inline-block px-3 py-1 rounded-full bg-orange-500/10 text-orange-500 text-xs font-semibold">
                                     Digital Marketing
                                 </span>
                             </div>

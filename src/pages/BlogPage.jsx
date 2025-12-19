@@ -33,21 +33,14 @@ const BlogPage = () => {
         }
     ];
 
-    const getCategoryColor = (category) => {
-        const colors = {
-            'Tech': 'from-blue-500 to-cyan-500',
-            'Digital Marketing': 'from-orange-500 to-pink-500',
-            'EdTech': 'from-purple-500 to-indigo-500'
-        };
-        return colors[category] || 'from-orange-500 to-purple-500';
-    };
+
 
     return (
         <>
             <Header />
             <div className="min-h-screen bg-navy-950 pt-20">
                 {/* Hero Section */}
-                <section className="relative py-16 md:py-24 px-4 overflow-hidden bg-navy-950/50">
+                <section className="relative py-20 md:py-28 px-4 overflow-hidden">
                     <div className="max-w-6xl mx-auto relative z-10 text-center">
                         <motion.div
                             initial={{ opacity: 0, y: 30 }}
@@ -56,13 +49,13 @@ const BlogPage = () => {
                         >
                             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-500/10 border border-orange-500/20 mb-6">
                                 <BookOpen className="w-4 h-4 text-orange-500" />
-                                <span className="text-sm font-medium text-orange-500">Insights & Articles</span>
+                                <span className="text-sm font-medium text-orange-500">Blog</span>
                             </div>
                             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-                                Blogs & <span className="text-orange-500">Insights</span>
+                                Insights & <span className="text-orange-500">Articles</span>
                             </h1>
-                            <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
-                                Tech · Digital Marketing · EdTech
+                            <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+                                Tech, Digital Marketing & EdTech perspectives from PromptiX
                             </p>
                         </motion.div>
                     </div>
@@ -77,43 +70,40 @@ const BlogPage = () => {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                                className="group bg-navy-900/50 backdrop-blur-xl rounded-2xl border border-white/10 overflow-hidden hover:border-orange-500/30 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-500/20 flex flex-col"
+                                className="group bg-navy-900/50 backdrop-blur-xl rounded-2xl border border-white/10 overflow-hidden hover:border-orange-500/30 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-500/20 flex flex-col cursor-pointer"
                             >
-                                {/* Thumbnail */}
-                                <div className="relative h-56 overflow-hidden">
-                                    <img
-                                        src={post.thumbnail}
-                                        alt={post.title}
-                                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/50 to-transparent opacity-60" />
+                                <a href={`/blog/${post.slug}`} className="flex flex-col h-full">
+                                    {/* Thumbnail */}
+                                    <div className="relative h-56 overflow-hidden">
+                                        <img
+                                            src={post.thumbnail}
+                                            alt={post.title}
+                                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/50 to-transparent opacity-60" />
+                                    </div>
 
-                                    {/* Category Badge */}
-                                    <div className="absolute top-4 left-4">
-                                        <span className={`inline-block px-3 py-1 rounded-full bg-gradient-to-r ${getCategoryColor(post.category)} text-white text-xs font-semibold shadow-lg`}>
+                                    {/* Content */}
+                                    <div className="p-6 flex flex-col flex-grow">
+                                        {/* Category Badge */}
+                                        <span className="inline-block w-fit px-3 py-1 rounded-full bg-orange-500/10 text-orange-500 text-xs font-semibold mb-3">
                                             {post.category}
                                         </span>
+
+                                        <h2 className="text-xl font-bold text-white mb-3 group-hover:text-orange-400 transition-colors duration-300 line-clamp-2">
+                                            {post.title}
+                                        </h2>
+                                        <p className="text-gray-400 text-sm leading-relaxed mb-6 line-clamp-2 flex-grow">
+                                            {post.excerpt}
+                                        </p>
+
+                                        {/* Read More Link */}
+                                        <div className="inline-flex items-center gap-2 text-orange-500 group-hover:text-orange-400 font-medium text-sm transition-colors">
+                                            <span>Read More</span>
+                                            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                                        </div>
                                     </div>
-                                </div>
-
-                                {/* Content */}
-                                <div className="p-6 flex flex-col flex-grow">
-                                    <h2 className="text-xl font-bold text-white mb-3 group-hover:text-orange-400 transition-colors duration-300 line-clamp-2">
-                                        {post.title}
-                                    </h2>
-                                    <p className="text-gray-400 text-sm leading-relaxed mb-6 line-clamp-2 flex-grow">
-                                        {post.excerpt}
-                                    </p>
-
-                                    {/* Read More Link */}
-                                    <a
-                                        href={`/blog/${post.slug}`}
-                                        className="inline-flex items-center gap-2 text-orange-500 hover:text-orange-400 font-medium text-sm transition-colors group/link"
-                                    >
-                                        <span>Read More</span>
-                                        <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
-                                    </a>
-                                </div>
+                                </a>
                             </motion.article>
                         ))}
                     </div>
