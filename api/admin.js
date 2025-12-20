@@ -1,9 +1,9 @@
-import connectDB from './utils/db.js';
-import Contact from './models/Contact.js';
-import CareerApplication from './models/CareerApplication.js';
-import InternshipApplication from './models/InternshipApplication.js';
-import Admin from './models/Admin.js';
-import { verifyAdminToken } from './utils/authUtils.js';
+import connectDB from '../lib/utils/db.js';
+import Contact from '../lib/models/Contact.js';
+import CareerApplication from '../lib/models/CareerApplication.js';
+import InternshipApplication from '../lib/models/InternshipApplication.js';
+import Admin from '../lib/models/Admin.js';
+import { verifyAdminToken } from '../lib/utils/authUtils.js';
 
 /**
  * Unified Admin API Handler

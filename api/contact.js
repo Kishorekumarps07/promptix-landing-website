@@ -1,5 +1,5 @@
-import connectDB from './utils/db.js';
-import Contact from './models/Contact.js';
+import connectDB from '../lib/utils/db.js';
+import Contact from '../lib/models/Contact.js';
 
 /**
  * API endpoint for handling contact form submissions
