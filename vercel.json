@@ -6,9 +6,29 @@
         }
     ],
     "functions": {
-        "api/**/*.js": {
+        "api/auth/login.js": {
             "memory": 1024,
+            "maxDuration": 30
+        },
+        "api/contact.js": {
+            "memory": 1024,
+            "maxDuration": 30
+        },
+        "api/applications.js": {
+            "memory": 1024,
+            "maxDuration": 30
+        },
+        "api/internships.js": {
+            "memory": 1024,
+            "maxDuration": 30
+        },
+        "api/health.js": {
+            "memory": 512,
             "maxDuration": 10
+        },
+        "api/test-db.js": {
+            "memory": 1024,
+            "maxDuration": 30
         }
     }
 }
