@@ -48,7 +48,6 @@ class AuthService {
     logout() {
         localStorage.removeItem('adminToken');
         localStorage.removeItem('adminData');
-        window.location.href = '/admin/login';
     }
 
     /**
