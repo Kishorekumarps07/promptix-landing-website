@@ -1,5 +1,5 @@
-import connectDB from '../../lib/utils/db.js';
-import Admin from '../../lib/models/Admin.js';
+import connectDB from '../utils/db.js';
+import Admin from '../models/Admin.js';
 import jwt from 'jsonwebtoken';
 
 /**

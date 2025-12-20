@@ -1,5 +1,5 @@
-import connectDB from '../lib/utils/db.js';
-import CareerApplication from '../lib/models/CareerApplication.js';
+import connectDB from './utils/db.js';
+import CareerApplication from './models/CareerApplication.js';
 
 /**
  * API endpoint for handling career application submissions

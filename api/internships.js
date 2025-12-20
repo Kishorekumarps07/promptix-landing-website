@@ -1,5 +1,5 @@
-import connectDB from '../lib/utils/db.js';
-import InternshipApplication from '../lib/models/InternshipApplication.js';
+import connectDB from './utils/db.js';
+import InternshipApplication from './models/InternshipApplication.js';
 
 /**
  * API endpoint for handling internship application submissions
