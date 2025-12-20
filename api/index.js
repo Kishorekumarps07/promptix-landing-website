@@ -23,20 +23,30 @@ export default async function handler(req, res) {
         return res.status(200).end();
     }
 
-    // Parse the route from the query parameter
-    const { route } = req.query;
+    // Parse the route from the URL path
+    // URL will be like /api/auth/login or /api/health
+    const url = req.url || '';
+    const path = url.split('?')[0]; // Remove query string
+    const parts = path.split('/').filter(Boolean); // Split by / and remove empty strings
 
-    console.log('API Route:', route, 'Method:', req.method);
+    // Remove 'api' from the beginning if present
+    if (parts[0] === 'api') {
+        parts.shift();
+    }
+
+    console.log('API Request:', req.method, path, 'Parts:', parts);
 
     try {
-        // Route to appropriate handler
-        switch (route?.[0]) {
+        // Route to appropriate handler based on path
+        const route = parts[0];
+
+        switch (route) {
             case 'health':
                 return handleHealth(req, res);
             case 'test-db':
                 return handleTestDB(req, res);
             case 'auth':
-                if (route[1] === 'login') return handleLogin(req, res);
+                if (parts[1] === 'login') return handleLogin(req, res);
                 break;
             case 'contact':
                 return handleContact(req, res);
@@ -45,8 +55,11 @@ export default async function handler(req, res) {
             case 'internships':
                 return handleInternships(req, res);
             default:
-                return res.status(404).json({ error: 'Route not found' });
+                console.log('Route not found:', route, 'Full path:', path);
+                return res.status(404).json({ error: 'Route not found', path, route });
         }
+
+        return res.status(404).json({ error: 'Endpoint not found' });
     } catch (error) {
         console.error('API Error:', error);
         return res.status(500).json({ error: 'Internal server error', message: error.message });
