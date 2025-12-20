@@ -18,6 +18,12 @@ import BlogPage from './pages/BlogPage';
 import BlogPostAIEra from './pages/BlogPostAIEra';
 import BlogPostDigitalBranding from './pages/BlogPostDigitalBranding';
 import BlogPostFutureDomains from './pages/BlogPostFutureDomains';
+import AdminLoginPage from './pages/AdminLoginPage';
+import AdminDashboard from './pages/AdminDashboard';
+import ProtectedRoute from './components/ProtectedRoute';
+import ContactsManagementPage from './pages/admin/ContactsManagementPage';
+import CareersManagementPage from './pages/admin/CareersManagementPage';
+import InternshipsManagementPage from './pages/admin/InternshipsManagementPage';
 
 function App() {
     return (
@@ -41,6 +47,41 @@ function App() {
                     <Route path="/blog/fast-growth-ai-era" element={<BlogPostAIEra />} />
                     <Route path="/blog/brand-your-business-digital-world" element={<BlogPostDigitalBranding />} />
                     <Route path="/blog/best-domains-for-future" element={<BlogPostFutureDomains />} />
+
+                    {/* Admin Routes */}
+                    <Route path="/admin/login" element={<AdminLoginPage />} />
+                    <Route
+                        path="/admin/dashboard"
+                        element={
+                            <ProtectedRoute>
+                                <AdminDashboard />
+                            </ProtectedRoute>
+                        }
+                    />
+                    <Route
+                        path="/admin/contacts"
+                        element={
+                            <ProtectedRoute>
+                                <ContactsManagementPage />
+                            </ProtectedRoute>
+                        }
+                    />
+                    <Route
+                        path="/admin/careers"
+                        element={
+                            <ProtectedRoute>
+                                <CareersManagementPage />
+                            </ProtectedRoute>
+                        }
+                    />
+                    <Route
+                        path="/admin/internships"
+                        element={
+                            <ProtectedRoute>
+                                <InternshipsManagementPage />
+                            </ProtectedRoute>
+                        }
+                    />
                 </Routes>
             </main>
             <Footer />
