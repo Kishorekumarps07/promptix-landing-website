@@ -109,7 +109,7 @@ const AdminDashboard = () => {
                 </motion.div>
 
                 {/* Stats Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
                     {stats.map((stat, index) => (
                         <motion.div
                             key={stat.label}
@@ -138,7 +138,7 @@ const AdminDashboard = () => {
                     className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6"
                 >
                     <h3 className="text-xl font-bold text-white mb-6">Quick Actions</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <button
                             onClick={() => navigate('/admin/contacts')}
                             className="flex items-center gap-3 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors text-left"
