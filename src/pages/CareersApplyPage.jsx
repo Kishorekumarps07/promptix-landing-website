@@ -5,6 +5,7 @@ import { User, Mail, Phone, Briefcase, GraduationCap, MapPin, FileText, Upload, 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { CONTACT } from '../constants/contact';
+import apiConfig from '../config/api';
 
 const CareersApplyPage = () => {
     const [searchParams] = useSearchParams();
@@ -46,16 +47,65 @@ const CareersApplyPage = () => {
         e.preventDefault();
         setIsSubmitting(true);
 
-        // Simulate API call
         try {
-            await new Promise(resolve => setTimeout(resolve, 2000));
-            console.log('Application submitted:', formData);
-            setShowSuccess(true);
-            setIsSubmitting(false);
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            // Use centralized API configuration
+            const apiUrl = apiConfig.CAREERS;
+
+            // Prepare data matching backend schema
+            const applicationData = {
+                fullName: formData.fullName,
+                email: formData.email,
+                phone: formData.phone,
+                roleApplied: role, // From URL parameter
+                city: formData.city,
+                linkedIn: formData.linkedIn,
+                qualification: formData.qualification,
+                institution: formData.institution,
+                graduationYear: formData.graduationYear,
+                currentStatus: formData.currentStatus,
+                primarySkills: formData.primarySkills,
+                experienceLevel: formData.experienceLevel,
+                experienceSummary: formData.experienceSummary,
+                portfolioUrl: formData.portfolioUrl,
+                mode: formData.mode,
+                duration: formData.duration,
+                startDate: formData.startDate
+            };
+
+            // 🔍 DEBUG LOGS
+            console.log('🌐 Career API URL:', apiUrl);
+            console.log('📤 Career Request Body:', applicationData);
+
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(applicationData),
+            });
+
+            console.log('📥 Career Response Status:', response.status);
+            console.log('📥 Career Response OK:', response.ok);
+
+            const data = await response.json();
+            console.log('📦 Career Response Data:', data);
+
+            // Check for success: HTTP 200 AND success: true in response
+            if (response.ok && data.success) {
+                console.log('✅ SUCCESS: Career application submitted!');
+                console.log('📄 Application ID:', data.data?.id);
+
+                setShowSuccess(true);
+                setIsSubmitting(false);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                throw new Error(data.error || 'Failed to submit application');
+            }
         } catch (error) {
-            console.error('Submission error:', error);
+            console.error('❌ Career application error:', error);
+            console.error('❌ Error Message:', error.message);
             setIsSubmitting(false);
+            alert(`Error: ${error.message}`);
         }
     };
 
