@@ -51,7 +51,6 @@ const Header = () => {
             hasDropdown: true,
             items: [
                 { name: 'Our Team', href: '/company/team' },
-                { name: 'Join Team', href: '/company/join-team' },
                 { name: 'Blog', href: '/blog' },
             ],
         },
