@@ -33,12 +33,6 @@ export const seoConfig = {
         keywords: 'PromptiX team, AI experts, development team, design team, digital marketing experts'
     },
 
-    joinTeam: {
-        title: 'Careers - Join the PromptiX Team',
-        description: 'Join PromptiX and work on real projects with cutting-edge AI tools. Explore internships in AI, development, design, and marketing.',
-        keywords: 'PromptiX careers, AI internships, tech jobs, development internships, design careers, marketing jobs'
-    },
-
     contact: {
         title: 'Contact Us - Get in Touch with PromptiX',
         description: 'Ready to transform your business or kickstart your career? Contact PromptiX today for AI solutions, marketing services, or internship opportunities.',
