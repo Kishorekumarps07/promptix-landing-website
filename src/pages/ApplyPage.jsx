@@ -38,71 +38,50 @@ const ApplyPage = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Prepare application data structure
-        // This structure is ready for:
-        // 1. Payment gateway integration
-        // 2. Admin dashboard consumption
-        // 3. Domain-based pricing scaling
-        const applicationData = {
-            // Student Information
-            student: {
+        try {
+            // Use empty string for local dev (Vite proxy handles /api/*)
+            const API_URL = import.meta.env.VITE_API_BASE_URL || '';
+
+            // Prepare data matching backend schema
+            const applicationData = {
                 fullName: formData.fullName,
                 email: formData.email,
                 phone: formData.phone,
+                domain: formData.domain,
                 college: formData.college,
                 year: formData.year,
                 branch: formData.branch,
                 city: formData.city,
-            },
-            // Internship Details
-            internship: {
-                domain: formData.domain,
                 mode: formData.mode,
                 startDate: formData.startDate,
-                message: formData.message,
-            },
-            // Pricing Information (ready for domain-based pricing)
-            pricing: {
-                domain: formData.domain,
-                amount: 9999, // Base price - can be dynamic based on domain
-                currency: 'INR',
                 duration: '8 weeks',
-                mode: formData.mode,
-            },
-            // Metadata
-            metadata: {
-                submittedAt: new Date().toISOString(),
-                source: 'website',
-                status: 'pending', // pending, confirmed, paid
-            },
-        };
+                price: 9999,
+                message: formData.message
+            };
 
-        // TODO: Replace with actual API call
-        // Example structure for future implementation:
-        // try {
-        //     const response = await fetch('/api/applications', {
-        //         method: 'POST',
-        //         headers: { 'Content-Type': 'application/json' },
-        //         body: JSON.stringify(applicationData),
-        //     });
-        //     const result = await response.json();
-        //     
-        //     // Redirect to payment gateway if needed
-        //     // if (result.paymentRequired) {
-        //     //     window.location.href = result.paymentUrl;
-        //     // } else {
-        //     //     navigate to success page
-        //     // }
-        // } catch (error) {
-        //     console.error('Submission error:', error);
-        // }
+            const response = await fetch(apiPath, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(applicationData),
+            });
 
-        // For now: Log data and redirect to success page
-        console.log('Application Data:', applicationData);
+            const data = await response.json();
+            console.log('Internship API Response:', data);
 
-        // Redirect to success page with query params
-        const successUrl = `/apply-success?domain=${encodeURIComponent(formData.domain)}&email=${encodeURIComponent(formData.email)}`;
-        window.location.href = successUrl;
+            // Check for success: HTTP 200 AND success: true in response
+            if (response.ok && data.success) {
+                // Redirect to success page with query params
+                const successUrl = `/apply-success?domain=${encodeURIComponent(formData.domain)}&email=${encodeURIComponent(formData.email)}`;
+                window.location.href = successUrl;
+            } else {
+                throw new Error(data.error || 'Failed to submit application');
+            }
+        } catch (error) {
+            console.error('Internship application error:', error);
+            alert(`Error: ${error.message}`);
+        }
     };
 
     return (

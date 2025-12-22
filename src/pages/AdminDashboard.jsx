@@ -40,14 +40,6 @@ const AdminDashboard = () => {
             borderColor: 'border-blue-500/20'
         },
         {
-            icon: Briefcase,
-            label: 'Career Applications',
-            value: '0',
-            color: 'from-green-500 to-green-600',
-            bgColor: 'bg-green-500/10',
-            borderColor: 'border-green-500/20'
-        },
-        {
             icon: GraduationCap,
             label: 'Internship Applications',
             value: '0',
@@ -155,17 +147,6 @@ const AdminDashboard = () => {
                             <div>
                                 <p className="font-medium text-white">View Contacts</p>
                                 <p className="text-xs text-gray-400">Manage contact submissions</p>
-                            </div>
-                        </button>
-
-                        <button
-                            onClick={() => navigate('/admin/careers')}
-                            className="flex items-center gap-3 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors text-left"
-                        >
-                            <Briefcase className="w-5 h-5 text-orange-500" />
-                            <div>
-                                <p className="font-medium text-white">Career Applications</p>
-                                <p className="text-xs text-gray-400">Review job applications</p>
                             </div>
                         </button>
 

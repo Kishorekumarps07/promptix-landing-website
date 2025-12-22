@@ -8,12 +8,10 @@ import DigitalMarketingPage from './pages/DigitalMarketingPage';
 import StudentsCollegePage from './pages/StudentsCollegePage';
 import ContactPage from './pages/ContactPage';
 import TeamPage from './pages/TeamPage';
-import JoinTeamPage from './pages/JoinTeamPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import TermsOfServicePage from './pages/TermsOfServicePage';
 import ApplyPage from './pages/ApplyPage';
 import ApplySuccessPage from './pages/ApplySuccessPage';
-import CareersApplyPage from './pages/CareersApplyPage';
 import BlogPage from './pages/BlogPage';
 import BlogPostAIEra from './pages/BlogPostAIEra';
 import BlogPostDigitalBranding from './pages/BlogPostDigitalBranding';
@@ -22,7 +20,6 @@ import AdminLoginPage from './pages/AdminLoginPage';
 import AdminDashboard from './pages/AdminDashboard';
 import ProtectedRoute from './components/ProtectedRoute';
 import ContactsManagementPage from './pages/admin/ContactsManagementPage';
-import CareersManagementPage from './pages/admin/CareersManagementPage';
 import InternshipsManagementPage from './pages/admin/InternshipsManagementPage';
 
 function App() {
@@ -37,12 +34,10 @@ function App() {
                     <Route path="/students-college" element={<StudentsCollegePage />} />
                     <Route path="/contact" element={<ContactPage />} />
                     <Route path="/company/team" element={<TeamPage />} />
-                    <Route path="/company/join-team" element={<JoinTeamPage />} />
                     <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
                     <Route path="/terms-of-service" element={<TermsOfServicePage />} />
                     <Route path="/apply" element={<ApplyPage />} />
                     <Route path="/apply-success" element={<ApplySuccessPage />} />
-                    <Route path="/careers/apply" element={<CareersApplyPage />} />
                     <Route path="/blog" element={<BlogPage />} />
                     <Route path="/blog/fast-growth-ai-era" element={<BlogPostAIEra />} />
                     <Route path="/blog/brand-your-business-digital-world" element={<BlogPostDigitalBranding />} />
@@ -63,14 +58,6 @@ function App() {
                         element={
                             <ProtectedRoute>
                                 <ContactsManagementPage />
-                            </ProtectedRoute>
-                        }
-                    />
-                    <Route
-                        path="/admin/careers"
-                        element={
-                            <ProtectedRoute>
-                                <CareersManagementPage />
                             </ProtectedRoute>
                         }
                     />

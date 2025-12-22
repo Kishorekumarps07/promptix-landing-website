@@ -39,7 +39,6 @@ export const buildApiUrl = (endpoint) => {
 // Predefined API endpoints
 export const API_ENDPOINTS = {
     CONTACTS: '/api/contacts',
-    CAREERS: '/api/careers',
     INTERNSHIPS: '/api/internships',
     ADMIN_STATS: '/api/admin/stats',
     CONTACTS_RECENT: '/api/contacts/recent',
@@ -53,7 +52,6 @@ export default {
 
     // Full endpoint URLs
     CONTACTS: buildApiUrl(API_ENDPOINTS.CONTACTS),
-    CAREERS: buildApiUrl(API_ENDPOINTS.CAREERS),
     INTERNSHIPS: buildApiUrl(API_ENDPOINTS.INTERNSHIPS),
     ADMIN_STATS: buildApiUrl(API_ENDPOINTS.ADMIN_STATS),
     CONTACTS_RECENT: buildApiUrl(API_ENDPOINTS.CONTACTS_RECENT),
