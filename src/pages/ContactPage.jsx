@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Phone, MessageCircle, Mail, MapPin, Clock, Shield, Send, Upload, X } from 'lucide-react';
 import { CONTACT } from '../constants/contact';
+import apiConfig from '../config/api';
 
 const ContactPage = () => {
     const [formData, setFormData] = useState({
@@ -13,9 +14,10 @@ const ContactPage = () => {
         whatsappUpdates: false,
         file: null
     });
+
+    const [errors, setErrors] = useState({});
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitSuccess, setSubmitSuccess] = useState(false);
-    const [errors, setErrors] = useState({});
 
     const interestOptions = [
         'Business Solutions',
@@ -27,10 +29,10 @@ const ContactPage = () => {
     ];
 
     const handleChange = (e) => {
-        const { name, value, type, checked } = e.target;
+        const { name, value, type, checked, files } = e.target;
         setFormData(prev => ({
             ...prev,
-            [name]: type === 'checkbox' ? checked : value
+            [name]: type === 'checkbox' ? checked : type === 'file' ? files[0] : value
         }));
         // Clear error when user starts typing
         if (errors[name]) {
@@ -59,26 +61,22 @@ const ContactPage = () => {
             newErrors.fullName = 'Name is required';
         }
 
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!formData.email.trim()) {
             newErrors.email = 'Email is required';
-        } else if (!emailRegex.test(formData.email)) {
+        } else if (!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(formData.email)) {
             newErrors.email = 'Invalid email format';
         }
 
-        const phoneRegex = /^[0-9]{10}$/;
         if (!formData.phone.trim()) {
-            newErrors.phone = 'Phone number is required';
-        } else if (!phoneRegex.test(formData.phone.replace(/\s/g, ''))) {
-            newErrors.phone = 'Invalid phone number (10 digits required)';
-        }
-
-        if (!formData.interestedIn) {
-            newErrors.interestedIn = 'Please select an option';
+            newErrors.phone = 'Phone is required';
+        } else if (!/^[0-9]{10}$/.test(formData.phone.replace(/[\s-]/g, ''))) {
+            newErrors.phone = 'Invalid phone number';
         }
 
         if (!formData.message.trim()) {
             newErrors.message = 'Message is required';
+        } else if (formData.message.trim().length < 10) {
+            newErrors.message = 'Message must be at least 10 characters';
         }
 
         setErrors(newErrors);
@@ -94,23 +92,72 @@ const ContactPage = () => {
 
         setIsSubmitting(true);
 
-        // Simulate API call
-        setTimeout(() => {
-            setIsSubmitting(false);
-            setSubmitSuccess(true);
-            setFormData({
-                fullName: '',
-                email: '',
-                phone: '',
-                interestedIn: '',
-                message: '',
-                whatsappUpdates: false,
-                file: null
+        try {
+            // Use centralized API configuration
+            const apiUrl = apiConfig.CONTACTS;
+
+            const requestBody = {
+                fullName: formData.fullName,
+                email: formData.email,
+                phone: formData.phone,
+                subject: formData.interestedIn,
+                message: formData.message,
+                source: 'Contact Page'
+            };
+
+            // 🔍 DEBUG LOG 1: Check the URL being called
+            console.log('🌐 API URL:', apiUrl);
+            console.log('📤 Request Body:', requestBody);
+
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(requestBody),
             });
 
-            // Reset success message after 5 seconds
-            setTimeout(() => setSubmitSuccess(false), 5000);
-        }, 2000);
+            // 🔍 DEBUG LOG 2: Check response status
+            console.log('📥 Response Status:', response.status);
+            console.log('📥 Response OK:', response.ok);
+            console.log('📥 Response Headers:', Object.fromEntries(response.headers.entries()));
+
+            const data = await response.json();
+
+            // 🔍 DEBUG LOG 3: Check response data
+            console.log('📦 Response Data:', data);
+
+            // Check for success: HTTP 200 AND success: true in response
+            if (response.ok && data.success) {
+                console.log('✅ SUCCESS: Form submitted and data saved!');
+                console.log('📄 Saved Contact ID:', data.data?.id);
+
+                setIsSubmitting(false);
+                setSubmitSuccess(true);
+                setFormData({
+                    fullName: '',
+                    email: '',
+                    phone: '',
+                    interestedIn: '',
+                    message: '',
+                    whatsappUpdates: false,
+                    file: null
+                });
+
+                // Reset success message after 5 seconds
+                setTimeout(() => setSubmitSuccess(false), 5000);
+            } else {
+                throw new Error(data.error || 'Failed to submit contact form');
+            }
+        } catch (error) {
+            // 🔍 DEBUG LOG 4: Check errors
+            console.error('❌ ERROR:', error);
+            console.error('❌ Error Message:', error.message);
+            console.error('❌ Error Stack:', error.stack);
+
+            setIsSubmitting(false);
+            alert(`Error: ${error.message}`);
+        }
     };
 
     const contactOptions = [
