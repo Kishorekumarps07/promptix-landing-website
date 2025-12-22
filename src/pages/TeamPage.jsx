@@ -9,8 +9,20 @@ const TeamPage = () => {
     // Team members data - easily updatable
     const teamMembers = [
         {
+            name: 'MD Jaffer',
+            role: 'Founder & Business Strategist',
+            image: '/images/team/md-jaffer.png',
+            focus: 'Driving business strategy, partnerships, and long-term growth vision for PromptiX.',
+            highlights: ['Business Strategy', 'Growth Planning', 'Partnerships'],
+            bio: 'Driving business strategy, partnerships, and long-term growth vision for PromptiX. Dedicated to building lasting value through strategic alliances and sustainable business practices.',
+            skills: ['Business Strategy', 'Growth Planning', 'Partnerships', 'Strategic Management'],
+            tools: ['Business Analytics', 'Strategic Planning', 'Partnership Development'],
+            linkedin: null
+        },
+        {
             name: 'PRANITHA R',
             role: 'Managing Director & CEO',
+            image: '/images/team/pranitha-r.png',
             focus: 'AI strategy, business vision, and driving innovation across all solutions',
             highlights: ['AI Strategy', 'Product Vision', 'Business Growth'],
             bio: 'Leading PromptiX with a vision to democratize AI and cutting-edge technology for businesses of all sizes. With over a decade of experience in artificial intelligence and digital transformation, focused on building scalable systems that empower teams and drive sustainable growth.',
@@ -21,6 +33,7 @@ const TeamPage = () => {
         {
             name: 'Kishore Kumar P S',
             role: 'Full Stack Developer',
+            image: '/images/team/kishore-kumar.png',
             focus: 'Building scalable web applications with modern frameworks and cloud infrastructure',
             highlights: ['React', 'Node.js', 'Cloud Architecture'],
             bio: 'Architecting and building robust, scalable applications that power businesses. Expertise spanning frontend frameworks, backend systems, cloud infrastructure, and DevOps practices ensures every solution is built for performance, security, and growth.',
@@ -31,6 +44,7 @@ const TeamPage = () => {
         {
             name: 'Janarthanan V',
             role: 'Senior UI/UX Developer',
+            image: '/images/team/janarthanan-v.png',
             focus: 'Creating stunning visual identities and user interfaces that captivate audiences',
             highlights: ['Brand Design', 'UI/UX', 'Visual Identity'],
             bio: 'Crafting visual experiences that are both beautiful and functional. Specializing in brand identity, user interface design, and creative direction. Every design tells a story and creates an emotional connection with the audience.',
@@ -41,6 +55,7 @@ const TeamPage = () => {
         {
             name: 'Kaviarasan S',
             role: 'Graphics Designer & Digital Marketer',
+            image: '/images/team/kaviarasan-s.png',
             focus: 'Designing engaging marketing materials and social media content that converts',
             highlights: ['Marketing Design', 'Social Media', 'Content Creation'],
             bio: 'Bringing ideas to life through compelling visual content. Focused on creating marketing materials, social media graphics, and digital assets that drive engagement and conversions. Passionate about staying ahead of design trends and delivering work that stands out.',
@@ -49,6 +64,10 @@ const TeamPage = () => {
             linkedin: null
         }
     ];
+
+    // Split team into sections
+    const leadership = teamMembers.slice(0, 2);
+    const regularTeam = teamMembers.slice(2);
 
     // Team values
     const teamValues = [
@@ -91,6 +110,73 @@ const TeamPage = () => {
         },
     };
 
+    // Helper to render card
+    const renderMemberCard = (member, index) => (
+        <motion.div
+            key={index}
+            variants={itemVariants}
+            onClick={() => setSelectedMember(member)}
+            className="group relative p-6 rounded-2xl border border-white/10 bg-white/10 backdrop-blur-md hover:bg-white/15 hover:border-orange-500/30 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-500/20 cursor-pointer flex flex-col h-full"
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    setSelectedMember(member);
+                }
+            }}
+        >
+            {/* Image (if available) - Centered and larger for impact */}
+            {member.image && (
+                <div className="flex justify-center mb-6">
+                    <div className="relative w-32 h-32 rounded-full overflow-hidden border-2 border-orange-500/50 shadow-[0_0_20px_rgba(249,115,22,0.3)] group-hover:scale-105 transition-transform duration-300 group-hover:border-orange-500">
+                        <img
+                            src={member.image}
+                            alt={member.name}
+                            className="w-full h-full object-cover"
+                        />
+                        {/* Overlay shine effect */}
+                        <div className="absolute inset-0 bg-gradient-to-tr from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    </div>
+                </div>
+            )}
+
+            {/* Role Badge */}
+            <div className={`mb-4 ${member.image ? 'text-center' : ''}`}>
+                <div className="inline-block px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 mb-3">
+                    <span className="text-xs font-semibold text-orange-400">
+                        {member.role.split(' ')[0]}
+                    </span>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-orange-400 transition-colors duration-300">
+                    {member.role}
+                </h3>
+                <p className="text-base font-medium text-gray-300">
+                    {member.name}
+                </p>
+            </div>
+
+            {/* Focus Description */}
+            <p className="text-gray-400 text-sm leading-relaxed mb-4 flex-grow">
+                {member.focus}
+            </p>
+
+            {/* Skill Highlights */}
+            <div className="space-y-2 pt-4 border-t border-white/5">
+                {member.highlights.map((highlight, i) => (
+                    <div key={i} className="flex items-center gap-2">
+                        <div className="w-1 h-1 rounded-full bg-orange-500 group-hover:shadow-[0_0_6px_rgba(249,115,22,0.6)] transition-shadow" />
+                        <span className="text-xs text-gray-300">{highlight}</span>
+                    </div>
+                ))}
+            </div>
+
+            {/* Click Hint */}
+            <div className="mt-4 pt-3 border-t border-white/5 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <span className="text-xs text-orange-400 font-medium">Click to view details →</span>
+            </div>
+        </motion.div>
+    );
+
     return (
         <div className="min-h-screen bg-navy-950 pt-20">
             {/* Hero Section */}
@@ -114,64 +200,29 @@ const TeamPage = () => {
 
             {/* Team Grid Section */}
             <section className="max-w-7xl mx-auto px-4 py-14 md:py-16 lg:py-24">
+
+                {/* Leadership Section - Centered Grid */}
                 <motion.div
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+                    className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12 lg:mb-16"
                 >
-                    {teamMembers.map((member, index) => (
-                        <motion.div
-                            key={index}
-                            variants={itemVariants}
-                            onClick={() => setSelectedMember(member)}
-                            className="group relative p-6 rounded-2xl border border-white/10 bg-white/10 backdrop-blur-md hover:bg-white/15 hover:border-orange-500/30 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-500/20 cursor-pointer flex flex-col h-full"
-                            role="button"
-                            tabIndex={0}
-                            onKeyDown={(e) => {
-                                if (e.key === 'Enter' || e.key === ' ') {
-                                    setSelectedMember(member);
-                                }
-                            }}
-                        >
-                            {/* Role Badge */}
-                            <div className="mb-4">
-                                <div className="inline-block px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 mb-3">
-                                    <span className="text-xs font-semibold text-orange-400">
-                                        {member.role.split(' ')[0]}
-                                    </span>
-                                </div>
-                                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-orange-400 transition-colors duration-300">
-                                    {member.role}
-                                </h3>
-                                <p className="text-base font-medium text-gray-300">
-                                    {member.name}
-                                </p>
-                            </div>
-
-                            {/* Focus Description */}
-                            <p className="text-gray-400 text-sm leading-relaxed mb-4 flex-grow">
-                                {member.focus}
-                            </p>
-
-                            {/* Skill Highlights */}
-                            <div className="space-y-2 pt-4 border-t border-white/5">
-                                {member.highlights.map((highlight, i) => (
-                                    <div key={i} className="flex items-center gap-2">
-                                        <div className="w-1 h-1 rounded-full bg-orange-500 group-hover:shadow-[0_0_6px_rgba(249,115,22,0.6)] transition-shadow" />
-                                        <span className="text-xs text-gray-300">{highlight}</span>
-                                    </div>
-                                ))}
-                            </div>
-
-                            {/* Click Hint */}
-                            <div className="mt-4 pt-3 border-t border-white/5 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <span className="text-xs text-orange-400 font-medium">Click to view details →</span>
-                            </div>
-                        </motion.div>
-                    ))}
+                    {leadership.map((member, index) => renderMemberCard(member, index))}
                 </motion.div>
+
+                {/* Regular Team Section - 3 Column Grid */}
+                <motion.div
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                >
+                    {regularTeam.map((member, index) => renderMemberCard(member, index + 2))}
+                </motion.div>
+
             </section>
 
             {/* Team Values Section */}

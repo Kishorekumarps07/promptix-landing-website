@@ -149,12 +149,15 @@ const Footer = () => {
                         <p className="text-gray-400 text-xs lg:text-sm text-center md:text-left">
                             © {new Date().getFullYear()} PromptiX. All rights reserved.
                         </p>
-                        <div className="hidden md:flex items-center gap-6 text-sm text-gray-400">
+                        <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-gray-400">
                             <a href="/privacy-policy" className="hover:text-orange-500 transition-colors duration-300">
                                 Privacy Policy
                             </a>
                             <a href="/terms-of-service" className="hover:text-orange-500 transition-colors duration-300">
                                 Terms of Service
+                            </a>
+                            <a href="/admin/login" className="hover:text-orange-500 transition-colors duration-300 flex items-center gap-1">
+                                <span>Admin Login</span>
                             </a>
                         </div>
                     </div>

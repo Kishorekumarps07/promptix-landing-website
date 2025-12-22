@@ -94,8 +94,15 @@ const DomainModal = ({ isOpen, onClose, domain }) => {
                                 </h3>
                                 <div className="space-y-4">
                                     {/* Price Display */}
-                                    <div className="flex items-baseline gap-2">
-                                        <span className="text-4xl font-bold text-white">₹9,999</span>
+                                    <div className="flex flex-col gap-2">
+                                        <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-green-500/10 border border-green-500/20 w-fit">
+                                            <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+                                            <span className="text-xs font-semibold text-green-400 uppercase tracking-wide">Limited Time Offer</span>
+                                        </div>
+                                        <div className="flex items-baseline gap-3">
+                                            <span className="text-4xl sm:text-5xl font-bold text-white">₹1,999</span>
+                                            <span className="text-xl text-gray-500 line-through decoration-red-500/50 decoration-2">₹9,999</span>
+                                        </div>
                                         <span className="text-gray-400 text-sm">per student</span>
                                     </div>
 
