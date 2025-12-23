@@ -7,19 +7,19 @@ export const CONTACT = {
     // Phone Numbers
     phone: {
         // Raw number for tel: links (no spaces or hyphens)
-        raw: '+918667726771',
+        raw: '+918939003635',
         // Display format for UI
-        display: '+91-86677 26771',
+        display: '+91 89390 03635',
         // Digits only for WhatsApp and other integrations
-        digitsOnly: '918667726771',
+        digitsOnly: '918939003635',
     },
 
     // WhatsApp
     whatsapp: {
         // WhatsApp link (wa.me format)
-        link: 'https://wa.me/918667726771',
+        link: 'https://wa.me/918939003635',
         // Display number
-        display: '+91-86677 26771',
+        display: '+91 89390 03635',
     },
 
     // Email

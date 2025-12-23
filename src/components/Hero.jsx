@@ -182,7 +182,7 @@ const Hero = () => {
                         transition={{ duration: 0.6, delay: 0.8 }}
                         className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8 lg:gap-12 max-w-4xl mx-auto mt-8"
                     >
-                        <StatItem value="500+" label="Enterprise Clients" targetNumber={500} />
+                        <StatItem value="100+" label="Enterprise Clients" targetNumber={100} />
                         <StatItem value="<100ms" label="Avg Response Time" displayValue="<100ms" />
                         <StatItem value="99.9%" label="Platform Uptime" targetNumber={99.9} suffix="%" />
                     </motion.div>

@@ -88,6 +88,21 @@ const TeamMemberModal = ({ isOpen, onClose, member }) => {
                                 </p>
                             </div>
 
+                            {/* Responsibilities */}
+                            {member.responsibilities && member.responsibilities.length > 0 && (
+                                <div>
+                                    <h3 className="text-lg font-semibold text-white mb-3">Key Responsibilities</h3>
+                                    <ul className="space-y-2">
+                                        {member.responsibilities.map((item, i) => (
+                                            <li key={i} className="flex items-start gap-2 text-gray-300">
+                                                <div className="w-1.5 h-1.5 rounded-full bg-orange-500 mt-2 shrink-0" />
+                                                <span className="leading-relaxed">{item}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            )}
+
                             {/* Skills */}
                             {member.skills && member.skills.length > 0 && (
                                 <div>

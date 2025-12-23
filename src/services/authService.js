@@ -125,13 +125,13 @@ class AuthService {
                 headers,
             });
 
-            const data = await response.json();
-
             // Handle token expiration
             if (response.status === 401) {
                 this.logout();
                 throw new Error('Session expired. Please login again.');
             }
+
+            const data = await response.json();
 
             if (!response.ok) {
                 throw new Error(data.error || 'Request failed');
@@ -140,6 +140,39 @@ class AuthService {
             return data;
         } catch (error) {
             console.error('Authenticated request error:', error);
+            throw error;
+        }
+    }
+
+    /**
+     * Download file with authentication
+     * @param {string} url - API endpoint
+     * @param {string} filename - Filename for download
+     */
+    async downloadFile(url, filename) {
+        const token = this.getToken();
+        if (!token) throw new Error('No authentication token found');
+
+        try {
+            const response = await fetch(url, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+
+            if (!response.ok) throw new Error('Download failed');
+
+            const blob = await response.blob();
+            const downloadUrl = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = downloadUrl;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(downloadUrl);
+            document.body.removeChild(a);
+        } catch (error) {
+            console.error('Download error:', error);
             throw error;
         }
     }

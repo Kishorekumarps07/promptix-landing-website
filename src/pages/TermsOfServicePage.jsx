@@ -19,10 +19,10 @@ const TermsOfServicePage = () => {
                         >
                             <div className="flex items-center gap-3 mb-4">
                                 <FileText className="w-8 h-8 text-orange-500" />
-                                <h1 className="text-4xl md:text-5xl font-bold">Terms of Service</h1>
+                                <h1 className="text-4xl md:text-5xl font-bold">Terms & Conditions</h1>
                             </div>
                             <p className="text-gray-300 text-lg">
-                                Last updated: {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+                                PromptiX - A Tech Solution Company
                             </p>
                         </motion.div>
                     </div>
@@ -33,101 +33,112 @@ const TermsOfServicePage = () => {
                     <div className="max-w-4xl mx-auto px-6">
                         <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-8 md:p-12 space-y-8">
 
-                            {/* Introduction */}
-                            <div>
-                                <h2 className="text-2xl font-bold text-navy-950 mb-4">Agreement to Terms</h2>
-                                <p className="text-gray-700 leading-relaxed">
-                                    These Terms of Service constitute a legally binding agreement between you and PromptiX concerning your access to and use of our website and services. By accessing or using our services, you agree to be bound by these Terms.
+                            <section>
+                                <p className="mb-4">
+                                    Last updated: {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
                                 </p>
-                            </div>
-
-                            {/* Use of Services */}
-                            <div>
-                                <div className="flex items-center gap-2 mb-4">
-                                    <CheckCircle className="w-5 h-5 text-orange-500" />
-                                    <h2 className="text-2xl font-bold text-navy-950">Use of Services</h2>
-                                </div>
-                                <div className="space-y-4 text-gray-700">
-                                    <div>
-                                        <h3 className="font-semibold text-navy-950 mb-2">Permitted Use</h3>
-                                        <p className="leading-relaxed">
-                                            You may use our services only for lawful purposes and in accordance with these Terms. You agree not to use our services in any way that violates any applicable federal, state, local, or international law or regulation.
-                                        </p>
-                                    </div>
-                                    <div>
-                                        <h3 className="font-semibold text-navy-950 mb-2">User Accounts</h3>
-                                        <p className="leading-relaxed">
-                                            When you create an account with us, you must provide information that is accurate, complete, and current at all times. You are responsible for safeguarding the password and for all activities that occur under your account.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Prohibited Activities */}
-                            <div>
-                                <div className="flex items-center gap-2 mb-4">
-                                    <XCircle className="w-5 h-5 text-orange-500" />
-                                    <h2 className="text-2xl font-bold text-navy-950">Prohibited Activities</h2>
-                                </div>
-                                <p className="text-gray-700 leading-relaxed mb-3">
-                                    You may not access or use the services for any purpose other than that for which we make the services available. Prohibited activities include, but are not limited to:
+                                <p>
+                                    By accessing this website or enrolling in any service provided by <strong>PromptiX - A Tech Solution Company</strong> (“PromptiX”, “we”, “our”, “us”),
+                                    you agree to comply with the following Terms & Conditions. If you do not agree, please do not use our website or services.
                                 </p>
-                                <ul className="list-disc list-inside space-y-2 text-gray-700 ml-4">
-                                    <li>Systematically retrieving data to create a collection or database</li>
-                                    <li>Making unauthorized use of our services</li>
-                                    <li>Circumventing or disabling any security features</li>
-                                    <li>Engaging in unauthorized framing or linking</li>
-                                    <li>Interfering with or disrupting the services</li>
-                                    <li>Attempting to impersonate another user or person</li>
-                                    <li>Uploading or transmitting viruses or malicious code</li>
+                            </section>
+
+                            <section>
+                                <h2 className="text-xl font-bold text-navy-950 mb-3">SERVICES OFFERED</h2>
+                                <p className="mb-2 text-gray-700">PromptiX provides:</p>
+                                <ul className="list-disc pl-5 space-y-1 text-gray-700">
+                                    <li>Tech solutions for businesses</li>
+                                    <li>Digital marketing services</li>
+                                    <li>EdTech services including internships, workshops, webinars, hands-on training, and skill programs</li>
                                 </ul>
-                            </div>
+                                <p className="mt-2 text-gray-700">Services are delivered based on the scope communicated at the time of engagement.</p>
+                            </section>
 
-                            {/* Intellectual Property */}
-                            <div>
-                                <h2 className="text-2xl font-bold text-navy-950 mb-4">Intellectual Property Rights</h2>
-                                <p className="text-gray-700 leading-relaxed">
-                                    Unless otherwise indicated, the services are our proprietary property and all source code, databases, functionality, software, website designs, audio, video, text, photographs, and graphics on the services are owned or controlled by us and are protected by copyright and trademark laws.
-                                </p>
-                            </div>
+                            <section>
+                                <h2 className="text-xl font-bold text-navy-950 mb-3">WEBSITE USAGE</h2>
+                                <p className="mb-2 text-gray-700">You agree:</p>
+                                <ul className="list-disc pl-5 space-y-1 text-gray-700">
+                                    <li>To use the website only for lawful purposes</li>
+                                    <li>Not to copy, reproduce, or misuse website content</li>
+                                    <li>Not to attempt unauthorized access or disruption</li>
+                                </ul>
+                                <p className="mt-2 text-gray-700">PromptiX may restrict or terminate access for misuse.</p>
+                            </section>
 
-                            {/* Limitation of Liability */}
-                            <div>
-                                <div className="flex items-center gap-2 mb-4">
-                                    <AlertCircle className="w-5 h-5 text-orange-500" />
-                                    <h2 className="text-2xl font-bold text-navy-950">Limitation of Liability</h2>
-                                </div>
-                                <p className="text-gray-700 leading-relaxed">
-                                    In no event will PromptiX or its directors, employees, or agents be liable to you or any third party for any direct, indirect, consequential, exemplary, incidental, special, or punitive damages, including lost profit, lost revenue, loss of data, or other damages arising from your use of the services.
+                            <section>
+                                <h2 className="text-xl font-bold text-navy-950 mb-3">NO ONLINE PAYMENTS</h2>
+                                <p className="text-gray-700">
+                                    PromptiX does not collect, process, or store payments through this website.
+                                    Any payments, if applicable, are handled offline or through direct communication and are governed by separate mutual understanding.
                                 </p>
-                            </div>
+                            </section>
 
-                            {/* Termination */}
-                            <div>
-                                <h2 className="text-2xl font-bold text-navy-950 mb-4">Termination</h2>
-                                <p className="text-gray-700 leading-relaxed">
-                                    We may terminate or suspend your account and access to the services immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach these Terms. Upon termination, your right to use the services will immediately cease.
-                                </p>
-                            </div>
+                            <section>
+                                <h2 className="text-xl font-bold text-navy-950 mb-3">EDTECH SERVICES DISCLAIMER</h2>
+                                <ul className="list-disc pl-5 space-y-1 text-gray-700">
+                                    <li>All internships, workshops, and training programs are skill-based learning experiences</li>
+                                    <li>PromptiX supports learners through practical training and guidance; however, employment, placements, income, or specific outcomes are not guaranteed unless clearly stated for a particular program</li>
+                                    <li>Results depend on individual effort, consistency, and market conditions</li>
+                                </ul>
+                                <p className="mt-2 text-gray-700">Certificates, if provided, indicate participation or completion only.</p>
+                            </section>
 
-                            {/* Governing Law */}
-                            <div>
-                                <h2 className="text-2xl font-bold text-navy-950 mb-4">Governing Law</h2>
-                                <p className="text-gray-700 leading-relaxed">
-                                    These Terms shall be governed and construed in accordance with the laws of the jurisdiction in which PromptiX operates, without regard to its conflict of law provisions.
-                                </p>
-                            </div>
+                            <section>
+                                <h2 className="text-xl font-bold text-navy-950 mb-3">SERVICE DELIVERY & COMMUNICATION</h2>
+                                <ul className="list-disc pl-5 space-y-1 text-gray-700">
+                                    <li>Timelines depend on timely communication and accurate information from users</li>
+                                    <li>PromptiX is not responsible for delays caused by incomplete or late inputs</li>
+                                    <li>Services are limited to the agreed scope</li>
+                                </ul>
+                            </section>
 
-                            {/* Contact Us */}
-                            <div className="pt-6 border-t border-gray-200">
-                                <h2 className="text-2xl font-bold text-navy-950 mb-4">Contact Us</h2>
-                                <p className="text-gray-700 leading-relaxed">
-                                    If you have any questions about these Terms of Service, please contact us at:
+                            <section>
+                                <h2 className="text-xl font-bold text-navy-950 mb-3">INTELLECTUAL PROPERTY</h2>
+                                <p className="text-gray-700">
+                                    All content including training materials, designs, logos, and documentation belong to PromptiX.
+                                    Unauthorized copying, distribution, or commercial use is prohibited.
                                 </p>
-                                <p className="text-orange-500 font-medium mt-2">
-                                    legal@promptix.com
+                            </section>
+
+                            <section>
+                                <h2 className="text-xl font-bold text-navy-950 mb-3">LIMITATION OF LIABILITY</h2>
+                                <p className="mb-2 text-gray-700">PromptiX is not liable for:</p>
+                                <ul className="list-disc pl-5 space-y-1 text-gray-700">
+                                    <li>Business or financial losses</li>
+                                    <li>Decisions made based on training or guidance</li>
+                                    <li>Indirect or consequential damages</li>
+                                </ul>
+                                <p className="mt-2 text-gray-700">Liability, if any, is limited to the scope of service agreed upon.</p>
+                            </section>
+
+                            <section>
+                                <h2 className="text-xl font-bold text-navy-950 mb-3">THIRD-PARTY SERVICES</h2>
+                                <p className="text-gray-700">
+                                    PromptiX does not integrate third-party services that collect user data through this website.
+                                    Any external tools mentioned during training are for learning purposes only.
                                 </p>
-                            </div>
+                            </section>
+
+                            <section>
+                                <h2 className="text-xl font-bold text-navy-950 mb-3">TERMINATION</h2>
+                                <p className="text-gray-700">
+                                    PromptiX may suspend or terminate access to the website or services if these Terms are violated.
+                                </p>
+                            </section>
+
+                            <section>
+                                <h2 className="text-xl font-bold text-navy-950 mb-3">CHANGES TO TERMS</h2>
+                                <p className="text-gray-700">
+                                    PromptiX may update these Terms & Conditions at any time. Continued use of the website or services indicates acceptance of the updated Terms.
+                                </p>
+                            </section>
+
+                            <section>
+                                <h2 className="text-xl font-bold text-navy-950 mb-3">GOVERNING LAW</h2>
+                                <p className="text-gray-700">
+                                    These Terms are governed by the laws of India. Any disputes shall be subject to Indian jurisdiction.
+                                </p>
+                            </section>
                         </div>
                     </div>
                 </section>

@@ -21,9 +21,16 @@ const TeamPage = () => {
         },
         {
             name: 'PRANITHA R',
-            role: 'Managing Director & CEO',
+            role: 'CEO & AI Developer',
             image: '/images/team/pranitha-r.png',
             focus: 'AI strategy, business vision, and driving innovation across all solutions',
+            responsibilities: [
+                'AI Project Building',
+                'AI Strategy',
+                'AI Workshops',
+                'Prompt Engineering',
+                'AI Automations'
+            ],
             highlights: ['AI Strategy', 'Product Vision', 'Business Growth'],
             bio: 'Leading PromptiX with a vision to democratize AI and cutting-edge technology for businesses of all sizes. With over a decade of experience in artificial intelligence and digital transformation, focused on building scalable systems that empower teams and drive sustainable growth.',
             skills: ['AI Strategy', 'Business Development', 'Product Management', 'Team Leadership', 'Digital Transformation'],
@@ -35,9 +42,18 @@ const TeamPage = () => {
             role: 'Full Stack Developer',
             image: '/images/team/kishore-kumar.png',
             focus: 'Building scalable web applications with modern frameworks and cloud infrastructure',
-            highlights: ['React', 'Node.js', 'Cloud Architecture'],
+            highlights: [
+                'Frontend (HTML, CSS, JavaScript, React)',
+                'Backend (Node.js)',
+                'APIs (RESTful, GPTs)'
+            ],
             bio: 'Architecting and building robust, scalable applications that power businesses. Expertise spanning frontend frameworks, backend systems, cloud infrastructure, and DevOps practices ensures every solution is built for performance, security, and growth.',
-            skills: ['React', 'Node.js', 'TypeScript', 'Cloud Architecture', 'DevOps', 'System Design'],
+            skills: [
+                'Frontend (HTML, CSS, JavaScript, React)',
+                'Backend (Node.js)',
+                'APIs (RESTful, GPTs)',
+                'Google Cloud, Vercel, Render'
+            ],
             tools: ['React', 'Next.js', 'Node.js', 'AWS', 'Docker', 'MongoDB', 'PostgreSQL', 'Git'],
             linkedin: null
         },
@@ -267,6 +283,41 @@ const TeamPage = () => {
                         );
                     })}
                 </div>
+            </section>
+
+            {/* Join Team Section */}
+            <section className="max-w-7xl mx-auto px-4 py-16 md:py-24">
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    className="bg-gradient-to-r from-navy-900 to-navy-800 rounded-3xl p-8 md:p-12 text-center border border-white/10 relative overflow-hidden"
+                >
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-orange-500/10 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20"></div>
+                    <div className="relative z-10 max-w-3xl mx-auto">
+                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6 backdrop-blur-sm">
+                            <Users className="w-4 h-4 text-orange-500" />
+                            <span className="text-sm font-medium text-gray-300">Networking & Collaboration</span>
+                        </div>
+                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+                            Join Our <span className="text-orange-500">Talent Network</span>
+                        </h2>
+                        <p className="text-gray-300 text-lg mb-8 leading-relaxed">
+                            We are always looking to connect with talented individuals like you. Whether you are a college student, fresher, or experienced job seeker, we'd love to hear from you for future opportunities and collaborations.
+                        </p>
+                        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                            <a
+                                href="mailto:careers@promptix.com"
+                                className="px-8 py-3 rounded-xl bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold shadow-lg shadow-orange-500/20 transition-all transform hover:-translate-y-1"
+                            >
+                                Submit Your Resume
+                            </a>
+                            <p className="text-sm text-gray-400 italic mt-2 sm:mt-0">
+                                *Note: We are building our database for future requirements. No immediate hiring.
+                            </p>
+                        </div>
+                    </div>
+                </motion.div>
             </section>
 
             {/* Team Member Modal */}

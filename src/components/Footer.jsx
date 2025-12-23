@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Logo from './Logo';
-import { Twitter, Linkedin, Github, Mail, ChevronDown } from 'lucide-react';
+import { Linkedin, Github, Instagram, Facebook, ChevronDown, MapPin, Phone, Mail } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CONTACT } from '../constants/contact';
 
@@ -15,10 +15,10 @@ const Footer = () => {
     };
 
     const socialLinks = [
-        { icon: Twitter, href: '#', label: 'Twitter' },
+        { icon: Instagram, href: '#', label: 'Instagram' },
         { icon: Linkedin, href: '#', label: 'LinkedIn' },
+        { icon: Facebook, href: '#', label: 'Facebook' },
         { icon: Github, href: '#', label: 'GitHub' },
-        { icon: Mail, href: '#', label: 'Email' },
     ];
 
     const toggleSection = (section) => {
@@ -131,16 +131,41 @@ const Footer = () => {
                 </div>
 
                 {/* Office Address Section */}
-                <div className="py-8 border-t border-white/10 text-center">
-                    <h3 className="text-white font-semibold text-lg mb-3">Our Office Address</h3>
-                    <p className="text-gray-300 text-base leading-relaxed max-w-2xl mx-auto">
-                        {CONTACT.address.lines[0]}<br />
-                        {CONTACT.address.lines[1]}<br />
-                        {CONTACT.address.lines[2]}
-                    </p>
-                    <p className="text-gray-400 text-sm mt-3">
-                        Serving clients and students across India
-                    </p>
+                <div className="py-8 border-t border-white/10">
+                    <div className="flex flex-col items-center justify-center gap-6">
+
+                        {/* Address */}
+                        <div className="flex flex-col items-center text-center gap-2 max-w-2xl">
+                            <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-orange-500 mb-2">
+                                <MapPin className="w-5 h-5" />
+                            </div>
+                            <h4 className="text-white font-medium">Head Office</h4>
+                            <p className="text-gray-400 leading-relaxed">
+                                {CONTACT.address.lines.map((line, i) => (
+                                    <span key={i} className="block">{line}</span>
+                                ))}
+                            </p>
+                        </div>
+
+                        {/* Contact Channels */}
+                        <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10 mt-2">
+                            {/* Phone */}
+                            <a href={`tel:${CONTACT.phone.raw}`} className="flex items-center gap-3 text-gray-300 hover:text-white group transition-colors">
+                                <div className="p-2 rounded-lg bg-white/5 group-hover:bg-orange-500/10 text-orange-500 transition-colors">
+                                    <Phone className="w-5 h-5" />
+                                </div>
+                                <span>{CONTACT.phone.display}</span>
+                            </a>
+
+                            {/* Email */}
+                            <a href={`mailto:${CONTACT.email.address}`} className="flex items-center gap-3 text-gray-300 hover:text-white group transition-colors">
+                                <div className="p-2 rounded-lg bg-white/5 group-hover:bg-orange-500/10 text-orange-500 transition-colors">
+                                    <Mail className="w-5 h-5" />
+                                </div>
+                                <span>{CONTACT.email.address}</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
                 {/* Bottom section */}
@@ -154,10 +179,7 @@ const Footer = () => {
                                 Privacy Policy
                             </a>
                             <a href="/terms-of-service" className="hover:text-orange-500 transition-colors duration-300">
-                                Terms of Service
-                            </a>
-                            <a href="/admin/login" className="hover:text-orange-500 transition-colors duration-300 flex items-center gap-1">
-                                <span>Admin Login</span>
+                                Terms & Conditions
                             </a>
                         </div>
                     </div>

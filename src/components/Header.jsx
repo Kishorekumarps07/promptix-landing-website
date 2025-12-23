@@ -1,10 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, Phone } from 'lucide-react';
 import Logo from './Logo';
 import { CONTACT } from '../constants/contact';
 
 const Header = () => {
+    const location = useLocation();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [openDropdown, setOpenDropdown] = useState(null);
     const [mobileDropdown, setMobileDropdown] = useState(null);
@@ -37,6 +39,7 @@ const Header = () => {
     }, []);
 
     const navLinks = [
+        { name: 'Home', href: '/' },
         {
             name: 'Services and Solutions',
             hasDropdown: true,
@@ -45,7 +48,14 @@ const Header = () => {
                 { name: 'Digital Marketing', href: '/digital-marketing' },
             ],
         },
-        { name: 'Students / College', href: '/students-college' },
+        {
+            name: 'Students / College',
+            hasDropdown: true,
+            items: [
+                { name: 'Student Learning', href: '/students-college' },
+                { name: 'College Collaborations', href: '/students-college' },
+            ],
+        },
         {
             name: 'Company',
             hasDropdown: true,

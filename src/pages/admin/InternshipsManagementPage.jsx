@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { GraduationCap, Search, Trash2, ArrowLeft, Filter, Edit } from 'lucide-react';
+import { GraduationCap, Search, Trash2, ArrowLeft, Filter, Edit, Download } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import authService from '../../services/authService';
 
@@ -74,6 +74,14 @@ const InternshipsManagementPage = () => {
         }
     };
 
+    const handleExport = async () => {
+        try {
+            await authService.downloadFile('/api/admin/export/internships', 'internships_export.csv');
+        } catch (err) {
+            alert('Failed to export internships: ' + err.message);
+        }
+    };
+
     const filteredApplications = applications.filter(app =>
         app.fullName.toLowerCase().includes(searchTerm.toLowerCase()) ||
         app.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -108,6 +116,13 @@ const InternshipsManagementPage = () => {
                                 <p className="text-sm text-gray-400">Manage internship applications</p>
                             </div>
                         </div>
+                        <button
+                            onClick={handleExport}
+                            className="flex items-center gap-2 px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-xl transition-colors"
+                        >
+                            <Download className="w-4 h-4" />
+                            <span className="hidden sm:inline">Export CSV</span>
+                        </button>
                     </div>
                 </div>
             </header>

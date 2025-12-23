@@ -12,22 +12,10 @@ const StudentsCollegePage = () => {
 
     const programs = [
         {
-            icon: Briefcase,
-            title: 'Internships',
-            description: 'Gain real-world experience working on live projects with industry experts. Mentorship, portfolio building, and job-ready skills.',
+            icon: GraduationCap,
+            title: 'College Students',
+            description: 'Internships, Hands-on projects, and Learning programs designed for career growth.',
             color: 'text-blue-400'
-        },
-        {
-            icon: Users,
-            title: 'Workshops',
-            description: 'Intensive, hands-on sessions covering the latest technologies and tools. Learn by doing in a collaborative environment.',
-            color: 'text-orange-400'
-        },
-        {
-            icon: BookOpen,
-            title: 'Learning Programs',
-            description: 'Comprehensive courses designed to bridge the gap between academic theory and industry demands.',
-            color: 'text-green-400'
         }
     ];
 
@@ -95,6 +83,14 @@ const StudentsCollegePage = () => {
             shortDescription: 'Craft compelling content that engages audiences',
             about: 'Master the art of communication and content creation. Learn technical writing, copywriting, video production, and brand storytelling. Perfect for aspiring content creators, writers, and communication specialists.',
             learnings: ['Technical documentation', 'Persuasive copywriting', 'Video editing & production', 'Brand voice development', 'Content strategy', 'Storytelling techniques']
+        },
+        {
+            category: 'AI Automation Workflow',
+            icon: Bot,
+            items: ['AutoGPT', 'LangChain', 'n8n', 'CrewAI', 'Zapier'],
+            shortDescription: 'Master agentic workflows and intelligent automation',
+            about: 'Dive into the future of work with AI automation. Learn to build autonomous agents using AutoGPT and CrewAI, orchestrate complex workflows with LangChain and n8n, and automate business processes with Zapier. Perfect for students who want to build the intelligent systems of tomorrow.',
+            learnings: ['Building autonomous AI agents', 'Workflow automation with n8n', 'LangChain orchestration', 'Multi-agent systems design', 'API integration & webhooks', 'Business process optimization']
         }
     ];
 
@@ -203,7 +199,7 @@ const StudentsCollegePage = () => {
 
             {/* Program Types */}
             <section className="max-w-7xl mx-auto px-4 py-10 md:py-12">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="flex justify-center gap-8">
                     {programs.map((program, index) => {
                         const Icon = program.icon;
                         return (
@@ -212,7 +208,7 @@ const StudentsCollegePage = () => {
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ delay: index * 0.1 }}
-                                className="p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-orange-500/30 backdrop-blur-sm transition-all hover:-translate-y-1 hover:shadow-xl group"
+                                className="p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-orange-500/30 backdrop-blur-sm transition-all hover:-translate-y-1 hover:shadow-xl group w-full max-w-lg"
                             >
                                 <div className={`w-14 h-14 rounded-xl bg-navy-900 border border-white/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-inner`}>
                                     <Icon className={`w-7 h-7 ${program.color}`} />
@@ -225,13 +221,85 @@ const StudentsCollegePage = () => {
                 </div>
             </section>
 
+            {/* College Collaborations */}
+            <section className="max-w-7xl mx-auto px-4 py-10 md:py-12 bg-navy-900/30">
+                <div className="text-center mb-10">
+                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">College Collaborations</h2>
+                    <p className="text-gray-400 max-w-2xl mx-auto">Empowering institutions with industry-aligned programs and resources.</p>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {[
+                        { title: 'Project delivery for students', icon: Zap, desc: 'End-to-end support for final year projects and capstones.' },
+                        { title: 'Project-based classes', icon: Users, desc: 'Curriculum integrated with practical, build-centric learning.' },
+                        { title: 'Hands-on workshops', icon: Wrench, desc: 'Intensive sessions on latest AI tools and development stacks.' },
+                        { title: 'Industry-level guest lectures', icon: Mic, desc: 'Expert insights on career paths and tech trends.' },
+                        { title: 'Academic collaborations', icon: Building2, desc: 'Strategic partnerships for curriculum design and labs.' }
+                    ].map((item, index) => {
+                        const Icon = item.icon;
+                        return (
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ delay: index * 0.1 }}
+                                className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-orange-500/30 transition-all hover:shadow-lg flex items-start gap-4"
+                            >
+                                <div className="p-3 rounded-lg bg-navy-900 border border-white/10 shrink-0">
+                                    <Icon className="w-6 h-6 text-orange-500" />
+                                </div>
+                                <div>
+                                    <h3 className="text-lg font-semibold text-white mb-2">{item.title}</h3>
+                                    <p className="text-gray-400 text-sm">{item.desc}</p>
+                                </div>
+                            </motion.div>
+                        );
+                    })}
+                </div>
+            </section>
+
+            {/* School Collaborations */}
+            <section className="max-w-7xl mx-auto px-4 py-10 md:py-12">
+                <div className="text-center mb-10">
+                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">School Collaborations</h2>
+                    <p className="text-gray-400 max-w-2xl mx-auto">Sparking curiosity and building future-ready skills from an early age.</p>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {[
+                        { title: 'Workshops & Bootcamps', icon: Users, desc: 'Interactive sessions on AI, coding, and robotics.' },
+                        { title: 'Hands-on Lab Sessions', icon: PenTool, desc: 'Practical experiments tailored for school curriculums.' },
+                        { title: 'Atal Tinkering Lab Support', icon: Cpu, desc: 'Expert guidance and resources for ATL innovation hubs.' },
+                        { title: 'Hackathons', icon: Code, desc: 'Exciting coding competitions to foster creativity.' },
+                        { title: 'Curriculum Consulting', icon: BookOpen, desc: 'Helping schools integrate modern tech into their syllabus.' }
+                    ].map((item, index) => {
+                        const Icon = item.icon;
+                        return (
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ delay: index * 0.1 }}
+                                className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-orange-500/30 transition-all hover:shadow-lg flex items-start gap-4"
+                            >
+                                <div className="p-3 rounded-lg bg-navy-900 border border-white/10 shrink-0">
+                                    <Icon className="w-6 h-6 text-orange-500" />
+                                </div>
+                                <div>
+                                    <h3 className="text-lg font-semibold text-white mb-2">{item.title}</h3>
+                                    <p className="text-gray-400 text-sm">{item.desc}</p>
+                                </div>
+                            </motion.div>
+                        );
+                    })}
+                </div>
+            </section>
+
             {/* Internship Domains */}
             <section className="max-w-7xl mx-auto px-4 py-10 md:py-12">
                 <div className="text-center mb-10">
                     <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Internship Domains</h2>
                     <p className="text-gray-400 max-w-2xl mx-auto">Diverse opportunities designed to match your passion and build your career foundation.</p>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {domains.map((domain, index) => {
                         const Icon = domain.icon;
                         return (

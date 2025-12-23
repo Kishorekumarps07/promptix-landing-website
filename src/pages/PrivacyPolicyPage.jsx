@@ -33,93 +33,106 @@ const PrivacyPolicyPage = () => {
                     <div className="max-w-4xl mx-auto px-6">
                         <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-8 md:p-12 space-y-8">
 
-                            {/* Introduction */}
-                            <div>
-                                <h2 className="text-2xl font-bold text-navy-950 mb-4">Introduction</h2>
-                                <p className="text-gray-700 leading-relaxed">
-                                    At PromptiX, we take your privacy seriously. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services.
+                            <section>
+                                <p className="mb-4">
+                                    <strong>PromptiX - A Tech Solution Company</strong> ("PromptiX", "we", "our", "us") respects your privacy.
+                                    This Privacy Policy explains how we collect, use, and protect your information when you visit our website or use our services.
                                 </p>
-                            </div>
-
-                            {/* Information We Collect */}
-                            <div>
-                                <div className="flex items-center gap-2 mb-4">
-                                    <Eye className="w-5 h-5 text-orange-500" />
-                                    <h2 className="text-2xl font-bold text-navy-950">Information We Collect</h2>
-                                </div>
-                                <div className="space-y-4 text-gray-700">
-                                    <div>
-                                        <h3 className="font-semibold text-navy-950 mb-2">Personal Information</h3>
-                                        <p className="leading-relaxed">
-                                            We may collect personal information that you voluntarily provide to us when you register on the website, express an interest in obtaining information about us or our products and services, or otherwise contact us.
-                                        </p>
-                                    </div>
-                                    <div>
-                                        <h3 className="font-semibold text-navy-950 mb-2">Automatically Collected Information</h3>
-                                        <p className="leading-relaxed">
-                                            We automatically collect certain information when you visit, use, or navigate the website. This information does not reveal your specific identity but may include device and usage information.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* How We Use Your Information */}
-                            <div>
-                                <div className="flex items-center gap-2 mb-4">
-                                    <FileText className="w-5 h-5 text-orange-500" />
-                                    <h2 className="text-2xl font-bold text-navy-950">How We Use Your Information</h2>
-                                </div>
-                                <p className="text-gray-700 leading-relaxed mb-3">
-                                    We use the information we collect or receive:
+                                <p>
+                                    By using our website, you agree to this Privacy Policy.
                                 </p>
-                                <ul className="list-disc list-inside space-y-2 text-gray-700 ml-4">
-                                    <li>To facilitate account creation and authentication</li>
-                                    <li>To send administrative information to you</li>
-                                    <li>To fulfill and manage your orders</li>
-                                    <li>To post testimonials with your consent</li>
-                                    <li>To request feedback and contact you about your use of our services</li>
-                                    <li>To protect our services and enforce our terms</li>
-                                    <li>To respond to legal requests and prevent harm</li>
+                            </section>
+
+                            <section>
+                                <div className="flex items-center gap-2 mb-4">
+                                    <h2 className="text-xl font-bold text-navy-950">INFORMATION WE COLLECT</h2>
+                                </div>
+                                <p className="mb-2">We may collect the following information:</p>
+                                <ul className="list-disc pl-5 space-y-1 text-gray-700">
+                                    <li>Name</li>
+                                    <li>Email address</li>
+                                    <li>Phone number</li>
+                                    <li>Educational or professional details</li>
+                                    <li>Information shared through forms, registrations, or inquiries</li>
                                 </ul>
-                            </div>
-
-                            {/* Data Security */}
-                            <div>
-                                <div className="flex items-center gap-2 mb-4">
-                                    <Lock className="w-5 h-5 text-orange-500" />
-                                    <h2 className="text-2xl font-bold text-navy-950">Data Security</h2>
-                                </div>
-                                <p className="text-gray-700 leading-relaxed">
-                                    We have implemented appropriate technical and organizational security measures designed to protect the security of any personal information we process. However, please note that no electronic transmission over the Internet or information storage technology can be guaranteed to be 100% secure.
+                                <p className="mt-4 text-orange-600 font-medium bg-orange-50 p-3 rounded-lg border border-orange-100 inline-block">
+                                    We do not collect or store any payment or banking information.
                                 </p>
-                            </div>
+                            </section>
 
-                            {/* Your Privacy Rights */}
-                            <div>
-                                <h2 className="text-2xl font-bold text-navy-950 mb-4">Your Privacy Rights</h2>
-                                <p className="text-gray-700 leading-relaxed mb-3">
-                                    Depending on your location, you may have the following rights regarding your personal information:
+                            <section>
+                                <h2 className="text-xl font-bold text-navy-950 mb-3">THIRD-PARTY SERVICES</h2>
+                                <p className="text-gray-700">
+                                    PromptiX does not integrate with or rely on third-party tools or services that collect user data through this website.
+                                    All information shared on this website is handled directly by PromptiX.
                                 </p>
-                                <ul className="list-disc list-inside space-y-2 text-gray-700 ml-4">
-                                    <li>The right to access your personal information</li>
-                                    <li>The right to rectification of inaccurate data</li>
-                                    <li>The right to erasure of your personal information</li>
-                                    <li>The right to restrict processing</li>
-                                    <li>The right to data portability</li>
-                                    <li>The right to object to processing</li>
+                            </section>
+
+                            <section>
+                                <h2 className="text-xl font-bold text-navy-950 mb-3">HOW WE USE YOUR INFORMATION</h2>
+                                <p className="mb-2 text-gray-700">Your information is used only to:</p>
+                                <ul className="list-disc pl-5 space-y-1 text-gray-700">
+                                    <li>Provide and manage our services</li>
+                                    <li>Communicate about internships, workshops, webinars, and updates</li>
+                                    <li>Respond to inquiries and support requests</li>
+                                    <li>Improve our website and services</li>
                                 </ul>
-                            </div>
+                            </section>
 
-                            {/* Contact Us */}
-                            <div className="pt-6 border-t border-gray-200">
-                                <h2 className="text-2xl font-bold text-navy-950 mb-4">Contact Us</h2>
-                                <p className="text-gray-700 leading-relaxed">
-                                    If you have questions or comments about this Privacy Policy, please contact us at:
+                            <section>
+                                <h2 className="text-xl font-bold text-navy-950 mb-3">NON-PERSONAL INFORMATION</h2>
+                                <p className="text-gray-700">
+                                    We may collect basic technical information such as browser type, device information, IP address, and pages visited.
+                                    This data does not personally identify you and is used only for analytics and improvement.
                                 </p>
-                                <p className="text-orange-500 font-medium mt-2">
-                                    privacy@promptix.com
+                            </section>
+
+                            <section>
+                                <h2 className="text-xl font-bold text-navy-950 mb-3">COOKIES</h2>
+                                <p className="text-gray-700">
+                                    We may use cookies to improve website functionality and user experience.
+                                    You can disable cookies through your browser settings if you prefer.
                                 </p>
-                            </div>
+                            </section>
+
+                            <section>
+                                <h2 className="text-xl font-bold text-navy-950 mb-3">SHARING OF INFORMATION</h2>
+                                <p className="mb-2 text-gray-700">We do not sell, rent, or trade your personal information. Your information may be shared only:</p>
+                                <ul className="list-disc pl-5 space-y-1 text-gray-700">
+                                    <li>With trusted service providers (hosting or communication tools)</li>
+                                    <li>When required by law</li>
+                                    <li>During a business transfer or restructuring</li>
+                                </ul>
+                            </section>
+
+                            <section>
+                                <h2 className="text-xl font-bold text-navy-950 mb-3">DATA SECURITY</h2>
+                                <p className="text-gray-700">
+                                    We take reasonable steps to protect your personal data. However, no online platform is completely secure,
+                                    and absolute security cannot be guaranteed.
+                                </p>
+                            </section>
+
+                            <section>
+                                <h2 className="text-xl font-bold text-navy-950 mb-3">MINORS</h2>
+                                <p className="text-gray-700">
+                                    We do not knowingly collect personal data from individuals under the age of 18 without parental or guardian consent.
+                                </p>
+                            </section>
+
+                            <section>
+                                <h2 className="text-xl font-bold text-navy-950 mb-3">YOUR RIGHTS</h2>
+                                <p className="text-gray-700">
+                                    You may request to access, update, or delete your personal information or opt out of communications by contacting us.
+                                </p>
+                            </section>
+
+                            <section>
+                                <h2 className="text-xl font-bold text-navy-950 mb-3">POLICY UPDATES</h2>
+                                <p className="text-gray-700">
+                                    We may update this Privacy Policy from time to time. Continued use of our website means you accept the updated policy.
+                                </p>
+                            </section>
                         </div>
                     </div>
                 </section>

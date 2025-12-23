@@ -9,6 +9,7 @@ const ContactPage = () => {
         fullName: '',
         email: '',
         phone: '',
+        countryCode: '+91',
         interestedIn: '',
         message: '',
         whatsappUpdates: false,
@@ -19,12 +20,25 @@ const ContactPage = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitSuccess, setSubmitSuccess] = useState(false);
 
+    const countryCodes = [
+        { code: '+91', country: 'IN' },
+        { code: '+1', country: 'US' },
+        { code: '+44', country: 'UK' },
+        { code: '+61', country: 'AU' },
+        { code: '+971', country: 'UAE' },
+        { code: '+65', country: 'SG' },
+        { code: '+1', country: 'CA' },
+        { code: '+49', country: 'DE' }
+    ];
+
     const interestOptions = [
         'Business Solutions',
         'Digital Marketing',
         'Internship Program',
         'Workshop / Training',
         'College Partnership',
+        'School Collaborations',
+        'Book Consultation',
         'General Inquiry'
     ];
 
@@ -34,9 +48,22 @@ const ContactPage = () => {
             ...prev,
             [name]: type === 'checkbox' ? checked : type === 'file' ? files[0] : value
         }));
-        // Clear error when user starts typing
-        if (errors[name]) {
-            setErrors(prev => ({ ...prev, [name]: '' }));
+
+        // Real-time validation for email
+        if (name === 'email') {
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!value.trim()) {
+                setErrors(prev => ({ ...prev, email: 'Email is required' }));
+            } else if (!emailRegex.test(value)) {
+                setErrors(prev => ({ ...prev, email: 'Please enter a valid email address (e.g., user@example.com)' }));
+            } else {
+                setErrors(prev => ({ ...prev, email: '' }));
+            }
+        } else {
+            // Clear error when user starts typing for other fields
+            if (errors[name]) {
+                setErrors(prev => ({ ...prev, [name]: '' }));
+            }
         }
     };
 
@@ -63,8 +90,8 @@ const ContactPage = () => {
 
         if (!formData.email.trim()) {
             newErrors.email = 'Email is required';
-        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-            newErrors.email = 'Invalid email format';
+        } else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(formData.email)) {
+            newErrors.email = 'Please enter a valid email address';
         }
 
         if (!formData.phone.trim()) {
@@ -96,13 +123,32 @@ const ContactPage = () => {
             // Use centralized API configuration
             const apiUrl = apiConfig.CONTACTS;
 
+            // Process file to Base64 if present
+            let fileData = null;
+            if (formData.file) {
+                fileData = await new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.readAsDataURL(formData.file);
+                    reader.onload = () => resolve({
+                        name: formData.file.name,
+                        data: reader.result, // Base64 string
+                        contentType: formData.file.type,
+                        size: formData.file.size
+                    });
+                    reader.onerror = error => reject(error);
+                });
+            }
+
             const requestBody = {
                 fullName: formData.fullName,
                 email: formData.email,
-                phone: formData.phone,
+                phone: `${formData.countryCode} ${formData.phone}`,
                 subject: formData.interestedIn,
                 message: formData.message,
-                source: 'Contact Page'
+                source: 'Contact Page',
+                file: fileData,
+                appointmentDate: formData.interestedIn === 'Book Consultation' ? formData.appointmentDate : undefined,
+                appointmentTime: formData.interestedIn === 'Book Consultation' ? formData.appointmentTime : undefined
             };
 
             // 🔍 DEBUG LOG 1: Check the URL being called
@@ -312,15 +358,30 @@ const ContactPage = () => {
                                 <label htmlFor="phone" className="block text-sm font-medium text-gray-300 mb-2">
                                     Phone Number *
                                 </label>
-                                <input
-                                    type="tel"
-                                    id="phone"
-                                    name="phone"
-                                    value={formData.phone}
-                                    onChange={handleChange}
-                                    className={`w-full px-4 py-3 rounded-xl bg-white/5 border ${errors.phone ? 'border-red-500' : 'border-white/10'} text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 transition-colors`}
-                                    placeholder="9876543210"
-                                />
+                                <div className="flex gap-2">
+                                    <select
+                                        name="countryCode"
+                                        value={formData.countryCode}
+                                        onChange={handleChange}
+                                        className="w-24 px-2 py-3 rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:border-orange-500 transition-colors cursor-pointer appearance-none text-center"
+                                        style={{ backgroundImage: 'none' }}
+                                    >
+                                        {countryCodes.map((item) => (
+                                            <option key={`${item.country}-${item.code}`} value={item.code} className="bg-navy-900">
+                                                {item.code} {item.country}
+                                            </option>
+                                        ))}
+                                    </select>
+                                    <input
+                                        type="tel"
+                                        id="phone"
+                                        name="phone"
+                                        value={formData.phone}
+                                        onChange={handleChange}
+                                        className={`flex-1 px-4 py-3 rounded-xl bg-white/5 border ${errors.phone ? 'border-red-500' : 'border-white/10'} text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 transition-colors`}
+                                        placeholder="9876543210"
+                                    />
+                                </div>
                                 {errors.phone && <p className="mt-1 text-sm text-red-400">{errors.phone}</p>}
                             </div>
                         </div>
@@ -344,6 +405,44 @@ const ContactPage = () => {
                             </select>
                             {errors.interestedIn && <p className="mt-1 text-sm text-red-400">{errors.interestedIn}</p>}
                         </div>
+
+                        {/* Appointment Details */}
+                        {formData.interestedIn === 'Book Consultation' && (
+                            <motion.div
+                                initial={{ opacity: 0, height: 0 }}
+                                animate={{ opacity: 1, height: 'auto' }}
+                                exit={{ opacity: 0, height: 0 }}
+                                className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6"
+                            >
+                                <div>
+                                    <label htmlFor="appointmentDate" className="block text-sm font-medium text-gray-300 mb-2">
+                                        Preferred Date *
+                                    </label>
+                                    <input
+                                        type="date"
+                                        id="appointmentDate"
+                                        name="appointmentDate"
+                                        value={formData.appointmentDate || ''}
+                                        onChange={handleChange}
+                                        min={new Date().toISOString().split('T')[0]}
+                                        className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:border-orange-500 transition-colors"
+                                    />
+                                </div>
+                                <div>
+                                    <label htmlFor="appointmentTime" className="block text-sm font-medium text-gray-300 mb-2">
+                                        Preferred Time *
+                                    </label>
+                                    <input
+                                        type="time"
+                                        id="appointmentTime"
+                                        name="appointmentTime"
+                                        value={formData.appointmentTime || ''}
+                                        onChange={handleChange}
+                                        className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:border-orange-500 transition-colors"
+                                    />
+                                </div>
+                            </motion.div>
+                        )}
 
                         {/* Message */}
                         <div>
