@@ -47,7 +47,7 @@ const BlogPostAIEra = () => {
 
                             {/* Title */}
                             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-                                The Fast Growth of the AI Era
+                                How AI Is Redefining the Future
                             </h1>
 
                             {/* Meta Info */}
@@ -65,7 +65,7 @@ const BlogPostAIEra = () => {
                             {/* Featured Image */}
                             <div className="relative h-96 rounded-2xl overflow-hidden mb-12">
                                 <img
-                                    src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&h=800&fit=crop"
+                                    src="/src/assets/images/blog/ai-future-banner.jpg"
                                     alt="AI Technology"
                                     className="w-full h-full object-cover"
                                 />

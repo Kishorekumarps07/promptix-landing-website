@@ -10,26 +10,26 @@ const BlogPage = () => {
         {
             id: 1,
             category: 'Tech',
-            title: 'The Fast Growth of the AI Era',
+            title: 'How AI Is Redefining the Future',
             excerpt: 'Artificial Intelligence is transforming industries, careers, and businesses at an unprecedented pace.',
-            thumbnail: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1200&h=675&fit=crop&q=80',
-            slug: 'fast-growth-ai-era'
+            thumbnail: '/src/assets/images/blog/ai-future-banner.jpg',
+            slug: 'how-ai-is-redefining-the-future'
         },
         {
             id: 2,
             category: 'Digital Marketing',
-            title: 'How to Brand Your Business in the Digital World',
+            title: 'The Smart Way to Build a Digital Brand',
             excerpt: 'Branding is more than a logo—learn how to build trust and grow your business online.',
-            thumbnail: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=675&fit=crop&q=80',
-            slug: 'brand-your-business-digital-world'
+            thumbnail: '/src/assets/images/blog/digital-brand-banner.jpg',
+            slug: 'the-smart-way-to-build-a-digital-brand'
         },
         {
             id: 3,
             category: 'EdTech',
-            title: 'Best Domains Students Should Focus on for the Future',
+            title: 'In-Demand Skill Domains for Students',
             excerpt: 'Choosing the right domain today can define your career tomorrow.',
-            thumbnail: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&h=675&fit=crop&q=80',
-            slug: 'best-domains-for-future'
+            thumbnail: '/src/assets/images/blog/students-skill-domains.jpg',
+            slug: 'in-demand-skill-domains-for-students'
         }
     ];
 

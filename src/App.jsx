@@ -39,9 +39,9 @@ function App() {
                     <Route path="/apply" element={<ApplyPage />} />
                     <Route path="/apply-success" element={<ApplySuccessPage />} />
                     <Route path="/blog" element={<BlogPage />} />
-                    <Route path="/blog/fast-growth-ai-era" element={<BlogPostAIEra />} />
-                    <Route path="/blog/brand-your-business-digital-world" element={<BlogPostDigitalBranding />} />
-                    <Route path="/blog/best-domains-for-future" element={<BlogPostFutureDomains />} />
+                    <Route path="/blog/how-ai-is-redefining-the-future" element={<BlogPostAIEra />} />
+                    <Route path="/blog/the-smart-way-to-build-a-digital-brand" element={<BlogPostDigitalBranding />} />
+                    <Route path="/blog/in-demand-skill-domains-for-students" element={<BlogPostFutureDomains />} />
 
                     {/* Admin Routes */}
                     <Route path="/admin/login" element={<AdminLoginPage />} />

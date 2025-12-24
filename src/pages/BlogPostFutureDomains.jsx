@@ -47,7 +47,7 @@ const BlogPostFutureDomains = () => {
 
                             {/* Title */}
                             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-                                Best Domains Students Should Focus on for the Future
+                                In-Demand Skill Domains for Students
                             </h1>
 
                             {/* Meta Info */}
@@ -65,7 +65,7 @@ const BlogPostFutureDomains = () => {
                             {/* Featured Image */}
                             <div className="relative h-96 rounded-2xl overflow-hidden mb-12">
                                 <img
-                                    src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=1200&h=800&fit=crop"
+                                    src="/src/assets/images/blog/students-skill-domains.jpg"
                                     alt="Students Learning Technology"
                                     className="w-full h-full object-cover"
                                 />

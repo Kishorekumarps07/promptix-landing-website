@@ -47,7 +47,7 @@ const BlogPostDigitalBranding = () => {
 
                             {/* Title */}
                             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-                                How to Brand Your Business in the Digital World
+                                The Smart Way to Build a Digital Brand
                             </h1>
 
                             {/* Meta Info */}
@@ -65,7 +65,7 @@ const BlogPostDigitalBranding = () => {
                             {/* Featured Image */}
                             <div className="relative h-96 rounded-2xl overflow-hidden mb-12">
                                 <img
-                                    src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=1200&h=800&fit=crop"
+                                    src="/src/assets/images/blog/digital-brand-banner.jpg"
                                     alt="Digital Branding"
                                     className="w-full h-full object-cover"
                                 />
