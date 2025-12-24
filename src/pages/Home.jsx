@@ -25,7 +25,7 @@ const Home = () => {
                             </p>
                         </div>
                         <a
-                            href="/students-college"
+                            href="/students/colleges"
                             className="flex items-center gap-2 text-white font-semibold hover:text-orange-400 transition-colors group"
                         >
                             View All Events

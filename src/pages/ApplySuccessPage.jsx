@@ -80,7 +80,7 @@ const ApplySuccessPage = () => {
                                 Back to Home
                             </Link>
                             <Link
-                                to="/students-college"
+                                to="/students/colleges"
                                 className="px-8 py-3 rounded-lg bg-white/10 hover:bg-white/15 text-white font-semibold flex items-center justify-center gap-2 transition-all border border-white/10"
                             >
                                 <Sparkles className="w-5 h-5" />

@@ -1,17 +1,19 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, Phone } from 'lucide-react';
+import { ChevronDown, Phone, ArrowRight, GraduationCap, School } from 'lucide-react';
 import Logo from './Logo';
 import { CONTACT } from '../constants/contact';
 
 const Header = () => {
+    const navigate = useNavigate();
     const location = useLocation();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [openDropdown, setOpenDropdown] = useState(null);
     const [mobileDropdown, setMobileDropdown] = useState(null);
     const [isScrolled, setIsScrolled] = useState(false);
     const dropdownRef = useRef(null);
+    const timeoutRef = useRef(null);
 
     // Close dropdown on outside click
     useEffect(() => {
@@ -43,22 +45,39 @@ const Header = () => {
         {
             name: 'Services and Solutions',
             hasDropdown: true,
+            type: 'standard',
             items: [
                 { name: 'Business Solutions', href: '/business-solutions' },
                 { name: 'Digital Marketing', href: '/digital-marketing' },
             ],
         },
         {
-            name: 'Students / College',
+            name: 'Students & Institutions',
             hasDropdown: true,
+            type: 'mega',
             items: [
-                { name: 'Student Learning', href: '/students-college' },
-                { name: 'College Collaborations', href: '/students-college' },
-            ],
+                {
+                    title: 'School Students & Schools',
+                    subtitle: 'Foundational skills for the future',
+                    bullets: ['Coding basics', 'AI awareness', 'Logical thinking', 'School workshops'],
+                    cta: 'Explore School Programs →',
+                    href: '/students/schools',
+                    icon: School
+                },
+                {
+                    title: 'College Students & Colleges',
+                    subtitle: 'Industry-ready skills & careers',
+                    bullets: ['Internships', 'Real-world projects', 'AI / Full Stack / Marketing', 'College partnerships'],
+                    cta: 'Explore College Programs →',
+                    href: '/students/colleges',
+                    icon: GraduationCap
+                }
+            ]
         },
         {
             name: 'Company',
             hasDropdown: true,
+            type: 'standard',
             items: [
                 { name: 'Our Team', href: '/company/team' },
                 { name: 'Blog', href: '/blog' },
@@ -93,6 +112,28 @@ const Header = () => {
             opacity: 0,
             y: -10,
             scale: 0.95,
+            transition: {
+                duration: 0.2,
+                ease: 'easeIn',
+            },
+        },
+    };
+
+    const megaDropdownVariants = {
+        hidden: { opacity: 0, y: 10, scale: 0.98 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            transition: {
+                duration: 0.3,
+                ease: [0.16, 1, 0.3, 1],
+            },
+        },
+        exit: {
+            opacity: 0,
+            y: 10,
+            scale: 0.98,
             transition: {
                 duration: 0.2,
                 ease: 'easeIn',
@@ -170,65 +211,175 @@ const Header = () => {
 
                     {/* Desktop Navigation */}
                     <div className="hidden lg:flex items-center gap-6">
-                        {navLinks.map((link) => (
-                            <div
-                                key={link.name}
-                                className="relative"
-                                onMouseEnter={() => link.hasDropdown && handleMouseEnter(link.name)}
-                                onMouseLeave={() => link.hasDropdown && handleMouseLeave()}
-                            >
-                                {link.hasDropdown ? (
-                                    <>
-                                        <button
-                                            className="flex items-center gap-1 text-white hover:text-orange-400 font-medium transition-colors duration-300 drop-shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 focus-visible:ring-offset-2 focus-visible:ring-offset-navy-950 rounded px-2 py-1"
-                                            aria-expanded={openDropdown === link.name}
-                                            aria-haspopup="true"
-                                        >
-                                            {link.name}
-                                            <ChevronDown
-                                                className={`w-4 h-4 transition-transform duration-300 ${openDropdown === link.name ? 'rotate-180' : ''
-                                                    }`}
-                                            />
-                                        </button>
+                        {navLinks.map((link) => {
+                            const isActive = location.pathname === link.href || (link.items && link.items.some(item => location.pathname === item.href));
 
-                                        <AnimatePresence>
-                                            {openDropdown === link.name && (
-                                                <motion.div
-                                                    variants={dropdownVariants}
-                                                    initial="hidden"
-                                                    animate="visible"
-                                                    exit="exit"
-                                                    className="absolute top-full left-0 mt-3 w-52 bg-navy-900/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/10 py-3 overflow-hidden"
-                                                >
-                                                    {link.items.map((item, index) => (
-                                                        <a
-                                                            key={item.name}
-                                                            href={item.href}
-                                                            className="group block px-5 py-3 text-gray-200 hover:bg-white/10 transition-all duration-300 relative overflow-hidden focus-visible:outline-none focus-visible:bg-white/15"
-                                                            style={{
-                                                                animationDelay: `${index * 50}ms`
+                            return (
+                                <div
+                                    key={link.name}
+                                    className="relative group h-full flex items-center"
+                                    onMouseEnter={() => {
+                                        if (timeoutRef.current) clearTimeout(timeoutRef.current);
+                                        link.hasDropdown && handleMouseEnter(link.name);
+                                    }}
+                                    onMouseLeave={() => {
+                                        if (link.hasDropdown) {
+                                            timeoutRef.current = setTimeout(() => {
+                                                handleMouseLeave();
+                                            }, 200);
+                                        }
+                                    }}
+                                >
+                                    {link.hasDropdown ? (
+                                        <>
+                                            <button
+                                                className={`flex items-center gap-1 font-medium transition-colors duration-300 drop-shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 focus-visible:ring-offset-2 focus-visible:ring-offset-navy-950 rounded px-2 py-1 relative
+                                                    ${isActive || openDropdown === link.name ? 'text-orange-400' : 'text-white hover:text-orange-400'}
+                                                `}
+                                                aria-expanded={openDropdown === link.name}
+                                                aria-haspopup="true"
+                                                onClick={() => link.hasDropdown && (openDropdown === link.name ? setOpenDropdown(null) : setOpenDropdown(link.name))}
+                                                onKeyDown={(e) => {
+                                                    if (e.key === 'Enter' || e.key === ' ') {
+                                                        e.preventDefault();
+                                                        openDropdown === link.name ? setOpenDropdown(null) : setOpenDropdown(link.name);
+                                                    }
+                                                }}
+                                            >
+                                                {link.name}
+                                                <ChevronDown
+                                                    className={`w-4 h-4 transition-transform duration-300 ${openDropdown === link.name ? 'rotate-180' : ''}`}
+                                                />
+                                                <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-orange-500 transform origin-left transition-transform duration-300 ${isActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`} />
+                                            </button>
+
+                                            <AnimatePresence>
+                                                {openDropdown === link.name && (
+                                                    link.type === 'mega' ? (
+                                                        <motion.div
+                                                            variants={megaDropdownVariants}
+                                                            initial="hidden"
+                                                            animate="visible"
+                                                            exit="exit"
+                                                            className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-[650px] bg-navy-950/98 backdrop-blur-xl rounded-[2rem] shadow-2xl border border-white/10 p-6 overflow-hidden"
+                                                            onMouseEnter={() => {
+                                                                if (timeoutRef.current) clearTimeout(timeoutRef.current);
+                                                            }}
+                                                            onMouseLeave={() => {
+                                                                timeoutRef.current = setTimeout(() => {
+                                                                    handleMouseLeave();
+                                                                }, 200);
                                                             }}
                                                         >
-                                                            <span className="relative z-10 inline-block group-hover:translate-x-1 transition-transform duration-300">
-                                                                {item.name}
-                                                            </span>
-                                                            <div className="absolute inset-0 bg-gradient-to-r from-orange-500/0 via-orange-500/5 to-orange-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                                                        </a>
-                                                    ))}
-                                                </motion.div>
-                                            )}
-                                        </AnimatePresence>
-                                    </>
-                                ) : (
-                                    <a
-                                        href={link.href}
-                                        className="text-white hover:text-orange-400 font-medium transition-colors duration-300 drop-shadow-md"
-                                    >
-                                        {link.name}
-                                    </a>
-                                )}
-                            </div>
-                        ))}
+                                                            <div className="grid grid-cols-2 gap-6 relative z-10">
+                                                                {link.items.map((item) => {
+                                                                    const isItemActive = location.pathname === item.href;
+                                                                    return (
+                                                                        <div
+                                                                            key={item.title}
+                                                                            className={`group/card rounded-2xl p-6 border transition-all duration-300 ease-out hover:-translate-y-2 block cursor-pointer
+                                                                                ${isItemActive
+                                                                                    ? 'bg-navy-800/80 border-orange-500/50 shadow-[0_10px_30px_-5px_rgba(249,115,22,0.3)]'
+                                                                                    : 'bg-navy-900/40 border-white/5 hover:border-orange-500/30 hover:bg-navy-800/50 hover:shadow-[0_10px_30px_-10px_rgba(249,115,22,0.15)]'
+                                                                                }
+                                                                            `
+                                                                            }
+                                                                            onClick={() => {
+                                                                                navigate(item.href);
+                                                                                setOpenDropdown(null);
+                                                                            }}
+                                                                        >
+                                                                            <div className="flex items-start justify-between mb-4">
+                                                                                <div className={`p-3 rounded-xl transition-transform duration-300 group-hover/card:scale-110 
+                                                                                    ${isItemActive ? 'bg-orange-500 text-white' : 'bg-orange-500/10 text-orange-400'}`}>
+                                                                                    <item.icon className="w-6 h-6" />
+                                                                                </div>
+                                                                            </div>
+                                                                            <h3 className={`text-xl font-bold mb-2 transition-colors ${isItemActive ? 'text-orange-400' : 'text-white group-hover/card:text-orange-400'}`}>
+                                                                                {item.title}
+                                                                            </h3>
+                                                                            <p className="text-gray-400 text-sm mb-4">
+                                                                                {item.subtitle}
+                                                                            </p>
+                                                                            <ul className="space-y-2 mb-6">
+                                                                                {item.bullets.map((bullet) => (
+                                                                                    <li key={bullet} className="flex items-center gap-2 text-sm text-gray-300">
+                                                                                        <div className={`w-1.5 h-1.5 rounded-full ${isItemActive ? 'bg-orange-400' : 'bg-orange-500'} `} />
+                                                                                        {bullet}
+                                                                                    </li>
+                                                                                ))}
+                                                                            </ul>
+                                                                            <div
+                                                                                className={`w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl font-semibold transition-all duration-300 group/btn
+                                                                                    ${isItemActive ? 'bg-orange-500 text-white hover:bg-orange-600' : 'bg-white/5 hover:bg-orange-500 text-white'}
+                                                                                `}
+                                                                            >
+                                                                                <span>{item.cta.replace(' →', '')}</span>
+                                                                                <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                                                                            </div>
+                                                                        </div>
+                                                                    );
+                                                                })}
+                                                            </div>
+                                                            {/* Accents */}
+                                                            <div className="absolute top-0 right-0 w-32 h-32 bg-orange-500/5 blur-[80px] rounded-full" />
+                                                            <div className="absolute bottom-0 left-0 w-32 h-32 bg-orange-500/5 blur-[80px] rounded-full" />
+                                                        </motion.div>
+                                                    ) : (
+                                                        <motion.div
+                                                            variants={dropdownVariants}
+                                                            initial="hidden"
+                                                            animate="visible"
+                                                            exit="exit"
+                                                            className="absolute top-full left-0 mt-3 w-52 bg-navy-900/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/10 py-3 overflow-hidden"
+                                                            onMouseEnter={() => {
+                                                                if (timeoutRef.current) clearTimeout(timeoutRef.current);
+                                                            }}
+                                                            onMouseLeave={() => {
+                                                                timeoutRef.current = setTimeout(() => {
+                                                                    handleMouseLeave();
+                                                                }, 200);
+                                                            }}
+                                                        >
+                                                            {link.items.map((item, index) => {
+                                                                const isSubActive = location.pathname === item.href;
+                                                                return (
+                                                                    <a
+                                                                        key={item.name}
+                                                                        href={item.href}
+                                                                        className={`group block px-5 py-3 transition-all duration-300 relative overflow-hidden focus-visible:outline-none focus-visible:bg-white/15
+                                                                            ${isSubActive ? 'text-orange-400 bg-white/10' : 'text-gray-200 hover:bg-white/10'}
+                                                                        `}
+                                                                        style={{
+                                                                            animationDelay: `${index * 50}ms`
+                                                                        }}
+                                                                    >
+                                                                        <span className={`relative z-10 inline-block transition-transform duration-300 ${isSubActive ? 'translate-x-1' : 'group-hover:translate-x-1'}`}>
+                                                                            {item.name}
+                                                                        </span>
+                                                                        <div className="absolute inset-0 bg-gradient-to-r from-orange-500/0 via-orange-500/5 to-orange-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                                                    </a>
+                                                                );
+                                                            })}
+                                                        </motion.div>
+                                                    )
+                                                )}
+                                            </AnimatePresence>
+                                        </>
+                                    ) : (
+                                        <a
+                                            href={link.href}
+                                            className={`font-medium transition-colors duration-300 drop-shadow-md relative py-1
+                                                ${isActive ? 'text-orange-400' : 'text-white hover:text-orange-400'}
+                                            `}
+                                        >
+                                            {link.name}
+                                            <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-orange-500 transform origin-left transition-transform duration-300 ${isActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`} />
+                                        </a>
+                                    )}
+                                </div>
+                            );
+                        })}
 
                         {/* Contact Number */}
                         <a
@@ -349,18 +500,51 @@ const Header = () => {
                                                                     transition={{ duration: 0.25 }}
                                                                     className="overflow-hidden"
                                                                 >
-                                                                    <div className="pl-4 pt-2 space-y-1">
-                                                                        {link.items.map((item) => (
-                                                                            <a
-                                                                                key={item.name}
-                                                                                href={item.href}
-                                                                                onClick={() => setIsMenuOpen(false)}
-                                                                                className="block text-gray-300 hover:text-orange-400 py-3 px-4 rounded-lg hover:bg-white/5 transition-colors"
-                                                                            >
-                                                                                {item.name}
-                                                                            </a>
-                                                                        ))}
-                                                                    </div>
+                                                                    {link.type === 'mega' ? (
+                                                                        <div className="pt-2 flex flex-col gap-4">
+                                                                            {link.items.map((item) => (
+                                                                                <div
+                                                                                    key={item.title}
+                                                                                    className="bg-white/5 rounded-2xl p-5 border border-white/5"
+                                                                                >
+                                                                                    <div className="flex items-center gap-3 mb-3">
+                                                                                        <div className="p-2 rounded-lg bg-orange-500/10 text-orange-400">
+                                                                                            <item.icon className="w-5 h-5" />
+                                                                                        </div>
+                                                                                        <h3 className="font-bold text-white uppercase tracking-wider text-xs">
+                                                                                            {item.title}
+                                                                                        </h3>
+                                                                                    </div>
+                                                                                    <p className="text-gray-400 text-xs mb-4">
+                                                                                        {item.subtitle}
+                                                                                    </p>
+                                                                                    <button
+                                                                                        onClick={() => {
+                                                                                            navigate(item.href);
+                                                                                            setIsMenuOpen(false);
+                                                                                        }}
+                                                                                        className="w-full py-3 px-4 rounded-xl bg-orange-500 text-white font-semibold text-sm flex items-center justify-center gap-2"
+                                                                                    >
+                                                                                        <span>{item.cta.replace(' →', '')}</span>
+                                                                                        <ArrowRight className="w-4 h-4" />
+                                                                                    </button>
+                                                                                </div>
+                                                                            ))}
+                                                                        </div>
+                                                                    ) : (
+                                                                        <div className="pl-4 pt-2 space-y-1">
+                                                                            {link.items.map((item) => (
+                                                                                <a
+                                                                                    key={item.name}
+                                                                                    href={item.href}
+                                                                                    onClick={() => setIsMenuOpen(false)}
+                                                                                    className="block text-gray-300 hover:text-orange-400 py-3 px-4 rounded-lg hover:bg-white/5 transition-colors"
+                                                                                >
+                                                                                    {item.name}
+                                                                                </a>
+                                                                            ))}
+                                                                        </div>
+                                                                    )}
                                                                 </motion.div>
                                                             )}
                                                         </AnimatePresence>

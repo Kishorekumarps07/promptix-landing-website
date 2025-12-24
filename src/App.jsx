@@ -5,7 +5,9 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import BusinessSolutionsPage from './pages/BusinessSolutionsPage';
 import DigitalMarketingPage from './pages/DigitalMarketingPage';
-import StudentsCollegePage from './pages/StudentsCollegePage';
+
+import SchoolStudentsPage from './pages/SchoolStudentsPage';
+import CollegeStudentsPage from './pages/CollegeStudentsPage';
 import ContactPage from './pages/ContactPage';
 import TeamPage from './pages/TeamPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
@@ -31,7 +33,9 @@ function App() {
                     <Route path="/" element={<Home />} />
                     <Route path="/business-solutions" element={<BusinessSolutionsPage />} />
                     <Route path="/digital-marketing" element={<DigitalMarketingPage />} />
-                    <Route path="/students-college" element={<StudentsCollegePage />} />
+
+                    <Route path="/students/schools" element={<SchoolStudentsPage />} />
+                    <Route path="/students/colleges" element={<CollegeStudentsPage />} />
                     <Route path="/contact" element={<ContactPage />} />
                     <Route path="/company/team" element={<TeamPage />} />
                     <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
