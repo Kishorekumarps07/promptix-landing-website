@@ -63,9 +63,9 @@ const BlogPostAIEra = () => {
                             </div>
 
                             {/* Featured Image */}
-                            <div className="relative h-96 rounded-2xl overflow-hidden mb-12">
+                            <div className="relative aspect-video w-full rounded-2xl overflow-hidden mb-12">
                                 <img
-                                    src="/src/assets/images/blog/ai-future-banner.jpg"
+                                    src="/images/blog/ai-future.jpg"
                                     alt="AI Technology"
                                     className="w-full h-full object-cover"
                                 />

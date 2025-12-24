@@ -12,7 +12,7 @@ const BlogPage = () => {
             category: 'Tech',
             title: 'How AI Is Redefining the Future',
             excerpt: 'Artificial Intelligence is transforming industries, careers, and businesses at an unprecedented pace.',
-            thumbnail: '/src/assets/images/blog/ai-future-banner.jpg',
+            thumbnail: '/images/blog/ai-future.jpg',
             slug: 'how-ai-is-redefining-the-future'
         },
         {
@@ -20,7 +20,7 @@ const BlogPage = () => {
             category: 'Digital Marketing',
             title: 'The Smart Way to Build a Digital Brand',
             excerpt: 'Branding is more than a logo—learn how to build trust and grow your business online.',
-            thumbnail: '/src/assets/images/blog/digital-brand-banner.jpg',
+            thumbnail: '/images/blog/digital-branding.jpg',
             slug: 'the-smart-way-to-build-a-digital-brand'
         },
         {
@@ -28,7 +28,7 @@ const BlogPage = () => {
             category: 'EdTech',
             title: 'In-Demand Skill Domains for Students',
             excerpt: 'Choosing the right domain today can define your career tomorrow.',
-            thumbnail: '/src/assets/images/blog/students-skill-domains.jpg',
+            thumbnail: '/images/blog/students-skills.jpg',
             slug: 'in-demand-skill-domains-for-students'
         }
     ];
@@ -74,7 +74,7 @@ const BlogPage = () => {
                             >
                                 <a href={`/blog/${post.slug}`} className="flex flex-col h-full">
                                     {/* Thumbnail */}
-                                    <div className="relative h-56 overflow-hidden">
+                                    <div className="relative aspect-[16/10] overflow-hidden">
                                         <img
                                             src={post.thumbnail}
                                             alt={post.title}

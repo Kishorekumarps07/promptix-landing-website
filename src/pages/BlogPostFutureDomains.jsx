@@ -63,9 +63,9 @@ const BlogPostFutureDomains = () => {
                             </div>
 
                             {/* Featured Image */}
-                            <div className="relative h-96 rounded-2xl overflow-hidden mb-12">
+                            <div className="relative aspect-video w-full rounded-2xl overflow-hidden mb-12">
                                 <img
-                                    src="/src/assets/images/blog/students-skill-domains.jpg"
+                                    src="/images/blog/students-skills.jpg"
                                     alt="Students Learning Technology"
                                     className="w-full h-full object-cover"
                                 />
