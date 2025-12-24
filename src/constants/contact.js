@@ -54,9 +54,11 @@ export const CONTACT = {
     // Social Media (for future use)
     social: {
         // Add social media links here when needed
-        // linkedin: '',
+        linkedin: 'https://www.linkedin.com/in/promptix-tech-solutions-9618a63a2/',
+        github: 'https://github.com/infopromptix-edtech',
+        instagram: 'https://www.instagram.com/promptix_tech?igsh=MWYxOGV0OWh2ZGF2OQ==',
+        facebook: 'https://www.facebook.com/profile.php?id=61585508464984',
         // twitter: '',
-        // instagram: '',
     },
 };
 

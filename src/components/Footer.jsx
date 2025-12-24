@@ -15,10 +15,10 @@ const Footer = () => {
     };
 
     const socialLinks = [
-        { icon: Instagram, href: '#', label: 'Instagram' },
-        { icon: Linkedin, href: '#', label: 'LinkedIn' },
-        { icon: Facebook, href: '#', label: 'Facebook' },
-        { icon: Github, href: '#', label: 'GitHub' },
+        { icon: Instagram, href: CONTACT.social.instagram || '#', label: 'Instagram' },
+        { icon: Linkedin, href: CONTACT.social.linkedin || '#', label: 'LinkedIn' },
+        { icon: Facebook, href: CONTACT.social.facebook || '#', label: 'Facebook' },
+        { icon: Github, href: CONTACT.social.github || '#', label: 'GitHub' },
     ];
 
     const toggleSection = (section) => {
