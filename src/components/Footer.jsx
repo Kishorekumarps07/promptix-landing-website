@@ -12,6 +12,12 @@ const Footer = () => {
             { name: 'Our Team', href: '/company/team' },
             { name: 'Blog', href: '/blog' },
         ],
+        Services: [
+            { name: 'Business Solutions', href: '/business-solutions' },
+            { name: 'Digital Marketing', href: '/digital-marketing' },
+            { name: 'School Students', href: '/students/schools' },
+            { name: 'College Students', href: '/students/colleges' },
+        ],
     };
 
     const socialLinks = [
