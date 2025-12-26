@@ -29,6 +29,8 @@ const getAllowedOrigins = () => {
     }
 
     const defaultOrigins = [
+        'https://promptix.pro',
+        'https://www.promptix.pro',
         'https://promptix-landing-website.vercel.app',
         'https://promptix-landing-website-git-*.vercel.app',
         'https://promptix-landing-website-*.vercel.app',

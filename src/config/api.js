@@ -4,7 +4,8 @@ const getApiBaseUrl = () => {
     const envUrl = import.meta.env.VITE_API_BASE_URL;
 
     // Production fallback - CRITICAL for when env var is not set
-    const productionUrl = 'https://promptix-landing-website.onrender.com';
+    // NOTE: This usually points to your BACKEND service URL (e.g. Render/Railway)
+    const productionUrl = 'https://promptix.pro';
 
     // Development fallback (empty string for Vite proxy)
     const developmentUrl = '';
