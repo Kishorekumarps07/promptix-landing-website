@@ -307,7 +307,7 @@ const TeamPage = () => {
                         </p>
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                             <a
-                                href="mailto:careers@promptix.com"
+                                href="mailto:infopromptix@gmail.com"
                                 className="px-8 py-3 rounded-xl bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold shadow-lg shadow-orange-500/20 transition-all transform hover:-translate-y-1"
                             >
                                 Submit Your Resume
