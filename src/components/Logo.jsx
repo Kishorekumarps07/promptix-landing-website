@@ -1,4 +1,5 @@
 import React from 'react';
+// Clean build trigger for Vercel deployment fix
 
 const Logo = ({ className = '', size = 'default' }) => {
     const heights = {
