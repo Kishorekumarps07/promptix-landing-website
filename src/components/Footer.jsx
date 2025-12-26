@@ -35,68 +35,72 @@ const Footer = () => {
         <footer className="bg-navy-950 text-white">
             <div className="max-w-7xl mx-auto px-6 py-14 md:py-16 lg:py-24">
                 {/* Top section */}
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 mb-8 lg:mb-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
                     {/* Logo and description */}
-                    <div className="lg:col-span-2">
-                        <div className="mb-4 lg:mb-6">
-                            <Logo className="text-white scale-90 lg:scale-100 origin-left" />
+                    <div className="lg:col-span-2 space-y-6">
+                        <div className="transform transition-transform hover:scale-105 origin-left">
+                            <Logo size="large" className="text-white drop-shadow-[0_0_15px_rgba(249,115,22,0.2)]" />
                         </div>
-                        <p className="text-gray-400 mb-4 lg:mb-6 leading-relaxed text-sm lg:text-base line-clamp-2 lg:line-clamp-none">
-                            Empowering businesses and students with AI-driven solutions,
-                            cutting-edge technology, and transformative learning experiences.
+                        <p className="text-gray-400 leading-relaxed text-sm lg:text-base max-w-md">
+                            PromptiX is at the forefront of the AI revolution, empowering businesses with
+                            intelligent automation and bridging the gap for students through
+                            industry-aligned internship programs.
                         </p>
                         {/* Social links */}
-                        <div className="flex items-center gap-3 lg:gap-4">
+                        <div className="flex items-center gap-4">
                             {socialLinks.map((social, index) => {
                                 const Icon = social.icon;
                                 return (
-                                    <a
+                                    <motion.a
                                         key={index}
                                         href={social.href}
+                                        whileHover={{ y: -5, scale: 1.1 }}
+                                        whileTap={{ scale: 0.9 }}
                                         aria-label={social.label}
-                                        className="w-12 h-12 rounded-lg bg-white/10 hover:bg-orange-500 flex items-center justify-center transition-colors duration-300"
+                                        className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-orange-500 hover:text-white hover:border-orange-500 transition-all duration-300 shadow-lg hover:shadow-orange-500/20"
                                     >
-                                        <Icon className="w-6 h-6" />
-                                    </a>
+                                        <Icon className="w-5 h-5" />
+                                    </motion.a>
                                 );
                             })}
                         </div>
                     </div>
 
-                    {/* Desktop Links columns */}
-                    <div className="hidden lg:contents">
-                        {Object.entries(footerLinks).map(([category, links]) => (
-                            <div key={category}>
-                                <h3 className="font-semibold text-white mb-4">{category}</h3>
-                                <ul className="space-y-3">
-                                    {links.map((link) => (
-                                        <li key={link.name}>
-                                            <a
-                                                href={link.href}
-                                                className="text-gray-400 hover:text-orange-500 transition-colors duration-300"
-                                            >
+                    {/* Links columns */}
+                    {Object.entries(footerLinks).map(([category, links]) => (
+                        <div key={category} className="hidden md:block">
+                            <h3 className="text-sm font-bold uppercase tracking-widest text-orange-500 mb-6 font-display">
+                                {category}
+                            </h3>
+                            <ul className="space-y-4">
+                                {links.map((link) => (
+                                    <li key={link.name}>
+                                        <a
+                                            href={link.href}
+                                            className="text-gray-400 hover:text-white flex items-center gap-2 group transition-all duration-300"
+                                        >
+                                            <span className="w-1.5 h-1.5 rounded-full bg-orange-500/0 group-hover:bg-orange-500 transition-all duration-300" />
+                                            <span className="group-hover:translate-x-1 transition-transform duration-300 font-medium">
                                                 {link.name}
-                                            </a>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        ))}
-                    </div>
+                                            </span>
+                                        </a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    ))}
 
                     {/* Mobile Accordion Links */}
-                    <div className="lg:hidden space-y-2">
+                    <div className="md:hidden space-y-4">
                         {Object.entries(footerLinks).map(([category, links]) => (
-                            <div key={category} className="border-b border-white/10">
+                            <div key={category} className="bg-white/5 rounded-2xl overflow-hidden border border-white/10">
                                 <button
                                     onClick={() => toggleSection(category)}
-                                    className="w-full flex items-center justify-between py-3 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 rounded"
-                                    aria-expanded={openSection === category}
+                                    className="w-full flex items-center justify-between p-4 text-left focus:outline-none"
                                 >
-                                    <h3 className="font-semibold text-white">{category}</h3>
+                                    <h3 className="font-bold text-white uppercase tracking-wider text-xs">{category}</h3>
                                     <ChevronDown
-                                        className={`w-5 h-5 text-gray-400 transition-transform duration-300 ${openSection === category ? 'rotate-180' : ''
-                                            }`}
+                                        className={`w-4 h-4 text-orange-500 transition-transform duration-500 ${openSection === category ? 'rotate-180' : ''}`}
                                     />
                                 </button>
                                 <AnimatePresence>
@@ -105,14 +109,13 @@ const Footer = () => {
                                             initial={{ height: 0, opacity: 0 }}
                                             animate={{ height: 'auto', opacity: 1 }}
                                             exit={{ height: 0, opacity: 0 }}
-                                            transition={{ duration: 0.3 }}
-                                            className="overflow-hidden space-y-2 pb-3"
+                                            className="px-4 pb-4 space-y-3"
                                         >
                                             {links.map((link) => (
                                                 <li key={link.name}>
                                                     <a
                                                         href={link.href}
-                                                        className="block py-2 text-gray-400 hover:text-orange-500 transition-colors duration-300"
+                                                        className="text-gray-400 hover:text-orange-500 block text-sm transition-colors"
                                                     >
                                                         {link.name}
                                                     </a>
