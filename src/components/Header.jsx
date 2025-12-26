@@ -277,13 +277,10 @@ const Header = () => {
                                                                     return (
                                                                         <div
                                                                             key={item.title}
-                                                                            className={`group/card rounded-2xl p-6 border transition-all duration-300 ease-out hover:-translate-y-2 block cursor-pointer
-                                                                                ${isItemActive
-                                                                                    ? 'bg-navy-800/80 border-orange-500/50 shadow-[0_10px_30px_-5px_rgba(249,115,22,0.3)]'
-                                                                                    : 'bg-navy-900/40 border-white/5 hover:border-orange-500/30 hover:bg-navy-800/50 hover:shadow-[0_10px_30px_-10px_rgba(249,115,22,0.15)]'
-                                                                                }
-                                                                            `
-                                                                            }
+                                                                            className={`group/card p-6 transition-all duration-300 ease-out hover:-translate-y-2 block cursor-pointer
+                                                                                bg-[#0f2a4d]/95 backdrop-blur-md border border-white/10 rounded-2xl shadow-xl
+                                                                                ${isItemActive ? 'ring-1 ring-orange-500/50' : 'hover:border-orange-500/30'}
+                                                                            `}
                                                                             onClick={() => {
                                                                                 navigate(item.href);
                                                                                 setOpenDropdown(null);
@@ -298,12 +295,12 @@ const Header = () => {
                                                                             <h3 className={`text-xl font-bold mb-2 transition-colors ${isItemActive ? 'text-orange-400' : 'text-white group-hover/card:text-orange-400'}`}>
                                                                                 {item.title}
                                                                             </h3>
-                                                                            <p className="text-gray-400 text-sm mb-4">
+                                                                            <p className="text-white/80 text-sm mb-4">
                                                                                 {item.subtitle}
                                                                             </p>
                                                                             <ul className="space-y-2 mb-6">
                                                                                 {item.bullets.map((bullet) => (
-                                                                                    <li key={bullet} className="flex items-center gap-2 text-sm text-gray-300">
+                                                                                    <li key={bullet} className="flex items-center gap-2 text-sm text-white/80">
                                                                                         <div className={`w-1.5 h-1.5 rounded-full ${isItemActive ? 'bg-orange-400' : 'bg-orange-500'} `} />
                                                                                         {bullet}
                                                                                     </li>
