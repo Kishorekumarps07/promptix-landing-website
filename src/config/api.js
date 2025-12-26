@@ -3,9 +3,9 @@ const getApiBaseUrl = () => {
     // Get from environment variable
     const envUrl = import.meta.env.VITE_API_BASE_URL;
 
-    // Production fallback - CRITICAL for when env var is not set
-    // NOTE: This usually points to your BACKEND service URL (e.g. Render/Railway)
-    const productionUrl = 'https://promptix.pro';
+    // Production fallback - Using empty string for relative paths
+    // This allows Vercel rewrites to proxy requests to the backend securely.
+    const productionUrl = '';
 
     // Development fallback (empty string for Vite proxy)
     const developmentUrl = '';
