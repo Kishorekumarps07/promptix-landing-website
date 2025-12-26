@@ -292,8 +292,9 @@ app.post('/api/auth/login', async (req, res) => {
 
         // MOCK MODE HANDLER
         if (global.mockMode) {
+            console.log('🛡️ [DEBUG] Mock Mode isActive, checking credentials for:', email);
             if (email === 'admin@promptix.com' && password === 'Admin@123456') {
-                console.log('✅ [MOCK] Login successful');
+                console.log('✅ [DEBUG] Mock Login Successful');
                 return res.json({
                     success: true,
                     data: {
@@ -308,15 +309,17 @@ app.post('/api/auth/login', async (req, res) => {
                     message: 'Login successful (Mock Mode)'
                 });
             } else {
+                console.warn('❌ [DEBUG] Mock Login Failed: Invalid credentials');
                 return res.status(401).json({ success: false, error: 'Invalid credentials (Mock Mode)' });
             }
         }
 
+        console.log('🛡️ [DEBUG] DB Mode isActive, searching for user:', email);
         // Check for admin user in DB
         const admin = await Admin.findOne({ email }).select('+password');
 
         if (!admin) {
-            console.log('❌ Login failed: User not found');
+            console.warn('❌ [DEBUG] Login failed: User not found in DB');
             return res.status(401).json({ success: false, error: 'Invalid credentials' });
         }
 
@@ -324,7 +327,7 @@ app.post('/api/auth/login', async (req, res) => {
         const isMatch = await admin.matchPassword(password);
 
         if (!isMatch) {
-            console.log('❌ Login failed: Invalid password');
+            console.warn('❌ [DEBUG] Login failed: Invalid password in DB');
             return res.status(401).json({ success: false, error: 'Invalid credentials' });
         }
 
@@ -335,9 +338,9 @@ app.post('/api/auth/login', async (req, res) => {
             { expiresIn: '30d' }
         );
 
-        console.log('✅ Login successful:', email);
+        console.log('✅ [DEBUG] DB Login successful:', email);
 
-        // Return token and admin data (matching existing structure)
+        // Return token and admin data
         res.json({
             success: true,
             data: {
@@ -352,7 +355,7 @@ app.post('/api/auth/login', async (req, res) => {
             message: 'Login successful'
         });
     } catch (error) {
-        console.error('❌ Login error:', error);
+        console.error('🔥 [DEBUG] CRITICAL Login error:', error);
         res.status(500).json({
             success: false,
             error: 'Server error during login',
@@ -643,6 +646,105 @@ app.delete('/api/admin/contacts', async (req, res) => {
     }
 });
 
+/**
+ * GET /api/admin/internships
+ * Get all internship applications with pagination
+ */
+app.get('/api/admin/internships', async (req, res) => {
+    try {
+        const page = parseInt(req.query.page) || 1;
+        const limit = parseInt(req.query.limit) || 20;
+        const skip = (page - 1) * limit;
+        const domain = req.query.domain;
+        const status = req.query.status;
+
+        // MOCK MODE HANDLER
+        if (global.mockMode) {
+            console.log('✅ [MOCK] Serving internship applications');
+            const mockApplications = [
+                {
+                    _id: '1',
+                    fullName: 'Alice Walker',
+                    email: 'alice@example.com',
+                    phone: '9988776655',
+                    college: 'Tech University',
+                    domain: 'Full Stack Development',
+                    mode: 'Remote',
+                    duration: '3 Months',
+                    price: 2999,
+                    status: 'Applied',
+                    createdAt: new Date()
+                },
+                {
+                    _id: '2',
+                    fullName: 'Charlie Brown',
+                    email: 'charlie@example.com',
+                    phone: '8877665544',
+                    college: 'Engineering Institute',
+                    domain: 'AI & Machine Learning',
+                    mode: 'Hybrid',
+                    duration: '6 Months',
+                    price: 4999,
+                    status: 'Confirmed',
+                    createdAt: new Date()
+                }
+            ];
+
+            return res.json({
+                success: true,
+                count: mockApplications.length,
+                data: mockApplications,
+                pagination: { page, limit, total: mockApplications.length, pages: 1 }
+            });
+        }
+
+        const query = {};
+        if (domain) query.domain = domain;
+        if (status) query.status = status;
+
+        const total = await InternshipApplication.countDocuments(query);
+        const applications = await InternshipApplication.find(query)
+            .sort({ createdAt: -1 })
+            .skip(skip)
+            .limit(limit);
+
+        console.log(`📋 Fetched ${applications.length} internship applications`);
+
+        res.json({
+            success: true,
+            count: applications.length,
+            data: applications,
+            pagination: { page, limit, total, pages: Math.ceil(total / limit) }
+        });
+    } catch (error) {
+        console.error('❌ Admin internships error:', error);
+        res.status(500).json({ success: false, error: 'Failed to fetch internship applications' });
+    }
+});
+
+/**
+ * DELETE /api/admin/internships
+ */
+app.delete('/api/admin/internships', async (req, res) => {
+    try {
+        const { id } = req.query;
+        if (!id) {
+            return res.status(400).json({ success: false, error: 'Application ID is required' });
+        }
+
+        const application = await InternshipApplication.findByIdAndDelete(id);
+        if (!application) {
+            return res.status(404).json({ success: false, error: 'Application not found' });
+        }
+
+        console.log(`🗑️ Deleted internship application: ${application.email}`);
+        res.json({ success: true, message: 'Application deleted successfully' });
+    } catch (error) {
+        console.error('❌ Delete internship error:', error);
+        res.status(500).json({ success: false, error: 'Failed to delete application' });
+    }
+});
+
 // Global error handler
 app.use((err, req, res, next) => {
     console.error('❌ Unhandled error:', err);
@@ -653,88 +755,7 @@ app.use((err, req, res, next) => {
     });
 });
 
-/**
- * GET /api/admin/contacts
- * Get all contacts with pagination
- */
-app.get('/api/admin/contacts', async (req, res) => {
-    try {
-        const page = parseInt(req.query.page) || 1;
-        const limit = parseInt(req.query.limit) || 20;
-        const skip = (page - 1) * limit;
-        const source = req.query.source;
 
-        // Build query
-        const query = source ? { source } : {};
-
-        // Get total count
-        const total = await Contact.countDocuments(query);
-
-        // Get contacts with pagination
-        const contacts = await Contact.find(query)
-            .sort({ createdAt: -1 })
-            .skip(skip)
-            .limit(limit);
-
-        console.log(`📋 Fetched ${contacts.length} contacts (page ${page})`);
-
-        res.json({
-            success: true,
-            data: contacts,
-            pagination: {
-                page,
-                limit,
-                total,
-                pages: Math.ceil(total / limit)
-            }
-        });
-    } catch (error) {
-        console.error('❌ Admin contacts error:', error);
-        res.status(500).json({
-            success: false,
-            error: 'Failed to fetch contacts'
-        });
-    }
-});
-
-/**
- * DELETE /api/admin/contacts
- * Delete a contact by ID
- */
-app.delete('/api/admin/contacts', async (req, res) => {
-    try {
-        const { id } = req.query;
-
-        if (!id) {
-            return res.status(400).json({
-                success: false,
-                error: 'Contact ID is required'
-            });
-        }
-
-        const contact = await Contact.findByIdAndDelete(id);
-
-        if (!contact) {
-            return res.status(404).json({
-                success: false,
-                error: 'Contact not found'
-            });
-        }
-
-        console.log(`🗑️ Deleted contact: ${contact.email}`);
-
-        res.json({
-            success: true,
-            message: 'Contact deleted successfully'
-        });
-    } catch (error) {
-        console.error('❌ Delete contact error:', error);
-        res.status(500).json({
-            success: false,
-            error: 'Failed to delete contact'
-        });
-    }
-});
 
 /**
  * PATCH /api/admin/contacts
