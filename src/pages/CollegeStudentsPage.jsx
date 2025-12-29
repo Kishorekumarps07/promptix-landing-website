@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
     Brain, Code, Layout, Megaphone, Bot, Briefcase, Building2, Ticket, CheckCircle, GraduationCap, ArrowRight, Zap, Target, Users, Home, ChevronRight,
@@ -6,22 +6,10 @@ import {
     Cloud, ShieldCheck, PenTool, BarChart
 } from 'lucide-react';
 import DomainModal from '../components/DomainModal';
+import SEO from '../components/SEO';
 
 const CollegeStudentsPage = () => {
     const [selectedDomain, setSelectedDomain] = useState(null);
-
-    useEffect(() => {
-        document.title = "College Students & Colleges | PromptiX";
-        const metaDesc = document.querySelector('meta[name="description"]');
-        if (metaDesc) {
-            metaDesc.content = "Industry-ready internships, real-world projects, and career skill development for college students. Start your journey today.";
-        } else {
-            const meta = document.createElement('meta');
-            meta.name = "description";
-            meta.content = "Industry-ready internships, real-world projects, and career skill development for college students. Start your journey today.";
-            document.head.appendChild(meta);
-        }
-    }, []);
 
     const internshipDomains = [
         {
@@ -116,6 +104,12 @@ const CollegeStudentsPage = () => {
 
     return (
         <main className="bg-navy-950 pt-24 min-h-screen">
+            <SEO
+                title="College Internships & Training"
+                description="Industry-ready internships, real-world projects, and career skill development for college students. Start your journey today."
+                keywords="college internships, industrial training, project-based learning, software development internship, AI internship"
+                url="/students/colleges"
+            />
 
             {/* Breadcrumbs */}
             <nav className="max-w-7xl mx-auto px-4 mb-4" aria-label="Breadcrumb">

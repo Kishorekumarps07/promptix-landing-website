@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Phone, MessageCircle, Mail, MapPin, Clock, Shield, Send, Upload, X } from 'lucide-react';
 import { CONTACT } from '../constants/contact';
 import apiConfig from '../config/api';
+import SEO from '../components/SEO';
 
 const ContactPage = () => {
     const [formData, setFormData] = useState({
@@ -232,6 +233,12 @@ const ContactPage = () => {
 
     return (
         <div className="min-h-screen bg-navy-950 pt-20">
+            <SEO
+                title="Contact Us"
+                description="Get in touch with PromptiX for business solutions, digital marketing inquiries, or internship programs. We are here to help."
+                keywords="contact PromptiX, business inquiry, digital marketing consultation, internship application"
+                url="/contact"
+            />
 
             {/* Hero Section */}
             <section className="section-container">

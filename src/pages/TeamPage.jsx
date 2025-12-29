@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Users, Lightbulb, Target, TrendingUp } from 'lucide-react';
 import TeamMemberModal from '../components/TeamMemberModal';
+import SEO from '../components/SEO';
 
 const TeamPage = () => {
     const [selectedMember, setSelectedMember] = useState(null);
@@ -195,6 +196,12 @@ const TeamPage = () => {
 
     return (
         <div className="min-h-screen bg-navy-950 pt-20">
+            <SEO
+                title="Our Team"
+                description="Meet the experts behind PromptiX. A dedicated team of developers, designers, and strategists driving innovation."
+                keywords="PromptiX team, leadership, developers, designers, AI experts"
+                url="/company/team"
+            />
             {/* Hero Section */}
             <section className="relative py-14 md:py-16 lg:py-24 px-4 overflow-hidden bg-navy-950/50">
                 <div className="max-w-5xl mx-auto px-4 relative z-10 text-center">

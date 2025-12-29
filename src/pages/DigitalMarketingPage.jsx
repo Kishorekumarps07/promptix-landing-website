@@ -5,6 +5,7 @@ import {
     TrendingUp, Users, Rocket, BarChart3, Lightbulb, LineChart, CheckCircle2, Building2, Store, Briefcase
 } from 'lucide-react';
 import ServiceModal from '../components/ServiceModal';
+import SEO from '../components/SEO';
 
 const DigitalMarketingPage = () => {
     const [selectedSolution, setSelectedSolution] = useState(null);
@@ -192,6 +193,12 @@ const DigitalMarketingPage = () => {
             {/* Enhanced Hero Section */}
             <section className="relative py-14 md:py-16 lg:py-24 px-4 overflow-hidden bg-navy-950/50">
                 <div className="max-w-5xl mx-auto px-4 relative z-10 text-center">
+                    <SEO
+                        title="Digital Marketing"
+                        description="Data-driven digital marketing strategies, SEO, social media management, and AI-powered content creation to grow your brand."
+                        keywords="digital marketing, SEO, social media, content marketing, lead generation, branding"
+                        url="/digital-marketing"
+                    />
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}

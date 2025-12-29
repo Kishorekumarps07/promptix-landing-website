@@ -1,23 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import {
     Brain, Code, Lightbulb, Rocket, Users, Calendar, Puzzle, Sparkles, Target, Layers, ChevronRight, Home
 } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const SchoolStudentsPage = () => {
-
-    useEffect(() => {
-        document.title = "School Students & Schools | PromptiX";
-        const metaDesc = document.querySelector('meta[name="description"]');
-        if (metaDesc) {
-            metaDesc.content = "Empowering school students with coding, AI, and logical thinking. Explore our workshops and school partnership programs.";
-        } else {
-            const meta = document.createElement('meta');
-            meta.name = "description";
-            meta.content = "Empowering school students with coding, AI, and logical thinking. Explore our workshops and school partnership programs.";
-            document.head.appendChild(meta);
-        }
-    }, []);
 
     const programs = [
         {
@@ -73,6 +61,12 @@ const SchoolStudentsPage = () => {
 
     return (
         <main className="bg-navy-950 pt-24 min-h-screen">
+            <SEO
+                title="School Students & Workshops"
+                description="Empowering school students with coding, AI, and logical thinking. Explore our workshops and school partnership programs."
+                keywords="coding for kids, AI workshops, school programs, robotics, logical thinking"
+                url="/students/schools"
+            />
 
             {/* Breadcrumbs */}
             <nav className="max-w-7xl mx-auto px-4 mb-4" aria-label="Breadcrumb">

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight, BookOpen } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 const BlogPage = () => {
     // Sample blog posts - easily updatable
@@ -39,6 +40,12 @@ const BlogPage = () => {
         <>
             <Header />
             <div className="min-h-screen bg-navy-950 pt-20">
+                <SEO
+                    title="Insights & Articles"
+                    description="Explore the latest insights, trends, and articles on AI, Digital Marketing, and EdTech from the PromptiX team."
+                    keywords="tech blog, AI trends, digital marketing tips, edtech insights, PromptiX blog"
+                    url="/blog"
+                />
                 {/* Hero Section */}
                 <section className="relative py-20 md:py-28 px-4 overflow-hidden">
                     <div className="max-w-6xl mx-auto relative z-10 text-center">

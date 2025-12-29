@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Code, Layers, Brain, MessageSquare, BarChart, Settings, Cloud, Wrench, Bot, ArrowUpRight, Zap, TrendingUp, Shield, Search, Lightbulb, Hammer, Rocket } from 'lucide-react';
 import ServiceModal from '../components/ServiceModal';
 
+import SEO from '../components/SEO';
+
 const BusinessSolutionsPage = () => {
     const [selectedSolution, setSelectedSolution] = useState(null);
 
@@ -161,6 +163,12 @@ const BusinessSolutionsPage = () => {
             {/* Page Hero */}
             <section className="relative py-14 md:py-16 lg:py-24 px-4 overflow-hidden bg-navy-950/50">
                 <div className="max-w-5xl mx-auto px-4 relative z-10 text-center">
+                    <SEO
+                        title="Business Solutions"
+                        description="Scalable AI-driven business solutions including custom software development, cloud infrastructure, and intelligent automation."
+                        keywords="custom software, AI solutions, cloud deployment, business automation, RPA, web development"
+                        url="/business-solutions"
+                    />
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}

@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /company/admin/
+Disallow: /api/
+
+Sitemap: https://promptix.pro/sitemap.xml

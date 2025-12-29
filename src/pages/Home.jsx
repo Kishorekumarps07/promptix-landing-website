@@ -1,11 +1,13 @@
 import { ArrowRight, CheckCircle2, Zap, BarChart2, Users, Calendar } from 'lucide-react';
 import Hero from '../components/Hero';
+import SEO from '../components/SEO';
 import Features from '../components/Features';
 import About from '../components/About';
 
 const Home = () => {
     return (
         <>
+            <SEO />
             <Hero />
             <About />
             {/* Upcoming Events Section */}
