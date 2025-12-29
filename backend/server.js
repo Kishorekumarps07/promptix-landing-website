@@ -193,7 +193,7 @@ app.post('/api/contacts', async (req, res) => {
         console.log('🌍 Request Origin:', req.headers.origin);
         console.log('🔑 Content-Type:', req.headers['content-type']);
 
-        const { fullName, email, phone, subject, message, source, file, appointmentDate, appointmentTime } = req.body;
+        const { fullName, email, phone, subject, message, source, appointmentDate, appointmentTime } = req.body;
 
         // 🔍 DEBUG LOG 2: Validate fields
         console.log('🔍 Validating fields...');
@@ -228,7 +228,6 @@ app.post('/api/contacts', async (req, res) => {
             subject: subject || '',
             message,
             source: source || 'Contact Page',
-            file, // Already added in previous step (silently failed but trying here) 
             appointmentDate,
             appointmentTime
         });

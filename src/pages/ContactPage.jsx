@@ -14,7 +14,7 @@ const ContactPage = () => {
         interestedIn: '',
         message: '',
         whatsappUpdates: false,
-        file: null
+        whatsappUpdates: false
     });
 
     const [errors, setErrors] = useState({});
@@ -47,7 +47,7 @@ const ContactPage = () => {
         const { name, value, type, checked, files } = e.target;
         setFormData(prev => ({
             ...prev,
-            [name]: type === 'checkbox' ? checked : type === 'file' ? files[0] : value
+            [name]: type === 'checkbox' ? checked : value
         }));
 
         // Real-time validation for email
@@ -68,19 +68,7 @@ const ContactPage = () => {
         }
     };
 
-    const handleFileChange = (e) => {
-        const file = e.target.files[0];
-        if (file && file.size <= 5 * 1024 * 1024) { // 5MB limit
-            setFormData(prev => ({ ...prev, file }));
-            setErrors(prev => ({ ...prev, file: '' }));
-        } else {
-            setErrors(prev => ({ ...prev, file: 'File size must be less than 5MB' }));
-        }
-    };
 
-    const removeFile = () => {
-        setFormData(prev => ({ ...prev, file: null }));
-    };
 
     const validateForm = () => {
         const newErrors = {};
@@ -124,22 +112,6 @@ const ContactPage = () => {
             // Use centralized API configuration
             const apiUrl = apiConfig.CONTACTS;
 
-            // Process file to Base64 if present
-            let fileData = null;
-            if (formData.file) {
-                fileData = await new Promise((resolve, reject) => {
-                    const reader = new FileReader();
-                    reader.readAsDataURL(formData.file);
-                    reader.onload = () => resolve({
-                        name: formData.file.name,
-                        data: reader.result, // Base64 string
-                        contentType: formData.file.type,
-                        size: formData.file.size
-                    });
-                    reader.onerror = error => reject(error);
-                });
-            }
-
             const requestBody = {
                 fullName: formData.fullName,
                 email: formData.email,
@@ -147,7 +119,6 @@ const ContactPage = () => {
                 subject: formData.interestedIn,
                 message: formData.message,
                 source: 'Contact Page',
-                file: fileData,
                 appointmentDate: formData.interestedIn === 'Book Consultation' ? formData.appointmentDate : undefined,
                 appointmentTime: formData.interestedIn === 'Book Consultation' ? formData.appointmentTime : undefined
             };
@@ -188,7 +159,7 @@ const ContactPage = () => {
                     interestedIn: '',
                     message: '',
                     whatsappUpdates: false,
-                    file: null
+
                 });
 
                 // Reset success message after 5 seconds
@@ -468,38 +439,7 @@ const ContactPage = () => {
                             {errors.message && <p className="mt-1 text-sm text-red-400">{errors.message}</p>}
                         </div>
 
-                        {/* File Upload */}
-                        <div>
-                            <label className="block text-sm font-medium text-gray-300 mb-2">
-                                Attach File (Optional)
-                            </label>
-                            <div className="relative">
-                                <input
-                                    type="file"
-                                    id="file"
-                                    onChange={handleFileChange}
-                                    className="hidden"
-                                    accept=".pdf,.doc,.docx,.txt"
-                                />
-                                <label
-                                    htmlFor="file"
-                                    className="flex items-center justify-center gap-2 w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-gray-400 hover:border-orange-500/30 transition-colors cursor-pointer"
-                                >
-                                    <Upload className="w-5 h-5" />
-                                    {formData.file ? formData.file.name : 'Choose file (Max 5MB)'}
-                                </label>
-                                {formData.file && (
-                                    <button
-                                        type="button"
-                                        onClick={removeFile}
-                                        className="absolute right-3 top-1/2 -translate-y-1/2 p-1 rounded-lg hover:bg-white/10 text-gray-400 hover:text-white transition-colors"
-                                    >
-                                        <X className="w-4 h-4" />
-                                    </button>
-                                )}
-                            </div>
-                            {errors.file && <p className="mt-1 text-sm text-red-400">{errors.file}</p>}
-                        </div>
+
 
                         {/* WhatsApp Updates */}
                         <div className="flex items-center gap-3">
