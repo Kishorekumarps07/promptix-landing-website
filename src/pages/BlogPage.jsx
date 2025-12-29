@@ -84,7 +84,7 @@ const BlogPage = () => {
                                     <div className="relative aspect-[16/10] overflow-hidden">
                                         <img
                                             src={post.thumbnail}
-                                            alt={post.title}
+                                            alt={`${post.title} - PromptiX Blog`}
                                             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/50 to-transparent opacity-60" />

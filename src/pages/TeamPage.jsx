@@ -148,7 +148,7 @@ const TeamPage = () => {
                     <div className="relative w-32 h-32 rounded-full overflow-hidden border-2 border-orange-500/50 shadow-[0_0_20px_rgba(249,115,22,0.3)] group-hover:scale-105 transition-transform duration-300 group-hover:border-orange-500">
                         <img
                             src={member.image}
-                            alt={member.name}
+                            alt={`${member.name} - ${member.role} at PromptiX`}
                             className="w-full h-full object-cover"
                         />
                         {/* Overlay shine effect */}

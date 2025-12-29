@@ -66,7 +66,7 @@ const BlogPostDigitalBranding = () => {
                             <div className="relative aspect-video w-full rounded-2xl overflow-hidden mb-12">
                                 <img
                                     src="/images/blog/digital-branding.jpg"
-                                    alt="Digital Branding"
+                                    alt="Digital branding strategies and modern marketing analytics visuals"
                                     className="w-full h-full object-cover"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/50 to-transparent opacity-60" />

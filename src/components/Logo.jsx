@@ -12,7 +12,7 @@ const Logo = ({ className = '', size = 'default' }) => {
         <div className={`flex items-center ${className}`}>
             <img
                 src="/promptix-logo-v2.png"
-                alt="PromptiX Logo"
+                alt="PromptiX - AI, Tech & Digital Marketing Agency Logo"
                 className={`${heights[size]} w-auto object-contain transition-all duration-300 drop-shadow-[0_0_15px_rgba(255,255,255,0.15)] hover:drop-shadow-[0_0_20px_rgba(249,115,22,0.3)]`}
             />
         </div>

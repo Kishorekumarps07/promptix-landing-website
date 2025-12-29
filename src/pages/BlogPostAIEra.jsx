@@ -66,7 +66,7 @@ const BlogPostAIEra = () => {
                             <div className="relative aspect-video w-full rounded-2xl overflow-hidden mb-12">
                                 <img
                                     src="/images/blog/ai-future.jpg"
-                                    alt="AI Technology"
+                                    alt="Futuristic AI interfacing with human intelligence - PromptiX Blog"
                                     className="w-full h-full object-cover"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/50 to-transparent opacity-60" />
