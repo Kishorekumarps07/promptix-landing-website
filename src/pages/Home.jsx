@@ -7,7 +7,12 @@ import About from '../components/About';
 const Home = () => {
     return (
         <>
-            <SEO />
+            <SEO
+                title="Home"
+                description="PromptiX delivers cutting-edge AI solutions, digital marketing, and transformative learning programs for businesses and students."
+                keywords="AI solutions, digital marketing, business automation, student programs, AI training, PromptiX"
+                url="/"
+            />
             <Hero />
             <About />
             {/* Upcoming Events Section */}

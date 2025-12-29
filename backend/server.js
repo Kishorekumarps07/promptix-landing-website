@@ -34,9 +34,12 @@ const getAllowedOrigins = () => {
         'https://promptix-landing-website.vercel.app',
         'https://promptix-landing-website-git-*.vercel.app',
         'https://promptix-landing-website-*.vercel.app',
-        process.env.NODE_ENV === 'development' && 'http://localhost:5173',
-        process.env.NODE_ENV === 'development' && 'http://localhost:3000',
-    ].filter(Boolean);
+    ];
+
+    if (process.env.NODE_ENV === 'development') {
+        // Allow any localhost port in development
+        defaultOrigins.push(/^http:\/\/localhost:\d+$/);
+    }
 
     console.log('🔒 [CORS] Using default origins:', defaultOrigins);
     return defaultOrigins;
@@ -58,6 +61,11 @@ const corsOptions = {
             // Exact match
             if (allowedOrigin === origin) {
                 return true;
+            }
+
+            // Regex match (for localhost dynamic ports)
+            if (allowedOrigin instanceof RegExp) {
+                return allowedOrigin.test(origin);
             }
 
             // Wildcard match (e.g., *.vercel.app)

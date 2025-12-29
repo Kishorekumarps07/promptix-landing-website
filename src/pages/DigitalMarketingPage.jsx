@@ -189,7 +189,7 @@ const DigitalMarketingPage = () => {
     };
 
     return (
-        <div className="min-h-screen bg-navy-950 pt-20">
+        <main className="min-h-screen bg-navy-950 pt-20">
             {/* Enhanced Hero Section */}
             <section className="relative py-14 md:py-16 lg:py-24 px-4 overflow-hidden bg-navy-950/50">
                 <div className="max-w-5xl mx-auto px-4 relative z-10 text-center">
@@ -663,7 +663,7 @@ const DigitalMarketingPage = () => {
                 onClose={() => setSelectedSolution(null)}
                 service={selectedSolution}
             />
-        </div>
+        </main>
     );
 };
 

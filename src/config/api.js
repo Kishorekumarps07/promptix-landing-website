@@ -7,8 +7,8 @@ const getApiBaseUrl = () => {
     // This allows Vercel rewrites to proxy requests to the backend securely.
     const productionUrl = '';
 
-    // Development fallback (empty string for Vite proxy)
-    const developmentUrl = '';
+    // Development fallback
+    const developmentUrl = 'http://localhost:5000';
 
     // Determine which URL to use
     const isDevelopment = import.meta.env.DEV;
