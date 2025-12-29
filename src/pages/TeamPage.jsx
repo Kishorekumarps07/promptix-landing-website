@@ -164,12 +164,12 @@ const TeamPage = () => {
                         {member.role.split(' ')[0]}
                     </span>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-orange-400 transition-colors duration-300">
+                <div className="text-xl font-bold text-white mb-2 group-hover:text-orange-400 transition-colors duration-300">
                     {member.role}
-                </h3>
-                <p className="text-base font-medium text-gray-300">
+                </div>
+                <h3 className="text-base font-medium text-gray-300">
                     {member.name}
-                </p>
+                </h3>
             </div>
 
             {/* Focus Description */}

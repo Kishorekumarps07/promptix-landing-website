@@ -97,9 +97,9 @@ const BlogPage = () => {
                                             {post.category}
                                         </span>
 
-                                        <h2 className="text-xl font-bold text-white mb-3 group-hover:text-orange-400 transition-colors duration-300 line-clamp-2">
+                                        <h3 className="text-xl font-bold text-white mb-3 group-hover:text-orange-400 transition-colors duration-300 line-clamp-2">
                                             {post.title}
-                                        </h2>
+                                        </h3>
                                         <p className="text-gray-400 text-sm leading-relaxed mb-6 line-clamp-2 flex-grow">
                                             {post.excerpt}
                                         </p>
@@ -124,9 +124,9 @@ const BlogPage = () => {
                         viewport={{ once: true }}
                         className="bg-gradient-to-r from-orange-500/10 to-purple-500/10 border border-orange-500/20 rounded-2xl p-8 md:p-12 text-center"
                     >
-                        <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+                        <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
                             More Insights Coming Soon
-                        </h3>
+                        </h2>
                         <p className="text-gray-400 max-w-2xl mx-auto">
                             We're constantly sharing new insights, tips, and industry trends. Stay tuned for more articles on technology, digital marketing, and education.
                         </p>

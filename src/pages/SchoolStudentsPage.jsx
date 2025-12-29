@@ -198,7 +198,7 @@ const SchoolStudentsPage = () => {
                                 className="flex flex-col items-center justify-center p-6 rounded-2xl bg-white/5 border border-white/10 text-center hover:shadow-[0_0_20px_rgba(249,115,22,0.1)] transition-shadow duration-300"
                             >
                                 <Icon className="w-10 h-10 text-orange-400 mb-3" />
-                                <span className="text-white font-medium">{skill.name}</span>
+                                <h3 className="text-white font-medium">{skill.name}</h3>
                             </motion.div>
                         );
                     })}
