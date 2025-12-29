@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import {
     Brain, Code, Lightbulb, Rocket, Users, Calendar, Puzzle, Sparkles, Target, Layers, ChevronRight, Home
@@ -6,6 +6,8 @@ import {
 import SEO from '../components/SEO';
 
 const SchoolStudentsPage = () => {
+    const [isMuted, setIsMuted] = useState(true);
+    const videoRef = useRef(null);
 
     const programs = [
         {
@@ -122,6 +124,47 @@ const SchoolStudentsPage = () => {
                         </div>
                     </motion.div>
                 </div>
+            </section>
+
+            {/* Inline Video Section */}
+            <section className="max-w-7xl mx-auto px-4 py-12 md:py-16">
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.3 }}
+                    className="relative max-w-[1200px] mx-auto"
+                >
+                    {/* Video Container */}
+                    <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-black/20">
+                        <video
+                            ref={videoRef}
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                            className="w-full h-auto aspect-video object-cover"
+                        >
+                            <source src="/Edu tech.mp4" type="video/mp4" />
+                            Your browser does not support the video tag.
+                        </video>
+
+                        {/* Custom Mute/Unmute Button */}
+                        <button
+                            onClick={() => {
+                                if (videoRef.current) {
+                                    videoRef.current.muted = !videoRef.current.muted;
+                                    setIsMuted(videoRef.current.muted);
+                                }
+                            }}
+                            className="absolute bottom-4 right-4 w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300 hover:scale-110 shadow-lg"
+                            aria-label={isMuted ? "Unmute video" : "Mute video"}
+                        >
+                            <span className="text-2xl" role="img" aria-hidden="true">
+                                {isMuted ? '🔇' : '🔊'}
+                            </span>
+                        </button>
+                    </div>
+                </motion.div>
             </section>
 
             {/* Programs Section */}
