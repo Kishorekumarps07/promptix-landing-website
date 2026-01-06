@@ -12,14 +12,10 @@ const EventsPage = () => {
     useEffect(() => {
         const fetchEvents = async () => {
             try {
-                // Use (dev) proxy or (prod) direct URL
-                const apiUrl = import.meta.env.PROD
-                    ? 'https://promptixcrm.vercel.app/api/events'
-                    : '/crm-api/events';
-
-                const response = await fetch(apiUrl);
+                // Backend now enables CORS for localhost and prod, so we use direct URL everywhere
+                const response = await fetch('https://promptixcrm.vercel.app/api/events');
                 if (!response.ok) {
-                    throw new Error('Failed to fetch events');
+                    throw new Error(`Failed to fetch events: ${response.status} ${response.statusText}`);
                 }
                 const data = await response.json();
 
