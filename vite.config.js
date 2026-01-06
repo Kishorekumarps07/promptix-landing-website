@@ -9,6 +9,11 @@ export default defineConfig({
       '/api': {
         target: 'http://localhost:5000',
         changeOrigin: true,
+      },
+      '/crm-api': {
+        target: 'https://promptixcrm.vercel.app/api',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/crm-api/, '')
       }
     }
   }

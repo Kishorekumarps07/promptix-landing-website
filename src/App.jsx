@@ -10,6 +10,7 @@ import SchoolStudentsPage from './pages/SchoolStudentsPage';
 import CollegeStudentsPage from './pages/CollegeStudentsPage';
 import ContactPage from './pages/ContactPage';
 import TeamPage from './pages/TeamPage';
+import EventsPage from './pages/EventsPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import TermsOfServicePage from './pages/TermsOfServicePage';
 import ApplyPage from './pages/ApplyPage';
@@ -36,6 +37,7 @@ function App() {
 
                     <Route path="/students/schools" element={<SchoolStudentsPage />} />
                     <Route path="/students/colleges" element={<CollegeStudentsPage />} />
+                    <Route path="/events" element={<EventsPage />} />
                     <Route path="/contact" element={<ContactPage />} />
                     <Route path="/company/team" element={<TeamPage />} />
                     <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
