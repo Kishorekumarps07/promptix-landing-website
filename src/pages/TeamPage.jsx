@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Users, Lightbulb, Target, TrendingUp } from 'lucide-react';
+import { Users, Lightbulb, Target, TrendingUp, User } from 'lucide-react';
 import TeamMemberModal from '../components/TeamMemberModal';
 import SEO from '../components/SEO';
 
@@ -11,7 +11,7 @@ const TeamPage = () => {
     const teamMembers = [
         {
             name: 'MD Jaffer',
-            role: 'Founder & Business Strategist',
+            role: 'Founder & CEO',
             image: '/images/team/md-jaffer.png',
             focus: 'Driving business strategy, partnerships, and long-term growth vision for PromptiX.',
             highlights: ['Business Strategy', 'Growth Planning', 'Partnerships'],
@@ -20,27 +20,11 @@ const TeamPage = () => {
             tools: ['Business Analytics', 'Strategic Planning', 'Partnership Development'],
             linkedin: null
         },
-        {
-            name: 'PRANITHA R',
-            role: 'CEO & AI Developer',
-            image: '/images/team/pranitha-r.png',
-            focus: 'AI strategy, business vision, and driving innovation across all solutions',
-            responsibilities: [
-                'AI Project Building',
-                'AI Strategy',
-                'AI Workshops',
-                'Prompt Engineering',
-                'AI Automations'
-            ],
-            highlights: ['AI Strategy', 'Product Vision', 'Business Growth'],
-            bio: 'Leading PromptiX with a vision to democratize AI and cutting-edge technology for businesses of all sizes. With over a decade of experience in artificial intelligence and digital transformation, focused on building scalable systems that empower teams and drive sustainable growth.',
-            skills: ['AI Strategy', 'Business Development', 'Product Management', 'Team Leadership', 'Digital Transformation'],
-            tools: ['ChatGPT', 'Claude', 'Gemini', 'Strategic Planning Tools', 'Analytics Platforms'],
-            linkedin: null // Placeholder for LinkedIn URL
-        },
+
         {
             name: 'Kishore Kumar P S',
             role: 'Full Stack Developer',
+            badge: 'Developer',
             image: '/images/team/kishore-kumar.png',
             focus: 'Building scalable web applications with modern frameworks and cloud infrastructure',
             highlights: [
@@ -58,21 +42,11 @@ const TeamPage = () => {
             tools: ['React', 'Next.js', 'Node.js', 'AWS', 'Docker', 'MongoDB', 'PostgreSQL', 'Git'],
             linkedin: null
         },
+
         {
-            name: 'Janarthanan V',
-            role: 'Senior UI/UX Developer',
-            image: '/images/team/janarthanan-v.png',
-            focus: 'Creating stunning visual identities and user interfaces that captivate audiences',
-            highlights: ['Brand Design', 'UI/UX', 'Visual Identity'],
-            bio: 'Crafting visual experiences that are both beautiful and functional. Specializing in brand identity, user interface design, and creative direction. Every design tells a story and creates an emotional connection with the audience.',
-            skills: ['Brand Design', 'UI/UX Design', 'Visual Identity', 'Typography', 'Color Theory', 'Design Systems'],
-            tools: ['Figma', 'Adobe Illustrator', 'Adobe Photoshop', 'Adobe After Effects', 'Sketch', 'InVision'],
-            linkedin: null
-        },
-        {
-            name: 'Kaviarasan S',
+            name: 'Unknown',
             role: 'Graphics Designer & Digital Marketer',
-            image: '/images/team/kaviarasan-s.png',
+            image: null,
             focus: 'Designing engaging marketing materials and social media content that converts',
             highlights: ['Marketing Design', 'Social Media', 'Content Creation'],
             bio: 'Bringing ideas to life through compelling visual content. Focused on creating marketing materials, social media graphics, and digital assets that drive engagement and conversions. Passionate about staying ahead of design trends and delivering work that stands out.',
@@ -143,25 +117,30 @@ const TeamPage = () => {
             }}
         >
             {/* Image (if available) - Centered and larger for impact */}
-            {member.image && (
-                <div className="flex justify-center mb-6">
-                    <div className="relative w-32 h-32 rounded-full overflow-hidden border-2 border-orange-500/50 shadow-[0_0_20px_rgba(249,115,22,0.3)] group-hover:scale-105 transition-transform duration-300 group-hover:border-orange-500">
+            {/* Image (if available) or Placeholder - Centered and larger for impact */}
+            <div className="flex justify-center mb-6">
+                <div className="relative w-32 h-32 rounded-full overflow-hidden border-2 border-orange-500/50 shadow-[0_0_20px_rgba(249,115,22,0.3)] group-hover:scale-105 transition-transform duration-300 group-hover:border-orange-500 bg-navy-900">
+                    {member.image ? (
                         <img
                             src={member.image}
                             alt={`${member.name} - ${member.role} at PromptiX`}
                             className="w-full h-full object-cover"
                         />
-                        {/* Overlay shine effect */}
-                        <div className="absolute inset-0 bg-gradient-to-tr from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    </div>
+                    ) : (
+                        <div className="w-full h-full flex items-center justify-center bg-white/5">
+                            <User className="w-16 h-16 text-gray-400 group-hover:text-orange-500 transition-colors duration-300" />
+                        </div>
+                    )}
+                    {/* Overlay shine effect */}
+                    <div className="absolute inset-0 bg-gradient-to-tr from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
-            )}
+            </div>
 
             {/* Role Badge */}
             <div className={`mb-4 ${member.image ? 'text-center' : ''}`}>
                 <div className="inline-block px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 mb-3">
                     <span className="text-xs font-semibold text-orange-400">
-                        {member.role.split(' ')[0]}
+                        {member.badge || member.role.split(' ')[0]}
                     </span>
                 </div>
                 <div className="text-xl font-bold text-white mb-2 group-hover:text-orange-400 transition-colors duration-300">
@@ -241,7 +220,7 @@ const TeamPage = () => {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                    className="flex flex-wrap justify-center gap-8"
                 >
                     {regularTeam.map((member, index) => renderMemberCard(member, index + 2))}
                 </motion.div>
