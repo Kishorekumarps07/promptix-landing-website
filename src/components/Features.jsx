@@ -16,12 +16,6 @@ const Features = () => {
             description:
                 'Data-driven marketing strategies that deliver results. From SEO and paid ads to social media and content marketing, we help brands grow and thrive online.',
         },
-        {
-            icon: GraduationCap,
-            title: 'EdTech & Learning Programs',
-            description:
-                'Industry-focused internships, hands-on workshops, and AI training programs that bridge the gap between academic learning and real-world skills.',
-        },
     ];
 
     const containerVariants = {
@@ -58,8 +52,8 @@ const Features = () => {
                         Built for Performance
                     </h2>
                     <p className="text-xl text-navy-600 max-w-2xl mx-auto">
-                        PromptiX delivers tech solutions, digital marketing, and EdTech programs
-                        that empower businesses and students to succeed in the digital age.
+                        PromptiX delivers tech solutions and digital marketing services
+                        that empower businesses to succeed in the digital age.
                     </p>
                 </motion.div>
             </div>

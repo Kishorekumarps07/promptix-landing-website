@@ -26,7 +26,7 @@ const BlogPage = () => {
         },
         {
             id: 3,
-            category: 'EdTech',
+            category: 'Tech',
             title: 'In-Demand Skill Domains for Students',
             excerpt: 'Choosing the right domain today can define your career tomorrow.',
             thumbnail: '/images/blog/students-skills.jpg',
@@ -42,8 +42,8 @@ const BlogPage = () => {
             <div className="min-h-screen bg-navy-950 pt-20">
                 <SEO
                     title="Insights & Articles"
-                    description="Explore the latest insights, trends, and articles on AI, Digital Marketing, and EdTech from the PromptiX team."
-                    keywords="tech blog, AI trends, digital marketing tips, edtech insights, PromptiX blog"
+                    description="Explore the latest insights, trends, and articles on AI and Digital Marketing from the PromptiX team."
+                    keywords="tech blog, AI trends, digital marketing tips, PromptiX blog"
                     url="/blog"
                 />
                 {/* Hero Section */}
@@ -62,7 +62,7 @@ const BlogPage = () => {
                                 Insights & <span className="text-orange-500">Articles</span>
                             </h1>
                             <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
-                                Tech, Digital Marketing & EdTech perspectives from PromptiX
+                                Tech & Digital Marketing perspectives from PromptiX
                             </p>
                         </motion.div>
                     </div>

@@ -10,7 +10,7 @@ const About = () => {
         'Enhance customer experience across all touchpoints',
     ];
 
-    // Floating icons representing Tech, Marketing, and EdTech
+    // Floating icons representing Tech and Marketing
     const floatingIcons = [
         { Icon: Code },
         { Icon: Cloud },

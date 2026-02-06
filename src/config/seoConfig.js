@@ -4,9 +4,9 @@
 
 export const seoConfig = {
     home: {
-        title: 'AI-Driven Solutions for Business & Students',
-        description: 'PromptiX delivers cutting-edge AI solutions, digital marketing, and transformative learning programs for businesses and students.',
-        keywords: 'AI solutions, digital marketing, business automation, student programs, AI training, PromptiX'
+        title: 'AI-Driven Solutions for Business & Growth',
+        description: 'PromptiX delivers cutting-edge AI solutions and digital marketing services for businesses looking to innovate and grow.',
+        keywords: 'AI solutions, digital marketing, business automation, AI training, PromptiX'
     },
 
     businessSolutions: {

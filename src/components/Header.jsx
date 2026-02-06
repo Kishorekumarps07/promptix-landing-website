@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, Phone, ArrowRight, GraduationCap, School } from 'lucide-react';
+import { ChevronDown, Phone, ArrowRight } from 'lucide-react';
 import Logo from './Logo';
 import { CONTACT } from '../constants/contact';
 
@@ -51,29 +51,7 @@ const Header = () => {
                 { name: 'Digital Marketing', href: '/digital-marketing' },
             ],
         },
-        {
-            name: 'Students & Institutions',
-            hasDropdown: true,
-            type: 'mega',
-            items: [
-                {
-                    title: 'School Students & Schools',
-                    subtitle: 'Foundational skills for the future',
-                    bullets: ['Coding basics', 'AI awareness', 'Logical thinking', 'School workshops'],
-                    cta: 'Explore School Programs →',
-                    href: '/students/schools',
-                    icon: School
-                },
-                {
-                    title: 'College Students & Colleges',
-                    subtitle: 'Industry-ready skills & careers',
-                    bullets: ['Internships', 'Real-world projects', 'AI / Full Stack / Marketing', 'College partnerships'],
-                    cta: 'Explore College Programs →',
-                    href: '/students/colleges',
-                    icon: GraduationCap
-                }
-            ]
-        },
+
         {
             name: 'Company',
             hasDropdown: true,
@@ -196,16 +174,16 @@ const Header = () => {
             animate={{ y: 0 }}
             transition={{ duration: 0.6 }}
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-                ? 'bg-navy-950/95 backdrop-blur-md shadow-lg py-3 border-b border-navy-800'
-                : 'bg-transparent py-5 border-transparent'
+                ? 'bg-navy-950/95 backdrop-blur-md shadow-lg py-4 border-b border-navy-800'
+                : 'bg-transparent py-6 border-transparent'
                 }`}
         >
             <nav className="max-w-7xl mx-auto px-4" ref={dropdownRef}>
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between h-16">
                     {/* Logo */}
-                    <div>
-                        <a href="/">
-                            <Logo />
+                    <div className="flex items-center">
+                        <a href="/" className="flex items-center">
+                            <Logo className="!h-16" />
                         </a>
                     </div>
 
@@ -459,7 +437,7 @@ const Header = () => {
                                 <div className="flex flex-col h-full">
                                     {/* Drawer Header */}
                                     <div className="flex items-center justify-between p-6 border-b border-white/10">
-                                        <Logo className="text-white scale-90" />
+                                        <Logo className="!h-16" />
                                         <button
                                             onClick={() => setIsMenuOpen(false)}
                                             className="text-white p-2 hover:bg-white/10 rounded-lg transition-colors"

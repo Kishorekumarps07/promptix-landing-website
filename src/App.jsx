@@ -6,8 +6,7 @@ import Home from './pages/Home';
 import BusinessSolutionsPage from './pages/BusinessSolutionsPage';
 import DigitalMarketingPage from './pages/DigitalMarketingPage';
 
-import SchoolStudentsPage from './pages/SchoolStudentsPage';
-import CollegeStudentsPage from './pages/CollegeStudentsPage';
+
 import ContactPage from './pages/ContactPage';
 import TeamPage from './pages/TeamPage';
 import EventsPage from './pages/EventsPage';
@@ -35,8 +34,7 @@ function App() {
                     <Route path="/business-solutions" element={<BusinessSolutionsPage />} />
                     <Route path="/digital-marketing" element={<DigitalMarketingPage />} />
 
-                    <Route path="/students/schools" element={<SchoolStudentsPage />} />
-                    <Route path="/students/colleges" element={<CollegeStudentsPage />} />
+
                     <Route path="/events" element={<EventsPage />} />
                     <Route path="/contact" element={<ContactPage />} />
                     <Route path="/company/team" element={<TeamPage />} />

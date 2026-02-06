@@ -53,6 +53,40 @@ const TeamPage = () => {
             skills: ['Marketing Design', 'Social Media Graphics', 'Content Creation', 'Motion Graphics', 'Illustration'],
             tools: ['Canva', 'Adobe Photoshop', 'Adobe Illustrator', 'Figma', 'Adobe Premiere Pro', 'Procreate'],
             linkedin: null
+        },
+
+        {
+            name: 'Kamalesh Kumar M S',
+            role: 'Full Stack Developer',
+            badge: 'Developer',
+            image: '/images/team/kamalesh-kumar.png',
+            focus: 'Building scalable web applications with modern frameworks and cloud infrastructure',
+            highlights: [
+                'Frontend Development',
+                'Backend Development',
+                'Full Stack Solutions'
+            ],
+            bio: 'Passionate full stack developer dedicated to creating robust and scalable web applications. Expertise in both frontend and backend technologies ensures seamless end-to-end development and delivery of high-quality solutions.',
+            skills: [
+                'Frontend (HTML, CSS, JavaScript, React)',
+                'Backend (Node.js)',
+                'Database Management',
+                'API Development'
+            ],
+            tools: ['React', 'Node.js', 'Express', 'MongoDB', 'Git', 'VS Code'],
+            linkedin: null
+        },
+
+        {
+            name: 'Suriya Sekar S',
+            role: 'Admin & Backend',
+            image: '/images/team/suriya-sekar.jpg',
+            focus: 'Managing operations and building robust backend systems to support business growth',
+            highlights: ['Operations Management', 'Backend Development', 'System Administration'],
+            bio: 'Ensuring operational excellence through efficient administrative management while developing and maintaining backend infrastructure. Expertise in both business operations and technical implementation supports seamless organizational growth.',
+            skills: ['Operations Management', 'Backend Development', 'Node.js', 'Database Management', 'System Administration'],
+            tools: ['Node.js', 'Express', 'MongoDB', 'Microsoft Office', 'Google Workspace'],
+            linkedin: null
         }
     ];
 
@@ -107,7 +141,7 @@ const TeamPage = () => {
             key={index}
             variants={itemVariants}
             onClick={() => setSelectedMember(member)}
-            className="group relative p-6 rounded-2xl border border-white/10 bg-white/10 backdrop-blur-md hover:bg-white/15 hover:border-orange-500/30 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-500/20 cursor-pointer flex flex-col h-full"
+            className="group relative p-8 rounded-3xl border border-white/5 bg-gradient-to-br from-white/[0.08] to-white/[0.02] backdrop-blur-xl hover:from-white/[0.12] hover:to-white/[0.05] hover:border-orange-500/40 transition-all duration-500 hover:-translate-y-3 hover:shadow-[0_20px_60px_-15px_rgba(249,115,22,0.4)] cursor-pointer flex flex-col h-full overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-br before:from-orange-500/5 before:to-transparent before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500"
             role="button"
             tabIndex={0}
             onKeyDown={(e) => {
@@ -118,8 +152,9 @@ const TeamPage = () => {
         >
             {/* Image (if available) - Centered and larger for impact */}
             {/* Image (if available) or Placeholder - Centered and larger for impact */}
-            <div className="flex justify-center mb-6">
-                <div className="relative w-32 h-32 rounded-full overflow-hidden border-2 border-orange-500/50 shadow-[0_0_20px_rgba(249,115,22,0.3)] group-hover:scale-105 transition-transform duration-300 group-hover:border-orange-500 bg-navy-900">
+            <div className="flex justify-center mb-8 relative z-10">
+                <div className="relative w-36 h-36 rounded-full overflow-hidden border-4 border-orange-500/30 shadow-[0_0_40px_rgba(249,115,22,0.25)] group-hover:scale-110 group-hover:border-orange-500/60 group-hover:shadow-[0_0_60px_rgba(249,115,22,0.4)] transition-all duration-500 bg-navy-900">
+
                     {member.image ? (
                         <img
                             src={member.image}
@@ -137,31 +172,31 @@ const TeamPage = () => {
             </div>
 
             {/* Role Badge */}
-            <div className={`mb-4 ${member.image ? 'text-center' : ''}`}>
-                <div className="inline-block px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 mb-3">
-                    <span className="text-xs font-semibold text-orange-400">
+            <div className={`mb-6 ${member.image ? 'text-center' : ''} relative z-10`}>
+                <div className="inline-block px-4 py-1.5 rounded-full bg-gradient-to-r from-orange-500/20 to-orange-600/10 border border-orange-500/30 mb-4 backdrop-blur-sm">
+                    <span className="text-xs font-bold tracking-wide text-orange-400 uppercase">
                         {member.badge || member.role.split(' ')[0]}
                     </span>
                 </div>
-                <div className="text-xl font-bold text-white mb-2 group-hover:text-orange-400 transition-colors duration-300">
+                <div className="text-2xl font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-orange-400 group-hover:to-orange-500 transition-all duration-500">
                     {member.role}
                 </div>
-                <h3 className="text-base font-medium text-gray-300">
+                <h3 className="text-lg font-semibold text-gray-300/90">
                     {member.name}
                 </h3>
             </div>
 
             {/* Focus Description */}
-            <p className="text-gray-400 text-sm leading-relaxed mb-4 flex-grow">
+            <p className="text-gray-400/90 text-sm leading-relaxed mb-6 flex-grow relative z-10">
                 {member.focus}
             </p>
 
             {/* Skill Highlights */}
-            <div className="space-y-2 pt-4 border-t border-white/5">
+            <div className="space-y-3 pt-6 border-t border-white/10 relative z-10">
                 {member.highlights.map((highlight, i) => (
-                    <div key={i} className="flex items-center gap-2">
-                        <div className="w-1 h-1 rounded-full bg-orange-500 group-hover:shadow-[0_0_6px_rgba(249,115,22,0.6)] transition-shadow" />
-                        <span className="text-xs text-gray-300">{highlight}</span>
+                    <div key={i} className="flex items-center gap-3">
+                        <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 group-hover:shadow-[0_0_8px_rgba(249,115,22,0.8)] group-hover:scale-125 transition-all duration-300" />
+                        <span className="text-sm text-gray-300/80 group-hover:text-gray-200 transition-colors duration-300">{highlight}</span>
                     </div>
                 ))}
             </div>
@@ -220,7 +255,7 @@ const TeamPage = () => {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
-                    className="flex flex-wrap justify-center gap-8"
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
                 >
                     {regularTeam.map((member, index) => renderMemberCard(member, index + 2))}
                 </motion.div>

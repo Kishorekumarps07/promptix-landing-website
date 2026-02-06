@@ -133,10 +133,10 @@ const Hero = () => {
                         transition={{ duration: 0.6, delay: 0.2 }}
                         className="heading-xl text-white mb-6"
                     >
-                        A Tech, Digital Marketing
+                        A Tech & Digital Marketing
                         <br />
                         <span className="text-orange-400">
-                            & EdTech Company
+                            Company
                         </span>
                     </motion.h1>
 
@@ -147,8 +147,8 @@ const Hero = () => {
                         transition={{ duration: 0.6, delay: 0.4 }}
                         className="text-xl md:text-2xl text-gray-100 mb-12 max-w-3xl mx-auto leading-relaxed"
                     >
-                        We're PromptiX — a Tech Solutions, Digital Marketing, and EdTech company shaping ideas into impact.
-                        From AI-powered products to growth marketing and future-ready learning, we build, promote, and empower.
+                        We're PromptiX — a Tech Solutions and Digital Marketing company shaping ideas into impact.
+                        From AI-powered products to growth marketing, we build and promote innovative solutions.
                     </motion.p>
 
                     {/* CTA Button */}

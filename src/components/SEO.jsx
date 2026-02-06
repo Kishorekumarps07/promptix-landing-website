@@ -6,7 +6,7 @@ const SEO = ({ title, description, keywords, image, url }) => {
     const defaultDescription = 'PromptiX provides cutting-edge AI business solutions, digital marketing services, and industry-aligned internship programs for students.';
     const defaultKeywords = 'AI solutions, business automation, digital marketing, internships, student programs, PromptiX';
     const siteUrl = 'https://promptix.pro';
-    const defaultImage = 'https://promptix.pro/promptix-logo-v2.png';
+    const defaultImage = 'https://promptix.pro/promptix-logo-new.png';
 
     const fullTitle = title ? `${title} | PromptiX` : siteTitle;
 
