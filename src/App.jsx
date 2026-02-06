@@ -24,60 +24,66 @@ import ProtectedRoute from './components/ProtectedRoute';
 import ContactsManagementPage from './pages/admin/ContactsManagementPage';
 import InternshipsManagementPage from './pages/admin/InternshipsManagementPage';
 
+import SmoothScroll from './components/SmoothScroll';
+import CustomCursor from './components/CustomCursor';
+
 function App() {
     return (
-        <div className="min-h-screen bg-gray-50 flex flex-col">
-            <Header />
-            <main className="flex-grow">
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/business-solutions" element={<BusinessSolutionsPage />} />
-                    <Route path="/digital-marketing" element={<DigitalMarketingPage />} />
+        <SmoothScroll>
+            <CustomCursor />
+            <div className="min-h-screen bg-gray-50 flex flex-col">
+                <Header />
+                <main className="flex-grow">
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/business-solutions" element={<BusinessSolutionsPage />} />
+                        <Route path="/digital-marketing" element={<DigitalMarketingPage />} />
 
 
-                    <Route path="/events" element={<EventsPage />} />
-                    <Route path="/contact" element={<ContactPage />} />
-                    <Route path="/company/team" element={<TeamPage />} />
-                    <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
-                    <Route path="/terms-of-service" element={<TermsOfServicePage />} />
-                    <Route path="/apply" element={<ApplyPage />} />
-                    <Route path="/apply-success" element={<ApplySuccessPage />} />
-                    <Route path="/blog" element={<BlogPage />} />
-                    <Route path="/blog/how-ai-is-redefining-the-future" element={<BlogPostAIEra />} />
-                    <Route path="/blog/the-smart-way-to-build-a-digital-brand" element={<BlogPostDigitalBranding />} />
-                    <Route path="/blog/in-demand-skill-domains-for-students" element={<BlogPostFutureDomains />} />
+                        <Route path="/events" element={<EventsPage />} />
+                        <Route path="/contact" element={<ContactPage />} />
+                        <Route path="/company/team" element={<TeamPage />} />
+                        <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+                        <Route path="/terms-of-service" element={<TermsOfServicePage />} />
+                        <Route path="/apply" element={<ApplyPage />} />
+                        <Route path="/apply-success" element={<ApplySuccessPage />} />
+                        <Route path="/blog" element={<BlogPage />} />
+                        <Route path="/blog/how-ai-is-redefining-the-future" element={<BlogPostAIEra />} />
+                        <Route path="/blog/the-smart-way-to-build-a-digital-brand" element={<BlogPostDigitalBranding />} />
+                        <Route path="/blog/in-demand-skill-domains-for-students" element={<BlogPostFutureDomains />} />
 
-                    {/* Admin Routes */}
-                    <Route path="/admin/login" element={<AdminLoginPage />} />
-                    <Route path="/company/admin/login" element={<AdminLoginPage />} />
-                    <Route
-                        path="/admin/dashboard"
-                        element={
-                            <ProtectedRoute>
-                                <AdminDashboard />
-                            </ProtectedRoute>
-                        }
-                    />
-                    <Route
-                        path="/admin/contacts"
-                        element={
-                            <ProtectedRoute>
-                                <ContactsManagementPage />
-                            </ProtectedRoute>
-                        }
-                    />
-                    <Route
-                        path="/admin/internships"
-                        element={
-                            <ProtectedRoute>
-                                <InternshipsManagementPage />
-                            </ProtectedRoute>
-                        }
-                    />
-                </Routes>
-            </main>
-            <Footer />
-        </div>
+                        {/* Admin Routes */}
+                        <Route path="/admin/login" element={<AdminLoginPage />} />
+                        <Route path="/company/admin/login" element={<AdminLoginPage />} />
+                        <Route
+                            path="/admin/dashboard"
+                            element={
+                                <ProtectedRoute>
+                                    <AdminDashboard />
+                                </ProtectedRoute>
+                            }
+                        />
+                        <Route
+                            path="/admin/contacts"
+                            element={
+                                <ProtectedRoute>
+                                    <ContactsManagementPage />
+                                </ProtectedRoute>
+                            }
+                        />
+                        <Route
+                            path="/admin/internships"
+                            element={
+                                <ProtectedRoute>
+                                    <InternshipsManagementPage />
+                                </ProtectedRoute>
+                            }
+                        />
+                    </Routes>
+                </main>
+                <Footer />
+            </div>
+        </SmoothScroll>
     );
 }
 

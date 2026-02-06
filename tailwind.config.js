@@ -34,7 +34,8 @@ export default {
                 },
             },
             fontFamily: {
-                sans: ['Inter', 'system-ui', 'sans-serif'],
+                sans: ['"Nunito Sans"', 'system-ui', 'sans-serif'],
+                display: ['"Zalando Sans Expanded"', 'sans-serif'],
             },
             animation: {
                 'float': 'float 6s ease-in-out infinite',

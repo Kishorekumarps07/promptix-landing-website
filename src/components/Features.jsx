@@ -1,6 +1,71 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Code, TrendingUp, GraduationCap } from 'lucide-react';
+import React, { useRef } from 'react';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { Code, TrendingUp } from 'lucide-react';
+
+const TiltCard = ({ children, className }) => {
+    const ref = useRef(null);
+
+    const x = useMotionValue(0);
+    const y = useMotionValue(0);
+
+    const mouseX = useSpring(x);
+    const mouseY = useSpring(y);
+
+    const rotateX = useTransform(mouseY, [-0.5, 0.5], ["17.5deg", "-17.5deg"]);
+    const rotateY = useTransform(mouseX, [-0.5, 0.5], ["-17.5deg", "17.5deg"]);
+
+    const handleMouseMove = (e) => {
+        const rect = ref.current.getBoundingClientRect();
+
+        const width = rect.width;
+        const height = rect.height;
+
+        const mouseXFromCenter = e.clientX - rect.left - width / 2;
+        const mouseYFromCenter = e.clientY - rect.top - height / 2;
+
+        const xPct = mouseXFromCenter / width;
+        const yPct = mouseYFromCenter / height;
+
+        x.set(xPct);
+        y.set(yPct);
+    };
+
+    const handleMouseLeave = () => {
+        x.set(0);
+        y.set(0);
+    };
+
+    return (
+        <motion.div
+            ref={ref}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+            style={{
+                rotateX,
+                rotateY,
+                transformStyle: "preserve-3d",
+            }}
+            className={className}
+        >
+            <div
+                style={{
+                    transform: "translateZ(50px)",
+                    transformStyle: "preserve-3d",
+                }}
+                className="h-full"
+            >
+                {children}
+            </div>
+            <motion.div
+                style={{
+                    transform: "translateZ(25px)",
+                    opacity: useTransform(mouseX, [-0.5, 0.5], [0, 0.5])
+                }}
+                className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent pointer-events-none rounded-2xl"
+            />
+        </motion.div>
+    );
+};
 
 const Features = () => {
     const features = [
@@ -40,7 +105,7 @@ const Features = () => {
     };
 
     return (
-        <section id="services" className="section-container bg-slate-50">
+        <section id="services" className="section-container bg-slate-50 [perspective:1000px]">
             <div className="text-center mb-16">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -63,7 +128,7 @@ const Features = () => {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                className="grid grid-cols-1 md:grid-cols-3 gap-8"
+                className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto"
             >
                 {features.map((feature, index) => {
                     const Icon = feature.icon;
@@ -71,23 +136,27 @@ const Features = () => {
                         <motion.div
                             key={index}
                             variants={itemVariants}
-                            className="group relative bg-white p-8 rounded-2xl border border-gray-200 hover:border-orange-300 transition-all duration-300 hover:shadow-xl hover:shadow-orange-500/10 flex flex-col"
+                            className="h-full"
                         >
-                            {/* Icon container */}
-                            <div className="mb-6 inline-flex items-center justify-center w-16 h-16 rounded-xl bg-navy-950 text-white group-hover:bg-orange-500 transition-colors duration-300">
-                                <Icon className="w-8 h-8" />
-                            </div>
+                            <TiltCard
+                                className="group relative bg-white p-8 rounded-2xl border border-gray-200 hover:border-orange-300 transition-colors duration-300 shadow-lg hover:shadow-xl hover:shadow-orange-500/10 flex flex-col h-full [perspective:1000px]"
+                            >
+                                {/* Icon container */}
+                                <div className="mb-6 inline-flex items-center justify-center w-16 h-16 rounded-xl bg-navy-950 text-white group-hover:bg-orange-500 transition-colors duration-300 shadow-md [transform-style:preserve-3d] group-hover:[transform:translateZ(10px)]">
+                                    <Icon className="w-8 h-8" />
+                                </div>
 
-                            {/* Content */}
-                            <h3 className="text-2xl font-bold text-navy-950 mb-3">
-                                {feature.title}
-                            </h3>
-                            <p className="text-navy-600 leading-relaxed">
-                                {feature.description}
-                            </p>
+                                {/* Content */}
+                                <h3 className="text-2xl font-bold text-navy-950 mb-3 [transform-style:preserve-3d] group-hover:[transform:translateZ(8px)]">
+                                    {feature.title}
+                                </h3>
+                                <p className="text-navy-600 leading-relaxed [transform-style:preserve-3d] group-hover:[transform:translateZ(6px)]">
+                                    {feature.description}
+                                </p>
 
-                            {/* Hover accent */}
-                            <div className="absolute top-0 right-0 w-24 h-24 bg-orange-500/5 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                {/* Hover accent */}
+                                <div className="absolute top-0 right-0 w-24 h-24 bg-orange-500/5 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
+                            </TiltCard>
                         </motion.div>
                     );
                 })}

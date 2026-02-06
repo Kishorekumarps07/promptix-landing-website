@@ -1,8 +1,12 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { CheckCircle2, Code, Cloud, Database, TrendingUp, Target, BarChart, GraduationCap, Lightbulb } from 'lucide-react';
+import MagneticButton from './MagneticButton';
 
 const About = () => {
+    const { scrollYProgress } = useScroll();
+    const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
+
     const values = [
         'Accelerate growth with scalable technology solutions',
         'Streamline operations through intelligent automation',
@@ -23,22 +27,18 @@ const About = () => {
     ];
 
     return (
-        <motion.section
+        <section
             id="about"
-            className="bg-slate-50"
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
+            className="bg-slate-50 relative overflow-hidden py-20 lg:py-32"
         >
-            <div className="section-container">
+            <div className="section-container relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     {/* Left: Content */}
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
+                        viewport={{ once: true, margin: "-100px" }}
+                        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                     >
                         <h2 className="heading-lg text-navy-950 mb-6">
                             Why Transforming Your Business
@@ -59,22 +59,21 @@ const About = () => {
                                     initial={{ opacity: 0, x: -20 }}
                                     whileInView={{ opacity: 1, x: 0 }}
                                     viewport={{ once: true }}
-                                    transition={{ duration: 0.4, delay: index * 0.1 }}
-                                    className="flex items-start gap-3"
+                                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                                    className="flex items-start gap-3 group"
                                 >
-                                    <CheckCircle2 className="w-6 h-6 text-orange-500 flex-shrink-0 mt-0.5" />
-                                    <span className="text-slate-700 font-medium">{value}</span>
+                                    <div className="mt-1 transition-transform group-hover:scale-110 duration-300">
+                                        <CheckCircle2 className="w-5 h-5 text-orange-500 flex-shrink-0" />
+                                    </div>
+                                    <span className="text-slate-700 font-medium group-hover:text-navy-900 transition-colors">{value}</span>
                                 </motion.div>
                             ))}
                         </div>
                     </motion.div>
 
-                    {/* Right: Floating Icons Grid */}
+                    {/* Right: Floating Icons Grid with Parallax */}
                     <motion.div
-                        initial={{ opacity: 0, x: 30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
+                        style={{ y }}
                         className="relative"
                     >
                         {/* Desktop: 3-column grid with centered layout */}
@@ -82,23 +81,27 @@ const About = () => {
                             {floatingIcons.map((item, index) => {
                                 const { Icon } = item;
                                 return (
-                                    <motion.div
-                                        key={index}
-                                        animate={{
-                                            y: [0, -12, 0],
-                                        }}
-                                        transition={{
-                                            duration: 3 + (index % 3) * 0.5,
-                                            delay: index * 0.15,
-                                            repeat: Infinity,
-                                            ease: 'easeInOut',
-                                        }}
-                                        className="w-full flex justify-center"
-                                    >
-                                        <div className="w-20 h-20 rounded-2xl bg-white backdrop-blur-sm border border-slate-200 shadow-lg hover:shadow-xl hover:scale-110 hover:border-orange-200 transition-all duration-300 flex items-center justify-center">
-                                            <Icon className="w-9 h-9 text-orange-500" />
-                                        </div>
-                                    </motion.div>
+                                    <MagneticButton key={index} strength={0.2} className="w-full flex justify-center">
+                                        <motion.div
+                                            initial={{ opacity: 0, scale: 0.8 }}
+                                            whileInView={{ opacity: 1, scale: 1 }}
+                                            viewport={{ once: true }}
+                                            transition={{
+                                                duration: 0.5,
+                                                delay: index * 0.1,
+                                                type: "spring",
+                                                stiffness: 100
+                                            }}
+                                            whileHover={{
+                                                y: -10,
+                                                transition: { duration: 0.3 }
+                                            }}
+                                        >
+                                            <div className="w-20 h-20 rounded-2xl bg-white/80 backdrop-blur-md border border-slate-200 shadow-lg hover:shadow-xl hover:border-orange-200 transition-all duration-300 flex items-center justify-center cursor-default">
+                                                <Icon className="w-9 h-9 text-orange-500" />
+                                            </div>
+                                        </motion.div>
+                                    </MagneticButton>
                                 );
                             })}
                         </div>
@@ -126,7 +129,7 @@ const About = () => {
                     </motion.div>
                 </div>
             </div>
-        </motion.section>
+        </section>
     );
 };
 

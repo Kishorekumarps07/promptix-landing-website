@@ -4,6 +4,7 @@ import Hero from '../components/Hero';
 import SEO from '../components/SEO';
 import Features from '../components/Features';
 import About from '../components/About';
+import MagneticButton from '../components/MagneticButton';
 
 const Home = () => {
     const [events, setEvents] = useState([]);
@@ -72,13 +73,15 @@ const Home = () => {
                                 Join our expert-led sessions to level up your skills. From hands-on workshops to insightful webinars, we have something for everyone.
                             </p>
                         </div>
-                        <a
-                            href="/events"
-                            className="flex items-center gap-2 text-white font-semibold hover:text-orange-400 transition-colors group"
-                        >
-                            View All Events
-                            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                        </a>
+                        <MagneticButton strength={0.3}>
+                            <a
+                                href="/events"
+                                className="flex items-center gap-2 text-white font-semibold hover:text-orange-400 transition-colors group px-4 py-2"
+                            >
+                                View All Events
+                                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                            </a>
+                        </MagneticButton>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
