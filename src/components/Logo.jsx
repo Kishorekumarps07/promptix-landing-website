@@ -3,7 +3,7 @@ const Logo = ({ className = '', size = 'default' }) => {
     const sizeClasses = {
         small: 'h-8',
         default: 'h-10 md:h-12',
-        large: 'h-20 md:h-24', // Adjusted for Footer
+        large: 'h-24 md:h-32', // Significantly large for Footer
     };
 
     const containerHeight = className.includes('h-') ? '' : sizeClasses[size];

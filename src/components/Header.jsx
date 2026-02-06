@@ -183,7 +183,7 @@ const Header = () => {
                     {/* Logo */}
                     <div className="flex items-center">
                         <a href="/" className="flex items-center">
-                            <Logo className="!h-10 md:!h-12 lg:!h-16" />
+                            <Logo className="!h-10 md:!h-14 lg:!h-16 transform scale-[1.8] md:scale-125 lg:scale-150 origin-left" />
                         </a>
                     </div>
 
@@ -374,7 +374,7 @@ const Header = () => {
                         {/* Small Get in Touch Pill */}
                         <a
                             href="/contact"
-                            className="px-4 py-3 rounded-full bg-orange-500 hover:bg-orange-600 text-white text-sm font-semibold transition-colors"
+                            className="btn-primary !px-5 !py-2 !text-sm whitespace-nowrap"
                         >
                             Contact
                         </a>
@@ -437,7 +437,7 @@ const Header = () => {
                                 <div className="flex flex-col h-full">
                                     {/* Drawer Header */}
                                     <div className="flex items-center justify-between p-6 border-b border-white/10">
-                                        <Logo className="!h-12" />
+                                        <Logo className="!h-20" />
                                         <button
                                             onClick={() => setIsMenuOpen(false)}
                                             className="text-white p-2 hover:bg-white/10 rounded-lg transition-colors"
@@ -545,7 +545,7 @@ const Header = () => {
                                         <a
                                             href="/contact"
                                             onClick={() => setIsMenuOpen(false)}
-                                            className="block w-full py-3 px-6 rounded-xl bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold text-center transition-all transform active:scale-95"
+                                            className="btn-primary block w-full text-center"
                                         >
                                             Get in Touch
                                         </a>
