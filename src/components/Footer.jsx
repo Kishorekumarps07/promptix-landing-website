@@ -39,7 +39,7 @@ const Footer = () => {
                     {/* Logo and description */}
                     <div className="lg:col-span-2 space-y-6">
                         <div className="transform transition-transform hover:scale-105 origin-left">
-                            <Logo size="large" className="text-white drop-shadow-[0_0_15px_rgba(249,115,22,0.2)]" />
+                            <Logo size="large" className="text-white drop-shadow-[0_0_15px_rgba(255,215,0,0.2)]" />
                         </div>
                         <p className="text-gray-400 leading-relaxed text-sm lg:text-base max-w-md">
                             PromptiX is at the forefront of the AI revolution, empowering businesses with

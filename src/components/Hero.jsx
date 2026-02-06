@@ -79,7 +79,7 @@ const Hero = () => {
                 transition={{ duration: 0.6, delay: 0.9, ease: 'easeOut' }}
                 className="text-center px-4"
             >
-                <div className="text-5xl md:text-6xl font-bold text-white mb-2">
+                <div className="text-4xl md:text-6xl font-bold text-white mb-2">
                     {formattedValue}
                 </div>
                 <div className="text-sm md:text-base text-gray-300 font-medium">{label}</div>
@@ -105,7 +105,7 @@ const Hero = () => {
     const title2 = "Company";
 
     return (
-        <section ref={containerRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-navy-950 pt-20 pb-14 md:pb-16 lg:pb-24">
+        <section ref={containerRef} className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-14 md:pb-16 lg:pb-24">
             {/* Background Video */}
             <div className="absolute inset-0 w-full h-full z-0">
                 <video
@@ -114,7 +114,7 @@ const Hero = () => {
                     muted
                     playsInline
                     preload="auto"
-                    className="absolute inset-0 w-full h-full object-cover"
+                    className="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-overlay"
                     poster="/video-poster.jpg"
                     onError={(e) => {
                         e.target.style.display = 'none';
@@ -126,16 +126,16 @@ const Hero = () => {
                 </video>
 
                 {/* Dark overlay for text readability */}
-                <div className="absolute inset-0 bg-gradient-to-b from-navy-950/65 via-navy-950/55 to-navy-950/75"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-navy-950/80 via-navy-950/60 to-navy-950/90"></div>
             </div>
 
             {/* Abstract geometric background with Parallax */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none z-[1]">
                 <FloatingShape delay={0} style={{ y: y1, rotate: rotate1 }} className="absolute top-20 right-20 opacity-20">
-                    <div className="w-64 h-64 rounded-full border-4 border-white/20 backdrop-blur-sm shadow-glass-white" />
+                    <div className="w-64 h-64 rounded-full border-4 border-orange-500/20 backdrop-blur-sm shadow-glass-gold" />
                 </FloatingShape>
                 <FloatingShape delay={1} style={{ y: y2, rotate: rotate2 }} className="absolute bottom-20 left-20 opacity-20">
-                    <div className="w-48 h-48 rounded-full border-4 border-orange-500/30 backdrop-blur-sm shadow-glass-orange" />
+                    <div className="w-48 h-48 rounded-full border-4 border-teal-500/30 backdrop-blur-sm shadow-glass-teal" />
                 </FloatingShape>
                 <FloatingShape delay={2} style={{ y: y3 }} className="absolute top-1/2 left-1/4 opacity-10">
                     <div className="w-32 h-32 rotate-45 border-4 border-white/10 backdrop-blur-sm" />
@@ -149,9 +149,9 @@ const Hero = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
-                        className="inline-flex items-center gap-2 bg-orange-500/90 text-white px-4 py-2 rounded-full mb-8 border border-orange-400 shadow-lg shadow-orange-500/20 backdrop-blur-md"
+                        className="inline-flex items-center gap-2 bg-navy-800/80 text-orange-400 px-4 py-2 rounded-full mb-8 border border-orange-500/30 shadow-lg shadow-orange-500/10 backdrop-blur-md"
                     >
-                        <Sparkles className="w-4 h-4" />
+                        <Sparkles className="w-4 h-4 text-orange-500" />
                         <span className="text-sm font-semibold tracking-wide uppercase">Build Your Brand</span>
                     </motion.div>
 
@@ -241,8 +241,9 @@ const Hero = () => {
                 </div>
             </div>
 
-            {/* Bottom gradient fade to white */}
-            <div className="absolute bottom-0 left-0 right-0 h-20 md:h-32 lg:h-40 bg-gradient-to-t from-slate-50 to-transparent pointer-events-none z-[2]" />
+            {/* Bottom gradient fade to white - REMOVED/UPDATED TO DARK */}
+            {/* Added a subtle dark gradient at the bottom instead of white */}
+            <div className="absolute bottom-0 left-0 right-0 h-20 md:h-32 lg:h-40 bg-gradient-to-t from-navy-950 to-transparent pointer-events-none z-[2]" />
         </section>
     );
 };

@@ -343,7 +343,7 @@ const DigitalMarketingPage = () => {
                                     key={index}
                                     variants={itemVariants}
                                     onClick={() => setSelectedSolution(solution)}
-                                    className="group relative p-8 rounded-2xl border border-white/10 bg-white/10 backdrop-blur-md hover:bg-white/15 hover:border-white/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/20 cursor-pointer h-full flex flex-col"
+                                    className="group relative p-6 md:p-8 rounded-2xl border border-white/10 bg-white/10 backdrop-blur-md hover:bg-white/15 hover:border-white/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/20 cursor-pointer h-full flex flex-col"
                                     role="button"
                                     tabIndex={0}
                                     onKeyDown={(e) => {
@@ -394,7 +394,7 @@ const DigitalMarketingPage = () => {
                                     key={index}
                                     variants={itemVariants}
                                     onClick={() => setSelectedSolution(solution)}
-                                    className="group relative p-8 rounded-2xl border border-white/10 bg-white/10 backdrop-blur-md hover:bg-white/15 hover:border-white/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/20 cursor-pointer h-full flex flex-col"
+                                    className="group relative p-6 md:p-8 rounded-2xl border border-white/10 bg-white/10 backdrop-blur-md hover:bg-white/15 hover:border-white/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/20 cursor-pointer h-full flex flex-col"
                                     role="button"
                                     tabIndex={0}
                                     onKeyDown={(e) => {
@@ -445,7 +445,7 @@ const DigitalMarketingPage = () => {
                                     key={index}
                                     variants={itemVariants}
                                     onClick={() => setSelectedSolution(solution)}
-                                    className="group relative p-8 rounded-2xl border border-white/10 bg-white/10 backdrop-blur-md hover:bg-white/15 hover:border-white/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/20 cursor-pointer h-full flex flex-col"
+                                    className="group relative p-6 md:p-8 rounded-2xl border border-white/10 bg-white/10 backdrop-blur-md hover:bg-white/15 hover:border-white/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/20 cursor-pointer h-full flex flex-col"
                                     role="button"
                                     tabIndex={0}
                                     onKeyDown={(e) => {
@@ -496,7 +496,7 @@ const DigitalMarketingPage = () => {
                                     key={index}
                                     variants={itemVariants}
                                     onClick={() => setSelectedSolution(solution)}
-                                    className="group relative p-8 rounded-2xl border border-white/10 bg-white/10 backdrop-blur-md hover:bg-white/15 hover:border-white/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/20 cursor-pointer h-full flex flex-col"
+                                    className="group relative p-6 md:p-8 rounded-2xl border border-white/10 bg-white/10 backdrop-blur-md hover:bg-white/15 hover:border-white/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/20 cursor-pointer h-full flex flex-col"
                                     role="button"
                                     tabIndex={0}
                                     onKeyDown={(e) => {

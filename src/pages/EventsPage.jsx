@@ -179,7 +179,7 @@ const EventsPage = () => {
                                         initial={{ opacity: 0, y: 20 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         transition={{ delay: index * 0.1 }}
-                                        className={`bg-navy-900/50 border ${colorClasses.border} ${colorClasses.hover} rounded-2xl p-8 transition-all group hover:-translate-y-1`}
+                                        className={`bg-navy-900/50 border ${colorClasses.border} ${colorClasses.hover} rounded-2xl p-6 md:p-8 transition-all group hover:-translate-y-1`}
                                     >
                                         <div className="flex items-start justify-between mb-6">
                                             <div className={`p-3 ${colorClasses.bg} rounded-xl`}>

@@ -141,7 +141,7 @@ const TeamPage = () => {
             key={index}
             variants={itemVariants}
             onClick={() => setSelectedMember(member)}
-            className="group relative p-8 rounded-3xl border border-white/5 bg-gradient-to-br from-white/[0.08] to-white/[0.02] backdrop-blur-xl hover:from-white/[0.12] hover:to-white/[0.05] hover:border-orange-500/40 transition-all duration-500 hover:-translate-y-3 hover:shadow-[0_20px_60px_-15px_rgba(249,115,22,0.4)] cursor-pointer flex flex-col h-full overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-br before:from-orange-500/5 before:to-transparent before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500"
+            className="group relative p-6 md:p-8 rounded-3xl border border-white/5 bg-gradient-to-br from-white/[0.08] to-white/[0.02] backdrop-blur-xl hover:from-white/[0.12] hover:to-white/[0.05] hover:border-orange-500/40 transition-all duration-500 hover:-translate-y-3 hover:shadow-[0_20px_60px_-15px_rgba(249,115,22,0.4)] cursor-pointer flex flex-col h-full overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-br before:from-orange-500/5 before:to-transparent before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500"
             role="button"
             tabIndex={0}
             onKeyDown={(e) => {

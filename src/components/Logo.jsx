@@ -5,7 +5,7 @@ const Logo = ({ className = '', size = 'default' }) => {
     const heights = {
         small: 'h-20',      // Increased from h-14
         default: 'h-28',    // Increased from h-20
-        large: 'h-40',      // Increased from h-32
+        large: 'h-24 md:h-40',      // Responsive large size
     };
 
     return (

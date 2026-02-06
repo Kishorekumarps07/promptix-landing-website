@@ -183,7 +183,7 @@ const Header = () => {
                     {/* Logo */}
                     <div className="flex items-center">
                         <a href="/" className="flex items-center">
-                            <Logo className="!h-16" />
+                            <Logo className="!h-10 md:!h-12 lg:!h-16" />
                         </a>
                     </div>
 
@@ -382,7 +382,7 @@ const Header = () => {
                         {/* Hamburger Menu Button */}
                         <button
                             onClick={() => setIsMenuOpen(!isMenuOpen)}
-                            className="text-white p-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 rounded"
+                            className="text-white p-3 min-h-[44px] min-w-[44px] flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 rounded"
                             aria-label="Toggle menu"
                             aria-expanded={isMenuOpen}
                         >
@@ -437,7 +437,7 @@ const Header = () => {
                                 <div className="flex flex-col h-full">
                                     {/* Drawer Header */}
                                     <div className="flex items-center justify-between p-6 border-b border-white/10">
-                                        <Logo className="!h-16" />
+                                        <Logo className="!h-12" />
                                         <button
                                             onClick={() => setIsMenuOpen(false)}
                                             className="text-white p-2 hover:bg-white/10 rounded-lg transition-colors"

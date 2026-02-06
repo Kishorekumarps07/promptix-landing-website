@@ -29,7 +29,7 @@ const About = () => {
     return (
         <section
             id="about"
-            className="bg-slate-50 relative overflow-hidden py-20 lg:py-32"
+            className="relative overflow-hidden py-12 md:py-20 lg:py-32"
         >
             <div className="section-container relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -40,12 +40,12 @@ const About = () => {
                         viewport={{ once: true, margin: "-100px" }}
                         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                     >
-                        <h2 className="heading-lg text-navy-950 mb-6">
+                        <h2 className="heading-lg text-white mb-6">
                             Why Transforming Your Business
                             <br />
                             <span className="text-orange-500">with Technology Matters</span>
                         </h2>
-                        <p className="text-lg text-slate-600 mb-8 leading-relaxed">
+                        <p className="text-lg text-gray-300 mb-8 leading-relaxed">
                             In today's fast-paced digital landscape, technology isn't just an advantage—it's essential.
                             Businesses that embrace digital transformation unlock new opportunities for growth,
                             efficiency, and innovation while staying ahead of the competition.
@@ -65,7 +65,7 @@ const About = () => {
                                     <div className="mt-1 transition-transform group-hover:scale-110 duration-300">
                                         <CheckCircle2 className="w-5 h-5 text-orange-500 flex-shrink-0" />
                                     </div>
-                                    <span className="text-slate-700 font-medium group-hover:text-navy-900 transition-colors">{value}</span>
+                                    <span className="text-gray-200 font-medium group-hover:text-white transition-colors">{value}</span>
                                 </motion.div>
                             ))}
                         </div>
@@ -97,8 +97,8 @@ const About = () => {
                                                 transition: { duration: 0.3 }
                                             }}
                                         >
-                                            <div className="w-20 h-20 rounded-2xl bg-white/80 backdrop-blur-md border border-slate-200 shadow-lg hover:shadow-xl hover:border-orange-200 transition-all duration-300 flex items-center justify-center cursor-default">
-                                                <Icon className="w-9 h-9 text-orange-500" />
+                                            <div className="w-20 h-20 rounded-2xl bg-navy-800/50 backdrop-blur-md border border-white/10 shadow-lg hover:shadow-glass-gold hover:border-orange-500/50 transition-all duration-300 flex items-center justify-center cursor-default group">
+                                                <Icon className="w-9 h-9 text-orange-500 group-hover:text-white transition-colors" />
                                             </div>
                                         </motion.div>
                                     </MagneticButton>
@@ -119,7 +119,7 @@ const About = () => {
                                         transition={{ duration: 0.4, delay: index * 0.1 }}
                                         className="w-full aspect-square"
                                     >
-                                        <div className="w-full h-full rounded-xl bg-white border border-slate-200 shadow-md flex items-center justify-center">
+                                        <div className="w-full h-full rounded-xl bg-navy-800/50 border border-white/10 shadow-md flex items-center justify-center">
                                             <Icon className="w-6 h-6 text-orange-500" />
                                         </div>
                                     </motion.div>

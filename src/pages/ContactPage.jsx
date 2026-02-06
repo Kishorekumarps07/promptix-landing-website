@@ -281,7 +281,7 @@ const ContactPage = () => {
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="p-8 md:p-12 rounded-3xl bg-navy-900/50 border border-white/10 backdrop-blur-md"
+                    className="p-6 md:p-12 rounded-3xl bg-navy-900/50 border border-white/10 backdrop-blur-md"
                 >
                     <h2 className="text-3xl font-bold text-white mb-2">Send Us a Message</h2>
                     <p className="text-gray-400 mb-8">Fill out the form below and we'll get back to you within 24 hours.</p>

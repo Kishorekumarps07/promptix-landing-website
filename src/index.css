@@ -6,7 +6,11 @@
 
 @layer base {
     body {
-        @apply bg-white text-navy-900 antialiased;
+        @apply text-white antialiased;
+        background-image: linear-gradient(135deg, #121821 0%, #1a2332 100%) !important;
+        /* Hardcoded Charcoal-Shine */
+        background-color: #121821 !important;
+        /* Fallback */
         font-family: 'Nunito Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
     }
 
@@ -21,22 +25,26 @@
 
 @layer components {
     .btn-primary {
-        @apply bg-orange-500/80 backdrop-blur-md text-white px-8 py-3.5 rounded-lg font-semibold border border-white/20 transition-all duration-300 hover:bg-orange-500 hover:scale-105 active:scale-95;
-        box-shadow: 0 0 15px rgba(249, 115, 22, 0.4);
+        @apply text-navy-950 px-8 py-3.5 rounded-lg font-bold border border-white/20 transition-all duration-300 hover:scale-105 active:scale-95 bg-[length:200%_auto];
+        animation: theme('animation.shine');
+        background-image: linear-gradient(45deg, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+        /* Hardcoded Metallic Gold */
+        box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
         will-change: transform;
     }
 
     .btn-primary:hover {
-        box-shadow: 0 0 20px rgba(249, 115, 22, 0.6);
+        background-image: theme('backgroundImage.metallic-gold-hover');
+        box-shadow: 0 0 25px rgba(255, 215, 0, 0.7);
     }
 
     .btn-secondary {
-        @apply bg-white/60 backdrop-blur-md border border-navy-950/20 text-navy-950 px-8 py-3.5 rounded-lg font-semibold hover:bg-white transition-all duration-300 hover:scale-105 active:scale-95;
+        @apply bg-navy-800/80 backdrop-blur-md border border-navy-600 text-white px-8 py-3.5 rounded-lg font-semibold hover:bg-navy-700 transition-all duration-300 hover:scale-105 active:scale-95;
         will-change: transform;
     }
 
     .btn-secondary:hover {
-        box-shadow: 0 8px 12px -3px rgba(0, 0, 0, 0.08);
+        box-shadow: 0 8px 12px -3px rgba(0, 0, 0, 0.3);
     }
 
     .btn-secondary-dark {
@@ -79,15 +87,15 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-    @apply bg-gray-100;
+    @apply bg-navy-950;
 }
 
 ::-webkit-scrollbar-thumb {
-    @apply bg-navy-400 rounded-full;
+    @apply bg-navy-600 rounded-full border-2 border-navy-950;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    @apply bg-navy-600;
+    @apply bg-orange-500;
 }
 
 /* Performance optimization: Reduce paint on scroll */
