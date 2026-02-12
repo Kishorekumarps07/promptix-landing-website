@@ -21,10 +21,10 @@ export const seoConfig = {
         keywords: 'digital marketing, SEO services, paid advertising, social media marketing, content marketing, growth hacking'
     },
 
-    studentsCollege: {
-        title: 'Student Programs - Internships & AI Training',
-        description: 'Industry-focused internships, hands-on workshops, and AI training programs. Bridge the gap between campus and corporate with PromptiX.',
-        keywords: 'student internships, AI training, college programs, tech workshops, career development, hands-on learning'
+    careers: {
+        title: 'Careers - Join the PromptiX Talent Network',
+        description: 'Industry-focused growth opportunities, internships, and career development in AI and Tech. Join the PromptiX talent network today.',
+        keywords: 'careers, tech internships, AI career development, job opportunities, talent network, hands-on learning'
     },
 
     team: {

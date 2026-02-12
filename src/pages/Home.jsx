@@ -51,8 +51,8 @@ const Home = () => {
         <>
             <SEO
                 title="Home"
-                description="PromptiX delivers cutting-edge AI solutions, digital marketing, and transformative learning programs for businesses and students."
-                keywords="AI solutions, digital marketing, business automation, student programs, AI training, PromptiX"
+                description="PromptiX delivers cutting-edge AI solutions, digital marketing, and transformative business strategies for modern growth."
+                keywords="AI solutions, digital marketing, business automation, tech consulting, business innovation, PromptiX"
                 url="/"
             />
             <Hero />

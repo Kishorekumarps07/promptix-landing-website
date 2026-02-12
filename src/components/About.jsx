@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { CheckCircle2, Code, Cloud, Database, TrendingUp, Target, BarChart, GraduationCap, Lightbulb } from 'lucide-react';
+import { CheckCircle2, Code, Cloud, Database, TrendingUp, Target, BarChart, Briefcase, Lightbulb } from 'lucide-react';
 import MagneticButton from './MagneticButton';
 
 const About = () => {
@@ -22,7 +22,7 @@ const About = () => {
         { Icon: TrendingUp },
         { Icon: Target },
         { Icon: BarChart },
-        { Icon: GraduationCap },
+        { Icon: Briefcase },
         { Icon: Lightbulb },
     ];
 

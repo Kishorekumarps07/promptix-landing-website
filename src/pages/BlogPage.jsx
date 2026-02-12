@@ -128,7 +128,7 @@ const BlogPage = () => {
                             More Insights Coming Soon
                         </h2>
                         <p className="text-gray-400 max-w-2xl mx-auto">
-                            We're constantly sharing new insights, tips, and industry trends. Stay tuned for more articles on technology, digital marketing, and education.
+                            We're constantly sharing new insights, tips, and industry trends. Stay tuned for more articles on technology, digital marketing, and business innovation.
                         </p>
                     </motion.div>
                 </section>

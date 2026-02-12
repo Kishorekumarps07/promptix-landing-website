@@ -3,10 +3,10 @@ import { Helmet } from 'react-helmet-async';
 
 const SEO = ({ title, description, keywords, image, url }) => {
     const siteTitle = 'PromptiX | AI-Driven Solutions';
-    const defaultDescription = 'PromptiX provides cutting-edge AI business solutions, digital marketing services, and industry-aligned internship programs for students.';
-    const defaultKeywords = 'AI solutions, business automation, digital marketing, internships, student programs, PromptiX';
+    const defaultDescription = 'PromptiX provides cutting-edge AI business solutions, digital marketing services, and high-end tech consulting.';
+    const defaultKeywords = 'AI solutions, business automation, digital marketing, tech consulting, business growth, PromptiX';
     const siteUrl = 'https://promptix.pro';
-    const defaultImage = 'https://promptix.pro/promptix-logo-new.png';
+    const defaultImage = 'https://promptix.pro/promptix-logo-final.png';
 
     const fullTitle = title ? `${title} | PromptiX` : siteTitle;
 
