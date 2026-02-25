@@ -145,8 +145,7 @@ const TeamPage = () => {
             className="h-full"
         >
             <Tilt
-                onClick={() => setSelectedMember(member)}
-                className="group relative p-6 md:p-8 rounded-3xl border border-white/5 bg-gradient-to-br from-white/[0.08] to-white/[0.02] backdrop-blur-xl hover:from-white/[0.12] hover:to-white/[0.05] hover:border-orange-500/40 transition-all duration-300 hover:shadow-[0_20px_60px_-15px_rgba(249,115,22,0.4)] cursor-pointer flex flex-col h-full overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-br before:from-orange-500/5 before:to-transparent before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500"
+                className="h-full"
                 perspective={1000}
                 glareEnable={true}
                 glareMaxOpacity={0.1}
@@ -154,68 +153,74 @@ const TeamPage = () => {
                 gyroscope={true}
                 scale={1.02}
                 transitionSpeed={1500}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        setSelectedMember(member);
-                    }
-                }}
             >
-                {/* Image (if available) - Centered and larger for impact */}
-                {/* Image (if available) or Placeholder - Centered and larger for impact */}
-                <div className="flex justify-center mb-8 relative z-10">
-                    <div className="relative w-36 h-36 rounded-full overflow-hidden border-4 border-orange-500/30 shadow-[0_0_40px_rgba(249,115,22,0.25)] group-hover:scale-110 group-hover:border-orange-500/60 group-hover:shadow-[0_0_60px_rgba(249,115,22,0.4)] transition-all duration-500 bg-navy-900">
+                <div
+                    onClick={() => setSelectedMember(member)}
+                    onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            setSelectedMember(member);
+                        }
+                    }}
+                    role="button"
+                    tabIndex={0}
+                    className="group relative p-6 md:p-8 rounded-3xl border border-white/5 bg-gradient-to-br from-white/[0.08] to-white/[0.02] backdrop-blur-xl hover:from-white/[0.12] hover:to-white/[0.05] hover:border-orange-500/40 transition-all duration-300 hover:shadow-[0_20px_60px_-15px_rgba(249,115,22,0.4)] cursor-pointer flex flex-col h-full overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-br before:from-orange-500/5 before:to-transparent before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500"
+                >
 
-                        {member.image ? (
-                            <img
-                                src={member.image}
-                                alt={`${member.name} - ${member.role} at PromptiX`}
-                                className="w-full h-full object-cover"
-                            />
-                        ) : (
-                            <div className="w-full h-full flex items-center justify-center bg-white/5">
-                                <User className="w-16 h-16 text-gray-400 group-hover:text-orange-500 transition-colors duration-300" />
-                            </div>
-                        )}
-                        {/* Overlay shine effect */}
-                        <div className="absolute inset-0 bg-gradient-to-tr from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    </div>
-                </div>
+                    {/* Image (if available) - Centered and larger for impact */}
+                    {/* Image (if available) or Placeholder - Centered and larger for impact */}
+                    <div className="flex justify-center mb-8 relative z-10">
+                        <div className="relative w-36 h-36 rounded-full overflow-hidden border-4 border-orange-500/30 shadow-[0_0_40px_rgba(249,115,22,0.25)] group-hover:scale-110 group-hover:border-orange-500/60 group-hover:shadow-[0_0_60px_rgba(249,115,22,0.4)] transition-all duration-500 bg-navy-900">
 
-                {/* Role Badge */}
-                <div className={`mb-6 ${member.image ? 'text-center' : ''} relative z-10`}>
-                    <div className="inline-block px-4 py-1.5 rounded-full bg-gradient-to-r from-orange-500/20 to-orange-600/10 border border-orange-500/30 mb-4 backdrop-blur-sm">
-                        <span className="text-xs font-bold tracking-wide text-orange-400 uppercase">
-                            {member.badge || member.role.split(' ')[0]}
-                        </span>
-                    </div>
-                    <div className="text-2xl font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-orange-400 group-hover:to-orange-500 transition-all duration-500">
-                        {member.role}
-                    </div>
-                    <h3 className="text-lg font-semibold text-gray-300/90">
-                        {member.name}
-                    </h3>
-                </div>
-
-                {/* Focus Description */}
-                <p className="text-gray-400/90 text-sm leading-relaxed mb-6 flex-grow relative z-10">
-                    {member.focus}
-                </p>
-
-                {/* Skill Highlights */}
-                <div className="space-y-3 pt-6 border-t border-white/10 relative z-10">
-                    {member.highlights.map((highlight, i) => (
-                        <div key={i} className="flex items-center gap-3">
-                            <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 group-hover:shadow-[0_0_8px_rgba(249,115,22,0.8)] group-hover:scale-125 transition-all duration-300" />
-                            <span className="text-sm text-gray-300/80 group-hover:text-gray-200 transition-colors duration-300">{highlight}</span>
+                            {member.image ? (
+                                <img
+                                    src={member.image}
+                                    alt={`${member.name} - ${member.role} at PromptiX`}
+                                    className="w-full h-full object-cover"
+                                />
+                            ) : (
+                                <div className="w-full h-full flex items-center justify-center bg-white/5">
+                                    <User className="w-16 h-16 text-gray-400 group-hover:text-orange-500 transition-colors duration-300" />
+                                </div>
+                            )}
+                            {/* Overlay shine effect */}
+                            <div className="absolute inset-0 bg-gradient-to-tr from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                         </div>
-                    ))}
-                </div>
+                    </div>
 
-                {/* Click Hint */}
-                <div className="mt-4 pt-3 border-t border-white/5 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <span className="text-xs text-orange-400 font-medium">Click to view details →</span>
+                    {/* Role Badge */}
+                    <div className={`mb-6 ${member.image ? 'text-center' : ''} relative z-10`}>
+                        <div className="inline-block px-4 py-1.5 rounded-full bg-gradient-to-r from-orange-500/20 to-orange-600/10 border border-orange-500/30 mb-4 backdrop-blur-sm">
+                            <span className="text-xs font-bold tracking-wide text-orange-400 uppercase">
+                                {member.badge || member.role.split(' ')[0]}
+                            </span>
+                        </div>
+                        <div className="text-2xl font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-orange-400 group-hover:to-orange-500 transition-all duration-500">
+                            {member.role}
+                        </div>
+                        <h3 className="text-lg font-semibold text-gray-300/90">
+                            {member.name}
+                        </h3>
+                    </div>
+
+                    {/* Focus Description */}
+                    <p className="text-gray-400/90 text-sm leading-relaxed mb-6 flex-grow relative z-10">
+                        {member.focus}
+                    </p>
+
+                    {/* Skill Highlights */}
+                    <div className="space-y-3 pt-6 border-t border-white/10 relative z-10">
+                        {member.highlights.map((highlight, i) => (
+                            <div key={i} className="flex items-center gap-3">
+                                <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 group-hover:shadow-[0_0_8px_rgba(249,115,22,0.8)] group-hover:scale-125 transition-all duration-300" />
+                                <span className="text-sm text-gray-300/80 group-hover:text-gray-200 transition-colors duration-300">{highlight}</span>
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* Click Hint */}
+                    <div className="mt-4 pt-3 border-t border-white/5 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <span className="text-xs text-orange-400 font-medium">Click to view details →</span>
+                    </div>
                 </div>
             </Tilt>
         </motion.div>
