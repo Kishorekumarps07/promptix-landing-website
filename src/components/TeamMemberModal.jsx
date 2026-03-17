@@ -79,7 +79,10 @@ const TeamMemberModal = ({ isOpen, onClose, member }) => {
                         </div>
 
                         {/* Scrollable Content */}
-                        <div className="flex-1 overflow-y-auto custom-scrollbar p-6 space-y-8 bg-navy-900/50">
+                        <div 
+                            className="flex-1 overflow-y-auto custom-scrollbar p-6 space-y-8 bg-navy-900/50"
+                            data-lenis-prevent
+                        >
                             {/* Bio */}
                             <div>
                                 <h3 className="text-lg font-semibold text-white mb-3">About</h3>

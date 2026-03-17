@@ -46,18 +46,6 @@ const TeamPage = () => {
         },
 
         {
-            name: 'Jayanth C',
-            role: 'Graphics Designer & Digital Marketer',
-            image: '/images/team/jayanth.jpg',
-            focus: 'Designing engaging marketing materials and social media content that converts',
-            highlights: ['Marketing Design', 'Social Media', 'Content Creation'],
-            bio: 'Bringing ideas to life through compelling visual content. Focused on creating marketing materials, social media graphics, and digital assets that drive engagement and conversions. Passionate about staying ahead of design trends and delivering work that stands out.',
-            skills: ['Marketing Design', 'Social Media Graphics', 'Content Creation', 'Motion Graphics', 'Illustration'],
-            tools: ['Canva', 'Adobe Photoshop', 'Adobe Illustrator', 'Figma', 'Adobe Premiere Pro', 'Procreate'],
-            linkedin: null
-        },
-
-        {
             name: 'Kamalesh Kumar M S',
             role: 'Full Stack Developer',
             badge: 'Developer',
@@ -80,21 +68,31 @@ const TeamPage = () => {
         },
 
         {
-            name: 'Suriya Sekar S',
-            role: 'Admin & Backend',
-            image: '/images/team/suriya-sekar.jpg',
-            focus: 'Managing operations and building robust backend systems to support business growth',
-            highlights: ['Operations Management', 'Backend Development', 'System Administration'],
-            bio: 'Ensuring operational excellence through efficient administrative management while developing and maintaining backend infrastructure. Expertise in both business operations and technical implementation supports seamless organizational growth.',
-            skills: ['Operations Management', 'Backend Development', 'Node.js', 'Database Management', 'System Administration'],
-            tools: ['Node.js', 'Express', 'MongoDB', 'Microsoft Office', 'Google Workspace'],
+            name: 'Devesh P A',
+            role: 'Full Stack Developer',
+            badge: 'Developer',
+            image: '/images/team/devesh.png',
+            focus: 'Building scalable web applications with modern frameworks and cloud infrastructure',
+            highlights: [
+                'Frontend Development',
+                'Backend Development',
+                'Full Stack Solutions'
+            ],
+            bio: 'Passionate full stack developer dedicated to creating robust and scalable web applications. Expertise in both frontend and backend technologies ensures seamless end-to-end development and delivery of high-quality solutions.',
+            skills: [
+                'Frontend (HTML, CSS, JavaScript, React)',
+                'Backend (Node.js)',
+                'Database Management',
+                'API Development'
+            ],
+            tools: ['React', 'Node.js', 'Express', 'MongoDB', 'Git', 'VS Code'],
             linkedin: null
         }
     ];
 
     // Split team into sections
-    const leadership = teamMembers.slice(0, 2);
-    const regularTeam = teamMembers.slice(2);
+    const leadership = teamMembers.slice(0, 1);
+    const regularTeam = teamMembers.slice(1);
 
     // Team values
     const teamValues = [
@@ -263,7 +261,7 @@ const TeamPage = () => {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
-                    className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12 lg:mb-16"
+                    className="grid grid-cols-1 gap-8 max-w-sm mx-auto mb-12 lg:mb-16"
                 >
                     {leadership.map((member, index) => renderMemberCard(member, index))}
                 </motion.div>
@@ -276,7 +274,7 @@ const TeamPage = () => {
                     viewport={{ once: true }}
                     className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
                 >
-                    {regularTeam.map((member, index) => renderMemberCard(member, index + 2))}
+                    {regularTeam.map((member, index) => renderMemberCard(member, index + 1))}
                 </motion.div>
 
             </section>

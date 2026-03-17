@@ -13,7 +13,6 @@ const ContactPage = () => {
         countryCode: '+91',
         interestedIn: '',
         message: '',
-        whatsappUpdates: false,
         whatsappUpdates: false
     });
 
