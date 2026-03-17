@@ -9,6 +9,7 @@ import DigitalMarketingPage from './pages/DigitalMarketingPage';
 
 import ContactPage from './pages/ContactPage';
 import TeamPage from './pages/TeamPage';
+import ShowcasePage from './pages/ShowcasePage';
 import EventsPage from './pages/EventsPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import TermsOfServicePage from './pages/TermsOfServicePage';
@@ -43,6 +44,7 @@ function App() {
                         <Route path="/events" element={<EventsPage />} />
                         <Route path="/contact" element={<ContactPage />} />
                         <Route path="/company/team" element={<TeamPage />} />
+                        <Route path="/showcase" element={<ShowcasePage />} />
                         <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
                         <Route path="/terms-of-service" element={<TermsOfServicePage />} />
                         <Route path="/apply" element={<ApplyPage />} />

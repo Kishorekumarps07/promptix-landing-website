@@ -49,6 +49,7 @@ const Header = () => {
             items: [
                 { name: 'Business Solutions', href: '/business-solutions' },
                 { name: 'Digital Marketing', href: '/digital-marketing' },
+                { name: 'Showcase', href: '/showcase' },
             ],
         },
 
