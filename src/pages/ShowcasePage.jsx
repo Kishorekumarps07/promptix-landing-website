@@ -56,16 +56,6 @@ const projects = [
         color: 'from-yellow-500/20 to-orange-500/20'
     },
     {
-        id: 6,
-        title: 'Eagle Eye Manpower',
-        category: 'Clients',
-        description: 'Specialized recruitment and staffing platform connecting top talent with corporate opportunities.',
-        link: 'https://eagleeyemanpower.in/',
-        icon: UserCheck,
-        tags: ['HR', 'Recruitment', 'Portal'],
-        color: 'from-blue-600/20 to-cyan-500/20'
-    },
-    {
         id: 7,
         title: 'Mr. Coach',
         category: 'Clients',
