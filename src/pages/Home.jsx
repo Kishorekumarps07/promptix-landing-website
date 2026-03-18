@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, CheckCircle2, Zap, BarChart2, Users, Calendar, MapPin } from 'lucide-react';
 import Hero from '../components/Hero';
+import Clients from '../components/Clients';
 import SEO from '../components/SEO';
 import Features from '../components/Features';
 import About from '../components/About';
@@ -56,6 +57,7 @@ const Home = () => {
                 url="/"
             />
             <Hero />
+            <Clients />
             <About />
             {/* Upcoming Events Section */}
             <section className="bg-navy-950 py-16 md:py-24 border-b border-navy-800/50">

@@ -12,7 +12,7 @@ const Footer = () => {
         Company: [
             { name: 'Our Team', href: '/company/team' },
             { name: 'Blog', href: '/blog' },
-            { name: 'Showcase', href: '/showcase' },
+            { name: 'Products and Services', href: '/showcase' },
         ],
         Services: [
             { name: 'Business Solutions', href: '/business-solutions' },
