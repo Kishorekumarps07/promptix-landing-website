@@ -11,7 +11,7 @@ const Clients = () => {
     const allClients = [...clients, ...clients];
 
     return (
-        <section className="bg-navy-950 py-10 md:py-14 border-y border-white/5 relative overflow-hidden">
+        <section className="bg-navy-950 pt-10 md:pt-14 pb-2 md:pb-4 border-y border-white/5 relative overflow-hidden">
             {/* Heading */}
             <p className="text-gray-500 font-medium uppercase tracking-[0.2em] text-xs text-center mb-8">
                 Trusted by Industry Leaders

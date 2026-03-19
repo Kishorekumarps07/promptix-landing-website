@@ -29,7 +29,7 @@ const About = () => {
     return (
         <section
             id="about"
-            className="relative overflow-hidden py-12 md:py-20 lg:py-32"
+            className="relative overflow-hidden py-0"
         >
             <div className="section-container relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
