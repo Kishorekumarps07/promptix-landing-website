@@ -14,12 +14,23 @@ const TeamPage = () => {
         {
             name: 'MD Jaffer',
             role: 'Founder & CEO',
-            image: '/images/team/md-jaffer.png',
+            image: '/images/team/md-jaffer.jpeg',
             focus: 'Driving business strategy, partnerships, and long-term growth vision for PromptiX.',
             highlights: ['Business Strategy', 'Growth Planning', 'Partnerships'],
             bio: 'Driving business strategy, partnerships, and long-term growth vision for PromptiX. Dedicated to building lasting value through strategic alliances and sustainable business practices.',
             skills: ['Business Strategy', 'Growth Planning', 'Partnerships', 'Strategic Management'],
             tools: ['Business Analytics', 'Strategic Planning', 'Partnership Development'],
+            linkedin: null
+        },
+        {
+            name: 'Vincy Malar K',
+            role: 'Team Lead',
+            image: '/images/team/vincy-malar.jpeg',
+            focus: 'Leading development teams and ensuring technical excellence across PromptiX projects.',
+            highlights: ['Team Leadership', 'Project Management', 'Technical Strategy'],
+            bio: 'A results-driven Team Lead with expertise in orchestrating complex development projects. Focused on fostering a culture of innovation, mentoring developers, and delivering high-impact solutions that align with business goals.',
+            skills: ['Agile Methodologies', 'Team Mentoring', 'Project Roadmap Planning', 'Quality Assurance'],
+            tools: ['Jira', 'GitHub', 'Microsoft Project', 'Trello'],
             linkedin: null
         },
 
@@ -49,7 +60,7 @@ const TeamPage = () => {
             name: 'Kamalesh Kumar M S',
             role: 'Full Stack Developer',
             badge: 'Developer',
-            image: '/images/team/kamalesh-kumar.png',
+            image: '/images/team/kamalesh.png',
             focus: 'Building scalable web applications with modern frameworks and cloud infrastructure',
             highlights: [
                 'Frontend Development',
@@ -71,7 +82,7 @@ const TeamPage = () => {
             name: 'Devesh P A',
             role: 'Full Stack Developer',
             badge: 'Developer',
-            image: '/images/team/devesh.png',
+            image: '/images/team/devesh.jpeg',
             focus: 'Building scalable web applications with modern frameworks and cloud infrastructure',
             highlights: [
                 'Frontend Development',
@@ -87,12 +98,54 @@ const TeamPage = () => {
             ],
             tools: ['React', 'Node.js', 'Express', 'MongoDB', 'Git', 'VS Code'],
             linkedin: null
+        },
+        {
+            name: 'Harini',
+            role: 'Flutter Developer',
+            badge: 'Developer',
+            image: '/images/team/harini.jpeg',
+            focus: 'Building cross-platform mobile applications with Flutter and Dart, ensuring smooth UI/UX and high performance.',
+            highlights: [
+                'Mobile App Development',
+                'UI/UX Implementation',
+                'Cross-Platform Solutions'
+            ],
+            bio: 'A dedicated Flutter Developer with a passion for creating beautiful, high-performance mobile applications. Specialized in building responsive interfaces and integrating complex backend services for a seamless user experience on both iOS and Android.',
+            skills: [
+                'Flutter Framework',
+                'Dart Programming',
+                'State Management',
+                'API Integration'
+            ],
+            tools: ['Android Studio', 'VS Code', 'Firebase', 'Git'],
+            linkedin: null
+        },
+        {
+            name: 'Pavan kumar',
+            role: 'Backend Support',
+            badge: 'Support',
+            image: '/images/team/pavan.jpg',
+            focus: 'Providing technical support for backend systems, managing databases, and ensuring server-side stability.',
+            highlights: [
+                'Backend Operations',
+                'Database Management',
+                'Technical Support'
+            ],
+            bio: 'A dedicated Backend Support specialist focused on maintaining and optimizing server-side architectures. Expertise in troubleshooting backend issues, managing database integrity, and supporting development teams to ensure high system availability.',
+            skills: [
+                'Node.js Support',
+                'Database Administration',
+                'Server Monitoring',
+                'Troubleshooting'
+            ],
+            tools: ['PostgreSQL', 'MongoDB', 'Postman', 'Linux'],
+            linkedin: null
         }
     ];
 
     // Split team into sections
-    const leadership = teamMembers.slice(0, 1);
-    const regularTeam = teamMembers.slice(1);
+    const leadership = teamMembers.slice(0, 2);
+    const regularTeam = teamMembers.slice(2);
 
     // Team values
     const teamValues = [
